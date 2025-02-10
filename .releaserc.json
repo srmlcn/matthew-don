@@ -1,0 +1,29 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "writerOpts": {
+          "headerPartial": "## {{#if isPatch~}} <small> {{~/if~}} {{version}} {{~#if title}} \"{{title}}\"{{~/if~}}{{~#if date}} ({{date}}) {{~/if~}} {{~#if isPatch~}} </small> {{~/if}}"
+        }
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# Changelog"
+      }
+    ],
+    "@semantic-release/npm",
+    "@semantic-release/github",
+    [
+      "@semantic-release/git",
+      {
+        "assets": ["package.json", "CHANGELOG.md"]
+      }
+    ]
+  ]
+}
