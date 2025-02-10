@@ -1,4 +1,5 @@
 import "./globals.css"
+import { SiteNavbar } from "./components/site-navbar"
 import { Providers } from "./providers"
 import { Outfit } from "next/font/google"
 
@@ -16,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`antialiased`}>
         <Providers>
+          <SiteNavbar />
           <main className="flex flex-col items-center">
             <div className="container px-4 py-20">{children}</div>
           </main>
