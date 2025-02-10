@@ -1,5 +1,5 @@
 import "./globals.css"
-
+import { Providers } from "./providers"
 import { Outfit } from "next/font/google"
 
 const outfit = Outfit({
@@ -14,7 +14,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <Providers>
+          <main className="flex flex-col items-center">
+            <div className="container px-4 py-20">{children}</div>
+          </main>
+        </Providers>
+      </body>
     </html>
   )
 }
