@@ -22,10 +22,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
+      - name: Install Yarn
+        run: npm install -g yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Use Yarn@v4
+        run: yarn set version 4.6.0
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
-        run: yarn audit signatures
+        run: yarn install
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
