@@ -1,5 +1,14 @@
 # Changelog
 
+## <small>1.5.2 (2025-02-11)</small>
+
+### Bug Fixes
+
+* make the about page images responsive ([0eb4470](https://github.com/cainspencerm/matthew-don/commit/0eb4470ca6cd48fac71b22f6aec5c67d5149ad8c))
+* make the book page images responsive ([60f9967](https://github.com/cainspencerm/matthew-don/commit/60f996734b684a63d343f4c9722601d638c8f3b0))
+* make the contact page images responsive ([0b5c8e3](https://github.com/cainspencerm/matthew-don/commit/0b5c8e393e7ce63af1639f57258ca2d085ba3920))
+* make the home page images responsive ([deaf37b](https://github.com/cainspencerm/matthew-don/commit/deaf37bc9b84525f5bf860cc0e4071d707f9fe90))
+
 ## <small>1.5.1 (2025-02-11)</small>
 
 ### Bug Fixes
