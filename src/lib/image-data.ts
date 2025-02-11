@@ -125,3 +125,61 @@ export const adventuresOfLucaAndKaiTheMoonQueenImagesData: ImageData[] = [
     height: 1613,
   },
 ]
+
+export const celebrationOfTheHistoryOfCelebratingHistoryImagesData: ImageData[] =
+  [
+    {
+      src: "/celebration/celebration-1.jpg",
+      alt: "A Celebration of the History of Celebrating History (1)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-2.jpg",
+      alt: "A Celebration of the History of Celebrating History (2)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-3.jpg",
+      alt: "A Celebration of the History of Celebrating History (3)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-4.jpg",
+      alt: "A Celebration of the History of Celebrating History (4)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-5.jpg",
+      alt: "A Celebration of the History of Celebrating History (5)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-6.jpg",
+      alt: "A Celebration of the History of Celebrating History (6)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-7.jpg",
+      alt: "A Celebration of the History of Celebrating History (7)",
+      width: 720,
+      height: 345,
+    },
+    {
+      src: "/celebration/celebration-8.jpg",
+      alt: "A Celebration of the History of Celebrating History (8)",
+      width: 4024,
+      height: 2856,
+    },
+    {
+      src: "/celebration/celebration-9.jpg",
+      alt: "A Celebration of the History of Celebrating History (9)",
+      width: 4024,
+      height: 2856,
+    },
+  ]
