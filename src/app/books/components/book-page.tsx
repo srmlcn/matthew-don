@@ -54,7 +54,7 @@ export function BookPage({
       <div className="flex flex-col items-center gap-4">
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
         {descriptions.map((description, index) => (
-          <p className="text-indent indent-8" key={index}>
+          <p className="text-indent sm:indent-8" key={index}>
             {description}
           </p>
         ))}
