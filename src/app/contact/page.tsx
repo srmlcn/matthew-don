@@ -8,12 +8,13 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col items-center gap-8">
       <h1 className="font-bold text-4xl">{"Wanna get in touch?"}</h1>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center place-items-center">
         <Image
           src="/profile-picture.png"
           alt="Profile Picture"
           width={482}
           height={482}
+          className={`h-full w-auto aspect-[${482}/${482}]`}
         />
         <div className="flex flex-col gap-4">
           <p>
