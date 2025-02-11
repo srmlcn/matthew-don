@@ -1,7 +1,7 @@
 import {
   adventuresOfLucaAndKaiTheMoonQueenImageData as imageData,
   adventuresOfLucaAndKaiTheMoonQueenImagesData as imagesData,
-} from "../../../lib/image-data"
+} from "@/lib/image-data"
 import { BookPage, BookPageProps } from "../components/book-page"
 import { adventuresOfLucaAndKaiTheMoonQueenLinkData as linkData } from "@/lib/link-data"
 import { adventuresOfLucaAndKaiTheMoonQueenReviewsData as reviewsData } from "@/lib/reviews-data"
