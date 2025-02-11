@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.5.0 (2025-02-11)
+
+### Features
+
+* add metadata to pages ([be97069](https://github.com/cainspencerm/matthew-don/commit/be97069d007966059949cbe7619bf5023d8a0bb8)), closes [#6](https://github.com/cainspencerm/matthew-don/issues/6)
+* add metadata to the about page ([7e9906c](https://github.com/cainspencerm/matthew-don/commit/7e9906c6b95d2a82e7c5f0234a5e3d2a4a1f8381))
+* add metadata to the adventures book page ([c209234](https://github.com/cainspencerm/matthew-don/commit/c209234ca8cd90e6838ddd759d56a3986039e100))
+* add metadata to the celebration book page ([723725b](https://github.com/cainspencerm/matthew-don/commit/723725b8d2f7338c696e0162399ac98e7591ebc0))
+* add metadata to the contact page ([0d2f350](https://github.com/cainspencerm/matthew-don/commit/0d2f350de9023379d1c6b236308116648bad4c8e))
+* add metadata to the home page ([afd6e2a](https://github.com/cainspencerm/matthew-don/commit/afd6e2a4310c1cb86806b2c326d2f005a6d6afd8))
+
 ## <small>1.4.1 (2025-02-11)</small>
 
 ### Bug Fixes
