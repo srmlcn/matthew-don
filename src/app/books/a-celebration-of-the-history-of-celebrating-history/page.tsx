@@ -1,7 +1,7 @@
 import {
   celebrationOfTheHistoryOfCelebratingHistoryImageData as imageData,
   celebrationOfTheHistoryOfCelebratingHistoryImagesData as imagesData,
-} from "../../../lib/image-data"
+} from "@/lib/image-data"
 import { BookPage, BookPageProps } from "../components/book-page"
 import { celebrationOfTheHistoryOfCelebratingHistoryLinkData as linkData } from "@/lib/link-data"
 import { celebrationOfTheHistoryOfCelebratingHistoryReviewsData as reviewsData } from "@/lib/reviews-data"
