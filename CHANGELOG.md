@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0 (2025-02-11)
+
+### Features
+
+* create an about page ([0241b52](https://github.com/cainspencerm/matthew-don/commit/0241b52474b0649c12f5cea1b1b22e0005379ca9))
+
 ## 1.0.0 (2025-02-11)
 
 ### Features
