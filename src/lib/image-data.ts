@@ -32,3 +32,96 @@ export const celebrationOfTheHistoryOfCelebratingHistoryImageData: ImageData = {
   width: 1200,
   height: 1920,
 }
+
+export const adventuresOfLucaAndKaiTheMoonQueenImagesData: ImageData[] = [
+  {
+    src: "/adventures/book1-1.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (1)",
+    width: 1026,
+    height: 1539,
+  },
+  {
+    src: "/adventures/book1-2.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (2)",
+    width: 921,
+    height: 1382,
+  },
+  {
+    src: "/adventures/book1-3.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (3)",
+    width: 1429,
+    height: 2143,
+  },
+  {
+    src: "/adventures/book1-4.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (4)",
+    width: 990,
+    height: 1485,
+  },
+  {
+    src: "/adventures/book1-5.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (5)",
+    width: 1170,
+    height: 1755,
+  },
+  {
+    src: "/adventures/book1-6.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (6)",
+    width: 1107,
+    height: 1661,
+  },
+  {
+    src: "/adventures/book1-7.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (7)",
+    width: 1228,
+    height: 1842,
+  },
+  {
+    src: "/adventures/book1-8.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (8)",
+    width: 1190,
+    height: 1785,
+  },
+  {
+    src: "/adventures/book1-9.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (9)",
+    width: 923,
+    height: 1385,
+  },
+  {
+    src: "/adventures/book1-10.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (10)",
+    width: 845,
+    height: 1268,
+  },
+  {
+    src: "/adventures/book1-11.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (11)",
+    width: 1091,
+    height: 1636,
+  },
+  {
+    src: "/adventures/book1-12.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (12)",
+    width: 1146,
+    height: 1720,
+  },
+  {
+    src: "/adventures/book1-13.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (13)",
+    width: 1271,
+    height: 1906,
+  },
+  {
+    src: "/adventures/book1-14.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (14)",
+    width: 1047,
+    height: 1571,
+  },
+  {
+    src: "/adventures/book1-15.png",
+    alt: "The Adventures of Luca and Kai: The Moon Queen (15)",
+    width: 1075,
+    height: 1613,
+  },
+]
