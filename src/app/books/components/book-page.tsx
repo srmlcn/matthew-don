@@ -49,7 +49,7 @@ export function BookPage({
         alt={image.alt}
         width={image.width}
         height={image.height}
-        className="max-h-[72rem] h-full w-auto"
+        className={`max-h-[72rem] w-auto aspect-[${image.width}/${image.height}]`}
       />
       <div className="flex flex-col items-center gap-4">
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
@@ -59,7 +59,7 @@ export function BookPage({
           </p>
         ))}
       </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
         {images.map((image) => (
           <Image
             key={image.src}
@@ -67,7 +67,7 @@ export function BookPage({
             alt={image.alt}
             width={image.width}
             height={image.height}
-            className="max-h-[32rem] h-full w-auto"
+            className={`max-h-[32rem] w-auto min-w-full aspect-[${image.width}/${image.height}]`}
           />
         ))}
       </div>
