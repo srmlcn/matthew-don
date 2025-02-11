@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0 (2025-02-11)
+
+### Features
+
+* create a contact page ([7d3f388](https://github.com/cainspencerm/matthew-don/commit/7d3f38838c2cbfbdb72ce943147b22a72ee0c382))
+
 ## 1.1.0 (2025-02-11)
 
 ### Features
