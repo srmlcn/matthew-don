@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>1.5.1 (2025-02-11)</small>
+
+### Bug Fixes
+
+* make page components responsive ([9986fad](https://github.com/cainspencerm/matthew-don/commit/9986fad1b60f4375a403e5b93b86d1b8104176f6)), closes [#8](https://github.com/cainspencerm/matthew-don/issues/8)
+
 ## 1.5.0 (2025-02-11)
 
 ### Features
