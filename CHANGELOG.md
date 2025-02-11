@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.0 (2025-02-11)
+
+### Features
+
+* create a site footer ([dc90e0d](https://github.com/cainspencerm/matthew-don/commit/dc90e0d2885e110c5c1c3facfac4589fafe53e53)), closes [#10](https://github.com/cainspencerm/matthew-don/issues/10)
+* create a site footer ([b148106](https://github.com/cainspencerm/matthew-don/commit/b14810618a00bfc01525c9e715271981067f05d2))
+
 ## <small>1.5.2 (2025-02-11)</small>
 
 ### Bug Fixes
