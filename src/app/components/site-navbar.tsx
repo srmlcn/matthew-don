@@ -12,6 +12,7 @@ import {
 } from "@heroui/navbar"
 import {
   Button,
+  Divider,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -23,22 +24,53 @@ import { useState } from "react"
 
 export function SiteNavbar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
-    <Navbar height="4rem" classNames={{ base: "bg-white/40" }}>
-      <NavbarBrand>
-        <Image src="/profile-picture.png" alt="MoPete" width={50} height={50} />
-      </NavbarBrand>
-      <NavbarContent justify="end" className="space-x-4">
-        <NavbarItem>
+    <Navbar
+      height="4rem"
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      classNames={{ base: "bg-white/40" }}
+    >
+      <NavbarContent justify="start" className="flex gap-4">
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
+        <NavbarBrand className="h-full py-2 hidden sm:flex gap-2 justify-start">
+          <Image
+            src="/profile-picture.png"
+            alt="MoPete"
+            width={50}
+            height={50}
+            className="h-full w-auto overflow-hidden rounded-full"
+          />
+          <p className="font-bold text-lg">Matthew Don</p>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent justify="end" className="flex gap-4">
+        <NavbarBrand className="h-full py-2 sm:hidden flex gap-2 justify-end">
+          <Image
+            src="/profile-picture.png"
+            alt="MoPete"
+            width={50}
+            height={50}
+            className="h-full w-auto aspect-auto overflow-hidden rounded-full"
+          />
+          <p className="font-bold text-lg">Matthew Don</p>
+        </NavbarBrand>
+        <NavbarItem className="hidden sm:flex">
           <Link href="/">Home</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="hidden sm:flex">
           <Link href="/about">About</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="hidden sm:flex">
           <Link href="/contact">Contact</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="hidden sm:flex">
           <Dropdown
             isOpen={isDropdownOpen}
             onOpenChange={setIsDropdownOpen}
@@ -75,6 +107,45 @@ export function SiteNavbar() {
           </Dropdown>
         </NavbarItem>
       </NavbarContent>
+
+      <NavbarMenu>
+        <NavbarMenuItem key="home">
+          <Link onClick={() => setIsMenuOpen(false)} href="/">
+            Home
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem key="about">
+          <Link onClick={() => setIsMenuOpen(false)} href="/about">
+            About
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem key="contact">
+          <Link onClick={() => setIsMenuOpen(false)} href="/contact">
+            Contact
+          </Link>
+        </NavbarMenuItem>
+
+        <Divider />
+
+        <p className="text-sm font-bold">Books</p>
+
+        <NavbarMenuItem key="the-adventures-of-luca-and-kai-the-moon-queen">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/books/the-adventures-of-luca-and-kai-the-moon-queen"
+          >
+            The Adventures of Luca and Kai: The Moon Queen
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem key="a-celebration-of-the-history-of-celebrating-history">
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            href="/books/a-celebration-of-the-history-of-celebrating-history"
+          >
+            A Celebration of the History of Celebrating History
+          </Link>
+        </NavbarMenuItem>
+      </NavbarMenu>
     </Navbar>
   )
 }
