@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0 (2025-02-11)
+
+### Features
+
+* add image data for book page template ([2ec2368](https://github.com/cainspencerm/matthew-don/commit/2ec2368285addd6ac688c863babb90d7a0afd4c6))
+* add images for book page template ([b2ad258](https://github.com/cainspencerm/matthew-don/commit/b2ad2580b8c40ced679192806c5c6ea7551cafa3))
+* add review data for book page template ([996da5f](https://github.com/cainspencerm/matthew-don/commit/996da5f3c7380d8d5f837b72a0455d12ad4a55b0))
+* create the celebrations book page ([1e15e06](https://github.com/cainspencerm/matthew-don/commit/1e15e069ca4d36209475949d71b610df6428c938))
+* create the celebrations book page ([92f9a5e](https://github.com/cainspencerm/matthew-don/commit/92f9a5e8e38df39e31822419a40301c56c66ac85))
+
 ## 1.3.0 (2025-02-11)
 
 ### Features
