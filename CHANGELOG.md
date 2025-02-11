@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.0 (2025-02-11)
+
+### Features
+
+* add image data for book page template ([c966f79](https://github.com/cainspencerm/matthew-don/commit/c966f7956fb0eeefa6836d69217a2b77c1cc1ee8))
+* add images for book page template ([f859304](https://github.com/cainspencerm/matthew-don/commit/f859304095dc8f74972ecc3cbdc8b8da44905c4a))
+* add review data for book page template ([5907259](https://github.com/cainspencerm/matthew-don/commit/59072594c597e2bb9d7700754f4293fc28c24ef9))
+* create a book page template ([e674bcf](https://github.com/cainspencerm/matthew-don/commit/e674bcfc945687129a7e839a76cb3cf6625149c0))
+* create the adventures book 1 page ([b2558a5](https://github.com/cainspencerm/matthew-don/commit/b2558a50e445f861dd27344ea55180e474dd855a))
+* create the adventures book 1 page ([60d21dc](https://github.com/cainspencerm/matthew-don/commit/60d21dc577a3fc73805d32d6c56c521d675f171e))
+
 ## 1.2.0 (2025-02-11)
 
 ### Features
