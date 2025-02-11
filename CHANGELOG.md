@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>1.4.1 (2025-02-11)</small>
+
+### Bug Fixes
+
+* restore matthew-don.jpg ([7641f99](https://github.com/cainspencerm/matthew-don/commit/7641f9940e1926bb782269de72441f99920915f3))
+
 ## 1.4.0 (2025-02-11)
 
 ### Features
