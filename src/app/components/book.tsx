@@ -27,7 +27,7 @@ export function Book({ title, descriptions, image, link }: BookProps) {
         alt={image.alt}
         width={image.width}
         height={image.height}
-        className="max-h-[32rem] h-full w-auto"
+        className={`max-h-[32rem] w-auto aspect-[${image.width}/${image.height}]`}
       />
       <p className="font-bold text-xl text-center">{title}</p>
       <div className="flex flex-col items-center gap-2">
