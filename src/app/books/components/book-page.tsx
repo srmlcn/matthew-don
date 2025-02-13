@@ -77,11 +77,11 @@ export function BookPage({
       <Button
         as={Link}
         color="primary"
-        href={link.href}
+        href={link.external.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {link.label}
+        {link.external.label}
       </Button>
       <p className="text-center">{secondaryDescription}</p>
     </div>
