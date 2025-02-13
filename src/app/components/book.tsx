@@ -14,15 +14,24 @@ export type BookProps = {
 }
 
 export function Book({ title, descriptions, image, link }: BookProps) {
+  const bookCover = (
+    <Image
+      src={image.src}
+      alt={image.alt}
+      width={image.width}
+      height={image.height}
+      className={`max-h-[32rem] w-auto aspect-[${image.width}/${image.height}]`}
+    />
+  )
+
   return (
     <div className="flex flex-col items-center gap-4">
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        className={`max-h-[32rem] w-auto aspect-[${image.width}/${image.height}]`}
-      />
+      {link.internal ? (
+        <Link href={link.internal.href}>{bookCover}</Link>
+      ) : (
+        bookCover
+      )}
+
       <p className="font-bold text-xl text-center">{title}</p>
       <div className="flex flex-col items-center gap-2">
         {descriptions.map((description, index) => (
@@ -33,11 +42,11 @@ export function Book({ title, descriptions, image, link }: BookProps) {
       </div>
       <Button
         as={Link}
-        href={link.href}
+        href={link.external.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {link.label}
+        {link.external.label}
       </Button>
     </div>
   )
