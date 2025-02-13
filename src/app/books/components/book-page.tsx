@@ -1,5 +1,8 @@
 "use client"
 
+import type { ImageData } from "@/lib/image-data"
+import type { LinkData } from "@/lib/link-data"
+import type { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
 import { Button } from "@heroui/react"
 import Image from "next/image"
@@ -8,29 +11,11 @@ import Link from "next/link"
 export type BookPageProps = {
   title: string
   descriptions: string[]
-  image: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }
-  link: {
-    href: string
-    label: string
-  }
-  images: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }[]
-  reviews: {
-    name: string
-    review: string
-    stars: number
-    description: string
-  }[]
   secondaryDescription: string
+  image: ImageData
+  images: ImageData[]
+  link: LinkData
+  reviews: ReviewData[]
 }
 
 export function BookPage({
