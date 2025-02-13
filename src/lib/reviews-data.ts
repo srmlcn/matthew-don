@@ -1,4 +1,4 @@
-type ReviewData = {
+export type ReviewData = {
   name: string
   review: string
   stars: number
