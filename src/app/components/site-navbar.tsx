@@ -108,7 +108,7 @@ export function SiteNavbar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="bg-white/40">
         <NavbarMenuItem key="home">
           <Link onClick={() => setIsMenuOpen(false)} href="/">
             Home
@@ -125,7 +125,7 @@ export function SiteNavbar() {
           </Link>
         </NavbarMenuItem>
 
-        <Divider />
+        <Divider className="mt-4" />
 
         <p className="text-sm font-bold">Books</p>
 
