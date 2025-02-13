@@ -4,7 +4,7 @@ import {
 } from "@/lib/image-data"
 import { BookPage, BookPageProps } from "../components/book-page"
 import { adventuresOfLucaAndKaiTheMoonQueenLinkData as linkData } from "@/lib/link-data"
-import { adventuresOfLucaAndKaiTheMoonQueenReviewsData as reviewsData } from "@/lib/reviews-data"
+import { adventuresOfLucaAndKaiTheMoonQueenReviewsData as reviewsData } from "@/lib/review-data"
 
 const props: BookPageProps = {
   title: "The Adventures of Luca and Kai: The Moon Queen",
