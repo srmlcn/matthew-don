@@ -14,10 +14,10 @@ const props: BookPageProps = {
   ],
   secondaryDescription:
     "Available now in paperback, Ebook, and FREE through Kindle Unlimited!",
-  image: imageData,
-  images: imagesData,
-  link: linkData,
-  reviews: reviewsData,
+  coverImageData: imageData,
+  previewImageData: imagesData,
+  linkData: linkData,
+  reviewData: reviewsData,
 }
 
 export default function Page() {
