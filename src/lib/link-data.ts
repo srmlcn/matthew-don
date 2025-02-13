@@ -1,4 +1,4 @@
-type LinkData = {
+export type LinkData = {
   external: {
     href: string
     label: string
