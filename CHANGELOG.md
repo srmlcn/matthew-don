@@ -1,5 +1,24 @@
 # Changelog
 
+## 2.0.0 (2025-02-13)
+
+* feat!: separate link data into external (amazon) and internal (page) data ([0bfdacc](https://github.com/cainspencerm/matthew-don/commit/0bfdacc5446db4c5633f37979473d5935a7eb0c6))
+
+
+### Bug Fixes
+
+* import BookProps using type syntax ([a98eab6](https://github.com/cainspencerm/matthew-don/commit/a98eab63225bb3850e1849cdebfab113156b587d))
+
+
+### Features
+
+* add hyperlinks to books ([4667ce2](https://github.com/cainspencerm/matthew-don/commit/4667ce24bb96abc8633f94de67a8138b284779d7)), closes [#11](https://github.com/cainspencerm/matthew-don/issues/11)
+
+
+### BREAKING CHANGES
+
+* LinkData is fundamentally different, now supporting internal and external links
+
 ## <small>1.6.1 (2025-02-13)</small>
 
 ### Bug Fixes
