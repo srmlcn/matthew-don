@@ -102,8 +102,8 @@ function Books() {
         "Fun for all ages!",
         "Available in paperback, Ebook, and FREE through Kindle Unlimited",
       ],
-      image: adventuresOfLucaAndKaiTheMoonQueenImageData,
-      link: adventuresOfLucaAndKaiTheMoonQueenLinkData,
+      imageData: adventuresOfLucaAndKaiTheMoonQueenImageData,
+      linkData: adventuresOfLucaAndKaiTheMoonQueenLinkData,
     },
     {
       title: "A Celebration of the History of Celebrating History",
@@ -111,8 +111,8 @@ function Books() {
         "Intended for mature audiences!",
         "Available in paperback, Ebook, and FREE through Kindle Unlimited",
       ],
-      image: celebrationOfTheHistoryOfCelebratingHistoryImageData,
-      link: celebrationOfTheHistoryOfCelebratingHistoryLinkData,
+      imageData: celebrationOfTheHistoryOfCelebratingHistoryImageData,
+      linkData: celebrationOfTheHistoryOfCelebratingHistoryLinkData,
     },
   ]
 
@@ -133,14 +133,14 @@ function ComingSoon() {
     {
       title: "The Adventures of Luca and Kai (Book 2 of 3)",
       descriptions: ["Coming Soon..."],
-      image: adventuresOfLucaAndKaiBook2of3ImageData,
-      link: adventuresOfLucaAndKaiBook2of3LinkData,
+      imageData: adventuresOfLucaAndKaiBook2of3ImageData,
+      linkData: adventuresOfLucaAndKaiBook2of3LinkData,
     },
     {
       title: "The Adventures of Luca and Kai (Book 3 of 3)",
       descriptions: ["Coming Not Quite As Soon..."],
-      image: adventuresOfLucaAndKaiBook3of3ImageData,
-      link: adventuresOfLucaAndKaiBook3of3LinkData,
+      imageData: adventuresOfLucaAndKaiBook3of3ImageData,
+      linkData: adventuresOfLucaAndKaiBook3of3LinkData,
     },
   ]
 
