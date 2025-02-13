@@ -1,5 +1,8 @@
 "use client"
 
+import type { ImageData } from "@/lib/image-data"
+import type { LinkData } from "@/lib/link-data"
+import type { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
 import { Button } from "@heroui/react"
 import Image from "next/image"
@@ -8,48 +11,30 @@ import Link from "next/link"
 export type BookPageProps = {
   title: string
   descriptions: string[]
-  image: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }
-  link: {
-    href: string
-    label: string
-  }
-  images: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }[]
-  reviews: {
-    name: string
-    review: string
-    stars: number
-    description: string
-  }[]
   secondaryDescription: string
+  coverImageData: ImageData
+  previewImageData: ImageData[]
+  linkData: LinkData
+  reviewData: ReviewData[]
 }
 
 export function BookPage({
   title,
   descriptions,
-  image,
-  link,
-  images,
-  reviews,
   secondaryDescription,
+  coverImageData,
+  previewImageData,
+  linkData,
+  reviewData,
 }: BookPageProps) {
   return (
     <div className="flex flex-col items-center gap-24">
       <Image
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        className={`max-h-[72rem] w-auto aspect-[${image.width}/${image.height}]`}
+        src={coverImageData.src}
+        alt={coverImageData.alt}
+        width={coverImageData.width}
+        height={coverImageData.height}
+        className={`max-h-[72rem] w-auto aspect-[${coverImageData.width}/${coverImageData.height}]`}
       />
       <div className="flex flex-col items-center gap-4">
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
@@ -60,7 +45,7 @@ export function BookPage({
         ))}
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
-        {images.map((image) => (
+        {previewImageData.map((image) => (
           <Image
             key={image.src}
             src={image.src}
@@ -72,7 +57,7 @@ export function BookPage({
         ))}
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {reviews.map((review) => (
+        {reviewData.map((review) => (
           <div key={review.name} className="flex flex-col gap-4">
             <p className="text-center">{review.review}</p>
 
@@ -92,11 +77,11 @@ export function BookPage({
       <Button
         as={Link}
         color="primary"
-        href={link.href}
+        href={linkData.external.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {link.label}
+        {linkData.external.label}
       </Button>
       <p className="text-center">{secondaryDescription}</p>
     </div>
