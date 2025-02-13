@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>1.6.1 (2025-02-13)</small>
+
+### Bug Fixes
+
+* reduce transparency of the site navigation menu ([6ff12f3](https://github.com/cainspencerm/matthew-don/commit/6ff12f31c2b1c30548cabe06b407679a46550848))
+
 ## 1.6.0 (2025-02-11)
 
 ### Features
