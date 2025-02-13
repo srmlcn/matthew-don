@@ -4,7 +4,7 @@ import {
 } from "@/lib/image-data"
 import { BookPage, BookPageProps } from "../components/book-page"
 import { celebrationOfTheHistoryOfCelebratingHistoryLinkData as linkData } from "@/lib/link-data"
-import { celebrationOfTheHistoryOfCelebratingHistoryReviewsData as reviewsData } from "@/lib/reviews-data"
+import { celebrationOfTheHistoryOfCelebratingHistoryReviewsData as reviewsData } from "@/lib/review-data"
 
 const props: BookPageProps = {
   title: "A Celebration of the History of Celebrating History",
