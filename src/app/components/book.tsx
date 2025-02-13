@@ -9,16 +9,11 @@ import Link from "next/link"
 export type BookProps = {
   title: string
   descriptions: string[]
-  image: ImageData
-  link: LinkData
+  imageData: ImageData
+  linkData: LinkData
 }
 
-export function Book({
-  title,
-  descriptions,
-  image: imageData,
-  link: linkData,
-}: BookProps) {
+export function Book({ title, descriptions, imageData, linkData }: BookProps) {
   const bookCover = (
     <Image
       src={imageData.src}
