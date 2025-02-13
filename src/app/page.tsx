@@ -1,5 +1,6 @@
 import { Divider } from "@heroui/react"
-import { Book, BookProps } from "./components/book"
+import { Book } from "./components/book"
+import type { BookProps } from "./components/book"
 import { Invitation } from "./components/invitation"
 import {
   adventuresOfLucaAndKaiBook2of3ImageData,
