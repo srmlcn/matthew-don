@@ -1,5 +1,7 @@
 "use client"
 
+import type { ImageData } from "@/lib/image-data"
+import type { LinkData } from "@/lib/link-data"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -7,16 +9,8 @@ import Link from "next/link"
 export type BookProps = {
   title: string
   descriptions: string[]
-  image: {
-    src: string
-    alt: string
-    width: number
-    height: number
-  }
-  link: {
-    href: string
-    label: string
-  }
+  image: ImageData
+  link: LinkData
 }
 
 export function Book({ title, descriptions, image, link }: BookProps) {
