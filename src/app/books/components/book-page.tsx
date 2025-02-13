@@ -12,20 +12,20 @@ export type BookPageProps = {
   title: string
   descriptions: string[]
   secondaryDescription: string
-  image: ImageData
-  images: ImageData[]
-  link: LinkData
-  reviews: ReviewData[]
+  coverImageData: ImageData
+  previewImageData: ImageData[]
+  linkData: LinkData
+  reviewData: ReviewData[]
 }
 
 export function BookPage({
   title,
   descriptions,
   secondaryDescription,
-  image: coverImageData,
-  images: previewImageData,
-  link: linkData,
-  reviews: reviewData,
+  coverImageData,
+  previewImageData,
+  linkData,
+  reviewData,
 }: BookPageProps) {
   return (
     <div className="flex flex-col items-center gap-24">
