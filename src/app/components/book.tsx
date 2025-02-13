@@ -13,21 +13,26 @@ export type BookProps = {
   link: LinkData
 }
 
-export function Book({ title, descriptions, image, link }: BookProps) {
+export function Book({
+  title,
+  descriptions,
+  image: imageData,
+  link: linkData,
+}: BookProps) {
   const bookCover = (
     <Image
-      src={image.src}
-      alt={image.alt}
-      width={image.width}
-      height={image.height}
-      className={`max-h-[32rem] w-auto aspect-[${image.width}/${image.height}]`}
+      src={imageData.src}
+      alt={imageData.alt}
+      width={imageData.width}
+      height={imageData.height}
+      className={`max-h-[32rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
     />
   )
 
   return (
     <div className="flex flex-col items-center gap-4">
-      {link.internal ? (
-        <Link href={link.internal.href}>{bookCover}</Link>
+      {linkData.internal ? (
+        <Link href={linkData.internal.href}>{bookCover}</Link>
       ) : (
         bookCover
       )}
@@ -42,11 +47,11 @@ export function Book({ title, descriptions, image, link }: BookProps) {
       </div>
       <Button
         as={Link}
-        href={link.external.href}
+        href={linkData.external.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {link.external.label}
+        {linkData.external.label}
       </Button>
     </div>
   )
