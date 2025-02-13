@@ -21,20 +21,20 @@ export type BookPageProps = {
 export function BookPage({
   title,
   descriptions,
-  image,
-  link,
-  images,
-  reviews,
   secondaryDescription,
+  image: coverImageData,
+  images: previewImageData,
+  link: linkData,
+  reviews: reviewData,
 }: BookPageProps) {
   return (
     <div className="flex flex-col items-center gap-24">
       <Image
-        src={image.src}
-        alt={image.alt}
-        width={image.width}
-        height={image.height}
-        className={`max-h-[72rem] w-auto aspect-[${image.width}/${image.height}]`}
+        src={coverImageData.src}
+        alt={coverImageData.alt}
+        width={coverImageData.width}
+        height={coverImageData.height}
+        className={`max-h-[72rem] w-auto aspect-[${coverImageData.width}/${coverImageData.height}]`}
       />
       <div className="flex flex-col items-center gap-4">
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
@@ -45,7 +45,7 @@ export function BookPage({
         ))}
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
-        {images.map((image) => (
+        {previewImageData.map((image) => (
           <Image
             key={image.src}
             src={image.src}
@@ -57,7 +57,7 @@ export function BookPage({
         ))}
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {reviews.map((review) => (
+        {reviewData.map((review) => (
           <div key={review.name} className="flex flex-col gap-4">
             <p className="text-center">{review.review}</p>
 
@@ -77,11 +77,11 @@ export function BookPage({
       <Button
         as={Link}
         color="primary"
-        href={link.external.href}
+        href={linkData.external.href}
         target="_blank"
         rel="noopener noreferrer"
       >
-        {link.external.label}
+        {linkData.external.label}
       </Button>
       <p className="text-center">{secondaryDescription}</p>
     </div>
