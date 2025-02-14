@@ -125,6 +125,17 @@ export function Carousel({ images }: { images: ImageData[] }) {
       >
         Next
       </button>
+
+      <div className="flex justify-center space-x-2 mt-4">
+        {images.map((_, index) => (
+          <div
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              index === currentIndex ? "bg-gray-800" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   )
 }
