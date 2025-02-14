@@ -6522,7 +6522,7 @@ __metadata:
     postcss: "npm:^8"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
-    semantic-release: "npm:^24.2.2"
+    semantic-release: "github:cainspencerm/semantic-release"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5"
   languageName: unknown
@@ -7937,9 +7937,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semantic-release@npm:^24.2.2":
-  version: 24.2.2
-  resolution: "semantic-release@npm:24.2.2"
+"semantic-release@github:cainspencerm/semantic-release":
+  version: 0.0.0-development
+  resolution: "semantic-release@https://github.com/cainspencerm/semantic-release.git#commit=94c8679ba60b9a4b8641603512924b6f91dd660b"
   dependencies:
     "@semantic-release/commit-analyzer": "npm:^13.0.0-beta.1"
     "@semantic-release/error": "npm:^4.0.0"
@@ -7972,7 +7972,7 @@ __metadata:
     yargs: "npm:^17.5.1"
   bin:
     semantic-release: bin/semantic-release.js
-  checksum: 10c0/82b3f4654badbb80bf20be563ab232531aa721b1aeb17b9e24edf68dc0a6d1c7e10eddb38b6d2eb059ae5c09b6026787743a2f41eaccf0febb7bedebffa7c479
+  checksum: 10c0/857adce6f3c10ff2b33b620c96019b0d56d2997d96166a3ee36fd076ab6e3c3535d33f8bd2019e9afd8f4a0065b164bbb6b35aaecca6226a5a50436ab981e4e3
   languageName: node
   linkType: hard
 
