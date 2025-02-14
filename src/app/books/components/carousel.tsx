@@ -10,6 +10,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [dragOffset, setDragOffset] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   const touchStartX = useRef(0)
 
   const measureContainerWidth = () => {
@@ -74,7 +75,12 @@ export function Carousel({ images }: { images: ImageData[] }) {
   }
 
   return (
-    <div className="relative w-full overflow-hidden" ref={containerRef}>
+    <div
+      className="relative w-full overflow-hidden"
+      ref={containerRef}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         className={`flex ${
           !isDragging ? "transition-transform duration-300 ease-out" : ""
@@ -104,14 +110,18 @@ export function Carousel({ images }: { images: ImageData[] }) {
       <button
         onClick={handlePrev}
         disabled={currentIndex === 0}
-        className="absolute z-10 top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 disabled:opacity-50"
+        className={`absolute z-10 top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full transition-opacity duration-300 ${
+          isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
       >
         Prev
       </button>
       <button
         onClick={handleNext}
         disabled={currentIndex === images.length - 1}
-        className="absolute z-10 top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100 disabled:opacity-50"
+        className={`absolute z-10 top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full transition-opacity duration-300 ${
+          isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
       >
         Next
       </button>
