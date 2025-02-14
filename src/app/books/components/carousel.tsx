@@ -18,6 +18,24 @@ export function Carousel({ images }: { images: ImageData[] }) {
     return width
   }
 
+  // Compute effective drag offset with increasing resistance when out-of-bounds.
+  const getEffectiveDragOffset = (raw: number) => {
+    const k = 0.02 // Adjust for more or less resistance
+    if (!containerWidth) return raw
+
+    // Logarithmic resistance (soft, natural feel).
+    if (
+      (currentIndex === 0 && raw > 0) ||
+      (currentIndex === images.length - 1 && raw < 0)
+    ) {
+      return Math.sign(raw) * (Math.log(1 + k * Math.abs(raw)) / k)
+    }
+
+    return raw
+  }
+
+  const effectiveDrag = getEffectiveDragOffset(dragOffset)
+
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     measureContainerWidth()
     touchStartX.current = e.touches[0].clientX
@@ -31,11 +49,10 @@ export function Carousel({ images }: { images: ImageData[] }) {
 
   const handleTouchEnd = () => {
     setIsDragging(false)
-    // If dragged more than half the width, change slide.
-    if (containerWidth && Math.abs(dragOffset) > containerWidth / 2) {
-      if (dragOffset > 0 && currentIndex > 0) {
+    if (containerWidth && Math.abs(effectiveDrag) > containerWidth / 2) {
+      if (effectiveDrag > 0 && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1)
-      } else if (dragOffset < 0 && currentIndex < images.length - 1) {
+      } else if (effectiveDrag < 0 && currentIndex < images.length - 1) {
         setCurrentIndex(currentIndex + 1)
       }
     }
@@ -44,18 +61,14 @@ export function Carousel({ images }: { images: ImageData[] }) {
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      if (!containerWidth && containerRef.current) {
-        measureContainerWidth()
-      }
+      if (!containerWidth && containerRef.current) measureContainerWidth()
       setCurrentIndex(currentIndex - 1)
     }
   }
 
   const handleNext = () => {
     if (currentIndex < images.length - 1) {
-      if (!containerWidth && containerRef.current) {
-        measureContainerWidth()
-      }
+      if (!containerWidth && containerRef.current) measureContainerWidth()
       setCurrentIndex(currentIndex + 1)
     }
   }
@@ -68,7 +81,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
         }`}
         style={{
           transform: `translateX(${
-            -currentIndex * containerWidth + dragOffset
+            -currentIndex * containerWidth + effectiveDrag
           }px)`,
         }}
         onTouchStart={handleTouchStart}
