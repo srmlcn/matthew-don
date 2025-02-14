@@ -25,5 +25,8 @@
         "assets": ["package.json", "CHANGELOG.md"]
       }
     ]
-  ]
+  ],
+  "git-log": {
+    "min-parents": 2
+  }
 }
