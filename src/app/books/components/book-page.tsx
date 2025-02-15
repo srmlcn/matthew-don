@@ -7,6 +7,7 @@ import { StarIcon } from "@heroicons/react/24/solid"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { Carousel } from "./carousel"
 
 export type BookPageProps = {
   title: string
@@ -44,17 +45,8 @@ export function BookPage({
           </p>
         ))}
       </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 items-center">
-        {previewImageData.map((image) => (
-          <Image
-            key={image.src}
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-            className={`max-h-[32rem] w-auto min-w-full aspect-[${image.width}/${image.height}]`}
-          />
-        ))}
+      <div className="max-h-[64rem] w-full">
+        <Carousel images={previewImageData} />
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {reviewData.map((review) => (
