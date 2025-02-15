@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.0 (2025-02-15)
+
+### Features
+
+* add preview image carousels to book pages ([a8f882a](https://github.com/cainspencerm/matthew-don/commit/a8f882a5287bda0d47107ce247f1003accc409d5)), closes [#12](https://github.com/cainspencerm/matthew-don/issues/12)
+
 ## 2.0.0 (2025-02-13)
 
 * feat!: separate link data into external (amazon) and internal (page) data ([0bfdacc](https://github.com/cainspencerm/matthew-don/commit/0bfdacc5446db4c5633f37979473d5935a7eb0c6))
