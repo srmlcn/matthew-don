@@ -3,6 +3,7 @@
 import { useState, useRef } from "react"
 import Image from "next/image"
 import type { ImageData } from "@/lib/image-data"
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 
 export function Carousel({ images }: { images: ImageData[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -107,18 +108,16 @@ export function Carousel({ images }: { images: ImageData[] }) {
         <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
-          className={`absolute z-10 top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+          className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
-          Prev
+          <ArrowLeftIcon className="w-6" />
         </button>
         <button
           onClick={handleNext}
           disabled={currentIndex === images.length - 1}
-          className={`absolute z-10 top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-            }`}
+          className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         >
-          Next
+          <ArrowRightIcon className="w-6" />
         </button>
       </div>
 
