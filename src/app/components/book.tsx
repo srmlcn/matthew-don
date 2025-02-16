@@ -5,6 +5,7 @@ import type { LinkData } from "@/lib/link-data"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { FaAmazon } from "react-icons/fa"
 
 export type BookProps = {
   title: string
@@ -45,6 +46,8 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
         href={linkData.external.href}
         target="_blank"
         rel="noopener noreferrer"
+        startContent={<FaAmazon className="text-lg" />}
+        className="bg-[#febd69]"
       >
         {linkData.external.label}
       </Button>
