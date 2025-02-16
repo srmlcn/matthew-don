@@ -3,12 +3,12 @@
 import type { ImageData } from "@/lib/image-data"
 import type { LinkData } from "@/lib/link-data"
 import type { ReviewData } from "@/lib/review-data"
+import { getVendorStyle } from "@/lib/vendor-styles"
 import { StarIcon } from "@heroicons/react/24/solid"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Carousel } from "./carousel"
-import { FaAmazon } from "react-icons/fa"
 
 export type BookPageProps = {
   title: string
@@ -67,17 +67,23 @@ export function BookPage({
           </div>
         ))}
       </div>
-      <Button
-        as={Link}
-        color="primary"
-        href={linkData.external.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        startContent={<FaAmazon className="text-lg" />}
-        className="bg-[#febd69]"
-      >
-        {linkData.external.label}
-      </Button>
+      <div className="flex items-center">
+        {linkData.external.map((link) => {
+          const { background, icon } = getVendorStyle(link.vendor)
+
+          return (<Button
+            as={Link}
+            key={link.vendor}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            startContent={icon}
+            className={`${background}`}
+          >
+            {link.label}
+          </Button>)
+        })}
+      </div>
       <p className="text-center">{secondaryDescription}</p>
     </div>
   )
