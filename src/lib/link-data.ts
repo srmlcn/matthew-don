@@ -10,11 +10,18 @@ export type LinkData = {
 }
 
 export const adventuresOfLucaAndKaiTheMoonQueenLinkData: LinkData = {
-  external: [{
-    vendor: "amazon",
-    href: "https://www.amazon.com/Adventures-Luca-Kai-Moon-Queen/dp/B0D8BGZWNG/ref=sr_1_1?crid=32XVBESZWY8XY&dib=eyJ2IjoiMSJ9.5kREcehvyjzCUnPVvAVzezHkbkoApLN3dbZvZ2PtLvrRg5B8S0i8Fcd4y01pCFbi5NP5uZElRzNBwzzpIg_U0SjGYGaLUvi5m_MEUZwq0fRsyetbZgh5AJ4eRjROJnuTpBPfBuQWCpDFDgam2G0bdYjLjNpQ9Ng7zXfZEQZxbCySR7tNELmMNYpsKsEQeIXeW-oUWcyG9atztMPmWtI4bOMuqunicRfafPVCQZOnyAg.sR81PuCIdQRkAZht0_uKFNbQECAGGXm10Eb9EpaMYJY&dib_tag=se&keywords=adventures+of+luca+and+kai&qid=1737246838&sprefix=adventures+of+luca+and+kai%2Caps%2C129&sr=8-1",
-    label: "Check out on Amazon!",
-  }],
+  external: [
+    {
+      vendor: "amazon",
+      href: "https://www.amazon.com/Adventures-Luca-Kai-Moon-Queen/dp/B0D8BGZWNG/ref=sr_1_1?crid=32XVBESZWY8XY&dib=eyJ2IjoiMSJ9.5kREcehvyjzCUnPVvAVzezHkbkoApLN3dbZvZ2PtLvrRg5B8S0i8Fcd4y01pCFbi5NP5uZElRzNBwzzpIg_U0SjGYGaLUvi5m_MEUZwq0fRsyetbZgh5AJ4eRjROJnuTpBPfBuQWCpDFDgam2G0bdYjLjNpQ9Ng7zXfZEQZxbCySR7tNELmMNYpsKsEQeIXeW-oUWcyG9atztMPmWtI4bOMuqunicRfafPVCQZOnyAg.sR81PuCIdQRkAZht0_uKFNbQECAGGXm10Eb9EpaMYJY&dib_tag=se&keywords=adventures+of+luca+and+kai&qid=1737246838&sprefix=adventures+of+luca+and+kai%2Caps%2C129&sr=8-1",
+      label: "Check out on Amazon!",
+    },
+    {
+      vendor: "goodreads",
+      href: "https://www.goodreads.com/book/show/215561548-adventures-of-luca-and-kai",
+      label: "Check out on Goodreads!",
+    },
+  ],
   internal: {
     href: "/books/the-adventures-of-luca-and-kai-the-moon-queen",
   },
