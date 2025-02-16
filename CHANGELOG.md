@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0 (2025-02-16)
+
+### Features
+
+* customize link buttons based on the vendor ([82b2c1d](https://github.com/cainspencerm/matthew-don/commit/82b2c1d441ee52c238d0c99d21bbe1bed918a73b)), closes [#13](https://github.com/cainspencerm/matthew-don/issues/13)
+
 ## 2.1.0 (2025-02-15)
 
 ### Features
