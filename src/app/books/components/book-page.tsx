@@ -9,6 +9,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Carousel } from "./carousel"
 import { FaAmazon } from "react-icons/fa"
+import { ReactNode } from "react"
 
 export type BookPageProps = {
   title: string
@@ -67,17 +68,34 @@ export function BookPage({
           </div>
         ))}
       </div>
-      <Button
-        as={Link}
-        color="primary"
-        href={linkData.external[0].href}
-        target="_blank"
-        rel="noopener noreferrer"
-        startContent={<FaAmazon className="text-lg" />}
-        className="bg-[#febd69]"
-      >
-        {linkData.external[0].label}
-      </Button>
+      <div className="flex items-center">
+        {linkData.external.map((link) => {
+          let background: string
+          let icon: ReactNode | undefined
+
+          switch (link.vendor) {
+            case "amazon":
+              background = "bg-[#febd69]"
+              icon = <FaAmazon className="text-lg" />
+              break
+            default:
+              background = ""
+              icon = undefined
+          }
+
+          return (<Button
+            as={Link}
+            key={link.vendor}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            startContent={icon}
+            className={`${background}`}
+          >
+            {link.label}
+          </Button>)
+        })}
+      </div>
       <p className="text-center">{secondaryDescription}</p>
     </div>
   )
