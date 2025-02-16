@@ -43,13 +43,13 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
       </div>
       <Button
         as={Link}
-        href={linkData.external.href}
+        href={linkData.external[0].href}
         target="_blank"
         rel="noopener noreferrer"
         startContent={<FaAmazon className="text-lg" />}
         className="bg-[#febd69]"
       >
-        {linkData.external.label}
+        {linkData.external[0].label}
       </Button>
     </div>
   )
