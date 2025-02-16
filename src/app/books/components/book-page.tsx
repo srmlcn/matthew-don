@@ -70,13 +70,13 @@ export function BookPage({
       <Button
         as={Link}
         color="primary"
-        href={linkData.external.href}
+        href={linkData.external[0].href}
         target="_blank"
         rel="noopener noreferrer"
         startContent={<FaAmazon className="text-lg" />}
         className="bg-[#febd69]"
       >
-        {linkData.external.label}
+        {linkData.external[0].label}
       </Button>
       <p className="text-center">{secondaryDescription}</p>
     </div>
