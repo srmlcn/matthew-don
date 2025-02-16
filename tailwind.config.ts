@@ -13,6 +13,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        amazon: "#febd69",
+        goodreads: "#553b08"
       },
     },
   },
