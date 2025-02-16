@@ -43,11 +43,18 @@ export const adventuresOfLucaAndKaiBook2of3LinkData: LinkData = {
 }
 
 export const adventuresOfLucaAndKaiBook3of3LinkData: LinkData = {
-  external: [{
-    vendor: "amazon",
-    href: "https://www.amazon.com/stores/Matthew-Don/author/B00YF2KSWO?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true",
-    label: "Follow on Amazon",
-  }],
+  external: [
+    {
+      vendor: "amazon",
+      href: "https://www.amazon.com/stores/Matthew-Don/author/B00YF2KSWO?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true",
+      label: "Follow on Amazon",
+    },
+    {
+      vendor: "goodreads",
+      href: "https://www.goodreads.com/author/show/21029434.Matthew_Don",
+      label: "Follow on Goodreads",
+    },
+  ],
 }
 
 export const celebrationOfTheHistoryOfCelebratingHistoryLinkData: LinkData = {
