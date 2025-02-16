@@ -8,6 +8,7 @@ import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Carousel } from "./carousel"
+import { FaAmazon } from "react-icons/fa"
 
 export type BookPageProps = {
   title: string
@@ -72,6 +73,7 @@ export function BookPage({
         href={linkData.external.href}
         target="_blank"
         rel="noopener noreferrer"
+        startContent={<FaAmazon className="text-lg" />}
       >
         {linkData.external.label}
       </Button>
