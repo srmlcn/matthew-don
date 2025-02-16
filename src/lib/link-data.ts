@@ -1,8 +1,9 @@
 export type LinkData = {
   external: {
+    vendor: string
     href: string
     label: string
-  }
+  }[]
   internal?: {
     href: string
   }
