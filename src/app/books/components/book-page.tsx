@@ -74,6 +74,7 @@ export function BookPage({
         target="_blank"
         rel="noopener noreferrer"
         startContent={<FaAmazon className="text-lg" />}
+        className="bg-[#febd69]"
       >
         {linkData.external.label}
       </Button>
