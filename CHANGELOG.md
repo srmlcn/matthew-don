@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.3.0 (2025-02-16)
+
+### Features
+
+* support vendor-specific links ([9e8914b](https://github.com/cainspencerm/matthew-don/commit/9e8914b963f5bdc8483133917ea92b56a7e869d5)), closes [#14](https://github.com/cainspencerm/matthew-don/issues/14)
+
 ## 2.2.0 (2025-02-16)
 
 ### Features
