@@ -47,6 +47,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
         target="_blank"
         rel="noopener noreferrer"
         startContent={<FaAmazon className="text-lg" />}
+        className="bg-[#febd69]"
       >
         {linkData.external.label}
       </Button>
