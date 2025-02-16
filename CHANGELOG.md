@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0 (2025-02-16)
+
+### Features
+
+* add goodreads links for each book ([9ca60f4](https://github.com/cainspencerm/matthew-don/commit/9ca60f4aff16459b8fd9d96219e6a7b59a2571c0)), closes [#15](https://github.com/cainspencerm/matthew-don/issues/15)
+
 ## 3.0.0 (2025-02-16)
 
 * feat!: support vendor-specific links ([91e083f](https://github.com/cainspencerm/matthew-don/commit/91e083f8ebf60bd3ab914d254e366f54c114abe8)), closes [#14](https://github.com/cainspencerm/matthew-don/issues/14)
