@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.0 (2025-02-16)
+
+* feat!: support vendor-specific links ([91e083f](https://github.com/cainspencerm/matthew-don/commit/91e083f8ebf60bd3ab914d254e366f54c114abe8)), closes [#14](https://github.com/cainspencerm/matthew-don/issues/14)
+
+
+### BREAKING CHANGES
+
+* the "external" field type has changed to support the "vendor" field
+
 ## 2.2.0 (2025-02-16)
 
 ### Features
