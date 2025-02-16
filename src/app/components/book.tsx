@@ -5,6 +5,7 @@ import type { LinkData } from "@/lib/link-data"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { ReactNode } from "react"
 import { FaAmazon } from "react-icons/fa"
 
 export type BookProps = {
@@ -41,16 +42,34 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
           </p>
         ))}
       </div>
-      <Button
-        as={Link}
-        href={linkData.external[0].href}
-        target="_blank"
-        rel="noopener noreferrer"
-        startContent={<FaAmazon className="text-lg" />}
-        className="bg-[#febd69]"
-      >
-        {linkData.external[0].label}
-      </Button>
+      <div className="flex items-center">
+        {linkData.external.map((link) => {
+          let background: string
+          let icon: ReactNode | undefined
+
+          switch (link.vendor) {
+            case "amazon":
+              background = "bg-[#febd69]"
+              icon = <FaAmazon className="text-lg" />
+              break
+            default:
+              background = ""
+              icon = undefined
+          }
+
+          return (<Button
+            as={Link}
+            key={link.vendor}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            startContent={icon}
+            className={`${background}`}
+          >
+            {link.label}
+          </Button>)
+        })}
+      </div>
     </div>
   )
 }
