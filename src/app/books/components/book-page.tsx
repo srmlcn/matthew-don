@@ -68,7 +68,7 @@ export function BookPage({
           </div>
         ))}
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-col gap-4 items-center">
         {linkData.external.map((link) => {
           const classes: Record<string, string> = {
             amazon: "bg-amazon",
