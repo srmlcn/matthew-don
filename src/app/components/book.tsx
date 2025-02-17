@@ -6,7 +6,7 @@ import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { ReactNode } from "react"
-import { FaAmazon } from "react-icons/fa"
+import { FaAmazon, FaGoodreadsG } from "react-icons/fa"
 
 export type BookProps = {
   title: string
@@ -44,17 +44,14 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
       </div>
       <div className="flex items-center">
         {linkData.external.map((link) => {
-          let background: string
-          let icon: ReactNode | undefined
+          const classes: Record<string, string> = {
+            amazon: "bg-amazon",
+            goodreads: "bg-goodreads text-white"
+          }
 
-          switch (link.vendor) {
-            case "amazon":
-              background = "bg-[#febd69]"
-              icon = <FaAmazon className="text-lg" />
-              break
-            default:
-              background = ""
-              icon = undefined
+          const icons: Record<string, ReactNode> = {
+            amazon: <FaAmazon className="text-lg" />,
+            goodreads: <FaGoodreadsG className="text-lg" />
           }
 
           return (<Button
@@ -63,8 +60,8 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            startContent={icon}
-            className={`${background}`}
+            startContent={icons[link.vendor] ?? undefined}
+            className={classes[link.vendor] ?? ""}
           >
             {link.label}
           </Button>)
