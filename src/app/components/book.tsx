@@ -2,11 +2,9 @@
 
 import type { ImageData } from "@/lib/image-data"
 import type { LinkData } from "@/lib/link-data"
-import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
-import { ReactNode } from "react"
-import { FaAmazon, FaGoodreadsG } from "react-icons/fa"
+import { LinkButtons } from "./link-buttons"
 
 export type BookProps = {
   title: string
@@ -42,31 +40,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
           </p>
         ))}
       </div>
-      <div className="flex items-center">
-        {linkData.external.map((link) => {
-          const classes: Record<string, string> = {
-            amazon: "bg-amazon",
-            goodreads: "bg-goodreads text-white"
-          }
-
-          const icons: Record<string, ReactNode> = {
-            amazon: <FaAmazon className="text-lg" />,
-            goodreads: <FaGoodreadsG className="text-lg" />
-          }
-
-          return (<Button
-            as={Link}
-            key={link.vendor}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            startContent={icons[link.vendor] ?? undefined}
-            className={classes[link.vendor] ?? ""}
-          >
-            {link.label}
-          </Button>)
-        })}
-      </div>
+      <LinkButtons linkData={linkData} />
     </div>
   )
 }
