@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.1.1 (2025-02-17)</small>
+
+### Bug Fixes
+
+* statically render background colors for link buttons ([26b4b73](https://github.com/cainspencerm/matthew-don/commit/26b4b730b063d49fcd7b5ae78653c3c0c259befc))
+
 ## 3.1.0 (2025-02-16)
 
 ### Features
