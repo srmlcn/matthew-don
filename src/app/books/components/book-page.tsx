@@ -1,15 +1,12 @@
 "use client"
 
+import { LinkButtons } from "@/app/components/link-buttons"
 import type { ImageData } from "@/lib/image-data"
 import type { LinkData } from "@/lib/link-data"
 import type { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
-import { Button } from "@heroui/react"
 import Image from "next/image"
-import Link from "next/link"
 import { Carousel } from "./carousel"
-import { FaAmazon, FaGoodreadsG } from "react-icons/fa"
-import { ReactNode } from "react"
 
 export type BookPageProps = {
   title: string
@@ -68,31 +65,7 @@ export function BookPage({
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-4 items-center">
-        {linkData.external.map((link) => {
-          const classes: Record<string, string> = {
-            amazon: "bg-amazon",
-            goodreads: "bg-goodreads text-white"
-          }
-
-          const icons: Record<string, ReactNode> = {
-            amazon: <FaAmazon className="text-lg" />,
-            goodreads: <FaGoodreadsG className="text-lg" />
-          }
-
-          return (<Button
-            as={Link}
-            key={link.vendor}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            startContent={icons[link.vendor] ?? undefined}
-            className={classes[link.vendor] ?? ""}
-          >
-            {link.label}
-          </Button>)
-        })}
-      </div>
+      <LinkButtons linkData={linkData} />
       <p className="text-center">{secondaryDescription}</p>
     </div>
   )
