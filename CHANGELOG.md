@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.1.2 (2025-02-17)</small>
+
+### Bug Fixes
+
+* render link buttons columnwise ([98b9f65](https://github.com/cainspencerm/matthew-don/commit/98b9f657665d52cf6b99cf5059e0f727066bb6dd)), closes [#17](https://github.com/cainspencerm/matthew-don/issues/17)
+
 ## <small>3.1.1 (2025-02-17)</small>
 
 ### Bug Fixes
