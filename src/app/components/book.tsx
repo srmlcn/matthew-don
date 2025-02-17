@@ -2,10 +2,11 @@
 
 import type { ImageData } from "@/lib/image-data"
 import type { LinkData } from "@/lib/link-data"
-import { getVendorStyle } from "@/lib/vendor-styles"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { ReactNode } from "react"
+import { FaAmazon } from "react-icons/fa"
 
 export type BookProps = {
   title: string
@@ -43,7 +44,18 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
       </div>
       <div className="flex items-center">
         {linkData.external.map((link) => {
-          const { background, icon } = getVendorStyle(link.vendor)
+          let background: string
+          let icon: ReactNode | undefined
+
+          switch (link.vendor) {
+            case "amazon":
+              background = "bg-[#febd69]"
+              icon = <FaAmazon className="text-lg" />
+              break
+            default:
+              background = ""
+              icon = undefined
+          }
 
           return (<Button
             as={Link}
