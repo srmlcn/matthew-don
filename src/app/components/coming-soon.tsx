@@ -1,15 +1,16 @@
+import type { BookData } from "@/lib/book-data"
 import {
   adventuresOfLucaAndKaiBook2of3ImageData,
   adventuresOfLucaAndKaiBook3of3ImageData,
 } from "@/lib/image-data"
-import { Book, BookProps } from "./book"
 import {
   adventuresOfLucaAndKaiBook2of3LinkData,
   adventuresOfLucaAndKaiBook3of3LinkData,
 } from "@/lib/link-data"
+import { Book } from "./book"
 
 export function ComingSoon() {
-  const books: BookProps[] = [
+  const books: BookData[] = [
     {
       title: "The Adventures of Luca and Kai (Book 2 of 3)",
       descriptions: ["Coming Soon..."],
