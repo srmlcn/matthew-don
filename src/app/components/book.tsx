@@ -13,7 +13,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
       alt={imageData.alt}
       width={imageData.width}
       height={imageData.height}
-      className={`max-h-[32rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
+      className="max-h-[32rem] w-auto"
     />
   )
 
