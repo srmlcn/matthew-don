@@ -1,15 +1,16 @@
-import {
-  adventuresOfLucaAndKaiTheMoonQueenLinkData,
-  celebrationOfTheHistoryOfCelebratingHistoryLinkData,
-} from "@/lib/link-data"
-import { Book, BookProps } from "./book"
+import { BookData } from "@/lib/book-data"
 import {
   adventuresOfLucaAndKaiTheMoonQueenImageData,
   celebrationOfTheHistoryOfCelebratingHistoryImageData,
 } from "@/lib/image-data"
+import {
+  adventuresOfLucaAndKaiTheMoonQueenLinkData,
+  celebrationOfTheHistoryOfCelebratingHistoryLinkData,
+} from "@/lib/link-data"
+import { Book } from "./book"
 
 export function Books() {
-  const books: BookProps[] = [
+  const books: BookData[] = [
     {
       title: "The Adventures of Luca and Kai: The Moon Queen (Book 1 of 3)",
       descriptions: [
