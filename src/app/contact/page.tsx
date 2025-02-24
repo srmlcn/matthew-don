@@ -14,7 +14,7 @@ export default function ContactPage() {
           alt="Profile Picture"
           width={482}
           height={482}
-          className={`h-full w-auto aspect-[${482}/${482}]`}
+          className="h-full w-auto"
         />
         <div className="flex flex-col gap-4">
           <p>
