@@ -1,60 +1,51 @@
 "use client"
 
 import { LinkButtons } from "@/app/components/link-buttons"
-import type { ImageData } from "@/lib/image-data"
-import type { LinkData } from "@/lib/link-data"
-import type { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import { Carousel } from "./carousel"
-
-export type BookPageProps = {
-  title: string
-  descriptions: string[]
-  secondaryDescription: string
-  coverImageData: ImageData
-  previewImageData: ImageData[]
-  linkData: LinkData
-  reviewData: ReviewData[]
-}
+import { BookData } from "@/lib/book-data"
+import DOMPurify from "isomorphic-dompurify"
 
 export function BookPage({
   title,
-  descriptions,
-  secondaryDescription,
-  coverImageData,
-  previewImageData,
+  descriptionsExpanded,
+  availability,
+  imageData,
+  previewImagesData,
   linkData,
   reviewData,
-}: BookPageProps) {
+}: BookData) {
   return (
     <div className="flex flex-col items-center gap-24">
       <Image
-        src={coverImageData.src}
-        alt={coverImageData.alt}
-        width={coverImageData.width}
-        height={coverImageData.height}
-        className={`max-h-[72rem] w-auto aspect-[${coverImageData.width}/${coverImageData.height}]`}
+        src={imageData.src}
+        alt={imageData.alt}
+        width={imageData.width}
+        height={imageData.height}
+        className={`max-h-[72rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
       />
       <div className="flex flex-col items-center gap-4">
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
-        {descriptions.map((description, index) => (
+        {descriptionsExpanded?.map((description, index) => (
           <p className="text-indent sm:indent-8" key={index}>
-            {description}
+            {DOMPurify.sanitize(description)}
           </p>
         ))}
       </div>
       <div className="max-h-[64rem] w-full">
-        <Carousel images={previewImageData} />
+        <Carousel images={previewImagesData ?? []} />
       </div>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {reviewData.map((review) => (
+        {reviewData?.map((review) => (
           <div key={review.name} className="flex flex-col gap-4">
             <p className="text-center">{review.review}</p>
 
             <div>
               <p className="font-bold text-xl text-center">{review.name}</p>
-              <p className="text-center">{review.description}</p>
+              <p className="text-center">
+                {DOMPurify.sanitize(review.description)}
+              </p>
             </div>
 
             <div className="flex justify-center gap-2">
@@ -66,7 +57,7 @@ export function BookPage({
         ))}
       </div>
       <LinkButtons linkData={linkData} />
-      <p className="text-center">{secondaryDescription}</p>
+      <p className="text-center">{DOMPurify.sanitize(availability ?? "")}</p>
     </div>
   )
 }
