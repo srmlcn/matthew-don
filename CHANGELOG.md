@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2.0 (2025-02-24)
+
+### Features
+
+* move book info to a book data file ([1bd85a9](https://github.com/cainspencerm/matthew-don/commit/1bd85a99abf3aae49a086e9df3926267b14b4cee))
+* move components to separate component files ([d848f73](https://github.com/cainspencerm/matthew-don/commit/d848f7352127d10575e0753cc883f66529af59b2))
+
 ## <small>3.1.2 (2025-02-17)</small>
 
 ### Bug Fixes
