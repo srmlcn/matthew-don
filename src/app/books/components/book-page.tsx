@@ -5,6 +5,7 @@ import { StarIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import { Carousel } from "./carousel"
 import { BookData } from "@/lib/book-data"
+import DOMPurify from "isomorphic-dompurify"
 
 export function BookPage({
   title,
@@ -28,7 +29,7 @@ export function BookPage({
         <p className="font-bold text-4xl text-center mb-4">{title}</p>
         {descriptionsExpanded?.map((description, index) => (
           <p className="text-indent sm:indent-8" key={index}>
-            {description}
+            {DOMPurify.sanitize(description)}
           </p>
         ))}
       </div>
@@ -42,7 +43,9 @@ export function BookPage({
 
             <div>
               <p className="font-bold text-xl text-center">{review.name}</p>
-              <p className="text-center">{review.description}</p>
+              <p className="text-center">
+                {DOMPurify.sanitize(review.description)}
+              </p>
             </div>
 
             <div className="flex justify-center gap-2">
@@ -54,7 +57,7 @@ export function BookPage({
         ))}
       </div>
       <LinkButtons linkData={linkData} />
-      <p className="text-center">{availability}</p>
+      <p className="text-center">{DOMPurify.sanitize(availability ?? "")}</p>
     </div>
   )
 }
