@@ -25,18 +25,18 @@ export function BookPage({
         height={imageData.height}
         className={`max-h-[72rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
       />
-      <div className="flex flex-col items-center gap-4">
-        <p className="font-bold text-4xl text-center mb-4">{title}</p>
+      <section className="flex flex-col items-center gap-4">
+        <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
         {descriptionsExpanded?.map((description, index) => (
           <p className="text-indent sm:indent-8" key={index}>
             {DOMPurify.sanitize(description)}
           </p>
         ))}
-      </div>
-      <div className="max-h-[64rem] w-full">
+      </section>
+      <section className="max-h-[64rem] w-full">
         <Carousel images={previewImagesData ?? []} />
-      </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+      </section>
+      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {reviewData?.map((review) => (
           <div key={review.name} className="flex flex-col gap-4">
             <p className="text-center">{review.review}</p>
@@ -55,7 +55,7 @@ export function BookPage({
             </div>
           </div>
         ))}
-      </div>
+      </section>
       <LinkButtons linkData={linkData} />
       <p className="text-center">{DOMPurify.sanitize(availability ?? "")}</p>
     </div>
