@@ -14,7 +14,7 @@ export default function AboutPage() {
           alt="Matthew Don"
           width={724}
           height={763}
-          className={`w-full aspect-[${724}/${763}]`}
+          className="w-full h-auto"
         />
         <div className="flex flex-col gap-4">
           <p>
