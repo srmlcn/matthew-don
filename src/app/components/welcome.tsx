@@ -1,10 +1,10 @@
 export function Welcome() {
   return (
-    <div className="flex flex-col items-center gap-2">
-      <p className="font-bold text-4xl text-center">Hi!</p>
-      <p className="text-4xl text-center">
+    <section className="flex flex-col items-center gap-2">
+      <h1 className="font-bold text-4xl text-center">Hi!</h1>
+      <h2 className="text-4xl text-center">
         I'm Matt, and I like to write things.
-      </p>
-    </div>
+      </h2>
+    </section>
   )
 }
