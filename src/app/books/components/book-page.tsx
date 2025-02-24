@@ -23,7 +23,7 @@ export function BookPage({
         alt={imageData.alt}
         width={imageData.width}
         height={imageData.height}
-        className={`max-h-[72rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
+        className="w-auto h-full max-h-[72rem]"
       />
       <section className="flex flex-col items-center gap-4">
         <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
