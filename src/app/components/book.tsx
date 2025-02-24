@@ -25,7 +25,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
         bookCover
       )}
 
-      <p className="font-bold text-xl text-center">{title}</p>
+      <h3 className="font-bold text-xl text-center">{title}</h3>
       <div className="flex flex-col items-center gap-2">
         {descriptions.map((description, index) => (
           <p className="text-center" key={index}>
