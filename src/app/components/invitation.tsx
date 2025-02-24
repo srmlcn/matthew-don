@@ -5,10 +5,10 @@ import Link from "next/link"
 
 export function Invitation() {
   return (
-    <div className="flex flex-col items-center gap-8">
-      <p className="font-bold text-4xl text-center">
+    <section className="flex flex-col items-center gap-8">
+      <h2 className="font-bold text-4xl text-center">
         Wanna know a little about me?
-      </p>
+      </h2>
       <Button
         as={Link}
         href="/about"
@@ -17,6 +17,6 @@ export function Invitation() {
       >
         I dunno, maybe click this button here then.
       </Button>
-    </div>
+    </section>
   )
 }
