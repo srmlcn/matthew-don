@@ -52,13 +52,15 @@ export function SiteNavbar() {
 
       <NavbarContent justify="end" className="flex gap-4">
         <NavbarBrand className="h-full py-2 sm:hidden flex gap-2 justify-end">
-          <Image
-            src="/profile-picture.png"
-            alt="MoPete"
-            width={50}
-            height={50}
-            className="h-full w-auto aspect-auto overflow-hidden rounded-full"
-          />
+          <div className="w-fit h-fit overflow-hidden rounded-full">
+            <Image
+              src="/profile-picture.png"
+              alt="MoPete"
+              width={50}
+              height={50}
+              className="h-full w-auto"
+            />
+          </div>
           <p className="font-bold text-lg">Matthew Don</p>
         </NavbarBrand>
         <NavbarItem className="hidden sm:flex">

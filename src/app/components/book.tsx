@@ -1,26 +1,19 @@
 "use client"
 
-import type { ImageData } from "@/lib/image-data"
-import type { LinkData } from "@/lib/link-data"
 import Image from "next/image"
 import Link from "next/link"
 import { LinkButtons } from "./link-buttons"
+import { BookData } from "@/lib/book-data"
+import DOMPurify from "isomorphic-dompurify"
 
-export type BookProps = {
-  title: string
-  descriptions: string[]
-  imageData: ImageData
-  linkData: LinkData
-}
-
-export function Book({ title, descriptions, imageData, linkData }: BookProps) {
+export function Book({ title, descriptions, imageData, linkData }: BookData) {
   const bookCover = (
     <Image
       src={imageData.src}
       alt={imageData.alt}
       width={imageData.width}
       height={imageData.height}
-      className={`max-h-[32rem] w-auto aspect-[${imageData.width}/${imageData.height}]`}
+      className="max-h-[32rem] w-auto"
     />
   )
 
@@ -32,11 +25,11 @@ export function Book({ title, descriptions, imageData, linkData }: BookProps) {
         bookCover
       )}
 
-      <p className="font-bold text-xl text-center">{title}</p>
+      <h3 className="font-bold text-xl text-center">{title}</h3>
       <div className="flex flex-col items-center gap-2">
         {descriptions.map((description, index) => (
           <p className="text-center" key={index}>
-            {description}
+            {DOMPurify.sanitize(description)}
           </p>
         ))}
       </div>

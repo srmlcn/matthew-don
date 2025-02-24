@@ -6,15 +6,15 @@ import Link from "next/link"
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col items-center gap-8">
-      <h1 className="font-bold text-4xl">{"Like I said, I'm Matt."}</h1>
+    <section className="flex flex-col items-center gap-8">
+      <h1 className="font-bold text-4xl">Like I said, I'm Matt.</h1>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-start place-items-center">
         <Image
           src="/matthew-don.jpg"
           alt="Matthew Don"
           width={724}
           height={763}
-          className={`w-full aspect-[${724}/${763}]`}
+          className="w-full h-auto"
         />
         <div className="flex flex-col gap-4">
           <p>
@@ -68,6 +68,6 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }

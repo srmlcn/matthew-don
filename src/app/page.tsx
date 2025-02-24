@@ -1,20 +1,9 @@
 import { Divider } from "@heroui/react"
-import { Book } from "./components/book"
-import type { BookProps } from "./components/book"
 import { Invitation } from "./components/invitation"
-import {
-  adventuresOfLucaAndKaiBook2of3ImageData,
-  adventuresOfLucaAndKaiBook3of3ImageData,
-  adventuresOfLucaAndKaiTheMoonQueenImageData,
-  celebrationOfTheHistoryOfCelebratingHistoryImageData,
-} from "@/lib/image-data"
-import {
-  adventuresOfLucaAndKaiBook2of3LinkData,
-  adventuresOfLucaAndKaiBook3of3LinkData,
-  adventuresOfLucaAndKaiTheMoonQueenLinkData,
-  celebrationOfTheHistoryOfCelebratingHistoryLinkData,
-} from "@/lib/link-data"
 import type { Metadata } from "next"
+import { Welcome } from "./components/welcome"
+import { Books } from "./components/books"
+import { ComingSoon } from "./components/coming-soon"
 
 export const metadata: Metadata = {
   title: "Home | Matthew Don",
@@ -79,81 +68,6 @@ export default function Home() {
       <Divider orientation="horizontal" />
 
       <Invitation />
-    </div>
-  )
-}
-
-function Welcome() {
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <p className="font-bold text-4xl text-center">{"Hi!"}</p>
-      <p className="text-4xl text-center">
-        {"I'm Matt, and I like to write things."}
-      </p>
-    </div>
-  )
-}
-
-function Books() {
-  const books: BookProps[] = [
-    {
-      title: "The Adventures of Luca and Kai: The Moon Queen (Book 1 of 3)",
-      descriptions: [
-        "Fun for all ages!",
-        "Available in paperback, Ebook, and FREE through Kindle Unlimited",
-      ],
-      imageData: adventuresOfLucaAndKaiTheMoonQueenImageData,
-      linkData: adventuresOfLucaAndKaiTheMoonQueenLinkData,
-    },
-    {
-      title: "A Celebration of the History of Celebrating History",
-      descriptions: [
-        "Intended for mature audiences!",
-        "Available in paperback, Ebook, and FREE through Kindle Unlimited",
-      ],
-      imageData: celebrationOfTheHistoryOfCelebratingHistoryImageData,
-      linkData: celebrationOfTheHistoryOfCelebratingHistoryLinkData,
-    },
-  ]
-
-  return (
-    <div className="flex flex-col items-center">
-      <p className="font-bold text-4xl text-center">{"Check out my books!"}</p>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12">
-        {books.map((book) => (
-          <Book key={book.title} {...book} />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ComingSoon() {
-  const books: BookProps[] = [
-    {
-      title: "The Adventures of Luca and Kai (Book 2 of 3)",
-      descriptions: ["Coming Soon..."],
-      imageData: adventuresOfLucaAndKaiBook2of3ImageData,
-      linkData: adventuresOfLucaAndKaiBook2of3LinkData,
-    },
-    {
-      title: "The Adventures of Luca and Kai (Book 3 of 3)",
-      descriptions: ["Coming Not Quite As Soon..."],
-      imageData: adventuresOfLucaAndKaiBook3of3ImageData,
-      linkData: adventuresOfLucaAndKaiBook3of3LinkData,
-    },
-  ]
-
-  return (
-    <div className="flex flex-col items-center">
-      <p className="font-bold text-4xl text-center">
-        {"Here's what is coming next!"}
-      </p>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12">
-        {books.map((book) => (
-          <Book key={book.title} {...book} />
-        ))}
-      </div>
     </div>
   )
 }
