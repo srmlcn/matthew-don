@@ -12,12 +12,17 @@ import {
   celebrationOfTheHistoryOfCelebratingHistoryLinkData,
   type LinkData,
 } from "./link-data"
+import { ReviewData } from "./review-data"
 
 export type BookData = {
   title: string
   descriptions: string[]
+  descriptionsExpanded?: string[]
+  availability?: string
   imageData: ImageData
   linkData: LinkData
+  previewImagesData?: ImageData[]
+  reviewData?: ReviewData[]
 }
 
 export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
