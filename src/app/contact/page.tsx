@@ -7,7 +7,7 @@ import Link from "next/link"
 export default function ContactPage() {
   return (
     <div className="flex flex-col items-center gap-8">
-      <h1 className="font-bold text-4xl">{"Wanna get in touch?"}</h1>
+      <h1 className="font-bold text-4xl">Wanna get in touch?</h1>
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center place-items-center">
         <Image
           src="/profile-picture.png"
