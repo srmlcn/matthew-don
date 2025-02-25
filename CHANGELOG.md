@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.0 (2025-02-25)
+
+### Features
+
+* add momentum to the swipe behavior of the carousel component ([822a84a](https://github.com/cainspencerm/matthew-don/commit/822a84ae5c860c404fd97d2e4d96e4dd8f9ee461))
+
 ## <small>3.2.1 (2025-02-25)</small>
 
 ### Bug Fixes
