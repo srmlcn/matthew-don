@@ -6,29 +6,33 @@ import { cn } from "@/lib/utils"
 export function BookCover({
   imageData,
   animate = true,
-  className,
+  classNames,
 }: {
   imageData: ImageData
   animate?: boolean
-  className?: string
+  classNames?: {
+    wrapper?: string
+    image?: string
+  }
 }) {
+  const wrapperClasses = cn("h-full", classNames?.wrapper)
+  const imageClasses = cn("h-full", classNames?.image)
+
   const image = (
     <Image
       src={imageData.src}
       alt={imageData.alt}
       width={imageData.width}
       height={imageData.height}
-      className="h-full m-auto object-scale-down"
+      className={cn("h-full m-auto object-scale-down", imageClasses)}
     />
   )
 
-  const classNames = cn("h-full", className)
-
   return animate ? (
-    <AnimatedSection animate={animate} className={classNames}>
+    <AnimatedSection animate={animate} className={wrapperClasses}>
       {image}
     </AnimatedSection>
   ) : (
-    <section className={classNames}>{image}</section>
+    <section className={wrapperClasses}>{image}</section>
   )
 }
