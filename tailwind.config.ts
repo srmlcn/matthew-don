@@ -14,7 +14,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         amazon: "#febd69",
-        goodreads: "#553b08"
+        goodreads: "#553b08",
       },
     },
   },
@@ -28,5 +28,6 @@ export default {
         },
       },
     }),
+    require("@tailwindcss/typography"),
   ],
 } satisfies Config

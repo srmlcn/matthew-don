@@ -52,5 +52,5 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return children
+  return <div className="w-full flex flex-col items-center">{children}</div>
 }

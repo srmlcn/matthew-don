@@ -4,12 +4,10 @@ import DOMPurify from "isomorphic-dompurify"
 
 export function BookInfo({ title, descriptionsExpanded }: Partial<BookData>) {
   return (
-    <AnimatedSection className="flex flex-col items-center gap-4">
-      <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
+    <AnimatedSection className="flex flex-col items-center prose">
+      <h1 className="text-center">{title}</h1>
       {descriptionsExpanded?.map((description, index) => (
-        <p className="text-indent sm:indent-8" key={index}>
-          {DOMPurify.sanitize(description)}
-        </p>
+        <p key={index}>{DOMPurify.sanitize(description)}</p>
       ))}
     </AnimatedSection>
   )
