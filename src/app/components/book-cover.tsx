@@ -11,25 +11,21 @@ export function BookCover({
   animate?: boolean
   className?: string
 }) {
+  const image = (
+    <Image
+      src={imageData.src}
+      alt={imageData.alt}
+      width={imageData.width}
+      height={imageData.height}
+      className="h-full m-auto object-scale-down"
+    />
+  )
+
   return animate ? (
     <AnimatedSection animate={animate} className={className}>
-      <Image
-        src={imageData.src}
-        alt={imageData.alt}
-        width={imageData.width}
-        height={imageData.height}
-        className="h-full m-auto object-scale-down"
-      />
+      {image}
     </AnimatedSection>
   ) : (
-    <section className={className}>
-      <Image
-        src={imageData.src}
-        alt={imageData.alt}
-        width={imageData.width}
-        height={imageData.height}
-        className="h-full m-auto object-scale-down"
-      />
-    </section>
+    <section className={className}>{image}</section>
   )
 }
