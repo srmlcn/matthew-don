@@ -4,12 +4,14 @@ import { motion } from "framer-motion"
 
 export function AnimatedSection({
   className,
+  animate = true,
   children,
 }: {
   className?: string
+  animate?: boolean
   children: React.ReactNode
 }) {
-  return (
+  return animate ? (
     <motion.section
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -19,5 +21,7 @@ export function AnimatedSection({
     >
       {children}
     </motion.section>
+  ) : (
+    <section className={className}>{children}</section>
   )
 }
