@@ -10,7 +10,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
     <BookCover
       imageData={imageData}
       animate={false}
-      className="max-h-[32rem]"
+      classNames={{ image: "max-h-[32rem]" }}
     />
   )
 
