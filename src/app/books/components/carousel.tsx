@@ -4,6 +4,7 @@ import { useState, useRef } from "react"
 import Image from "next/image"
 import type { ImageData } from "@/lib/image-data"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+import { AnimatedSection } from "@/app/components/animated-section"
 
 export function Carousel({
   images,
@@ -97,7 +98,7 @@ export function Carousel({
   }
 
   return (
-    <section className={className}>
+    <AnimatedSection className={className}>
       <div
         className="mx-auto w-full max-w-[32rem]"
         role="region"
@@ -179,6 +180,6 @@ export function Carousel({
           ))}
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   )
 }
