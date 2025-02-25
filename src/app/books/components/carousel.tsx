@@ -5,7 +5,13 @@ import Image from "next/image"
 import type { ImageData } from "@/lib/image-data"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 
-export function Carousel({ images }: { images: ImageData[] }) {
+export function Carousel({
+  images,
+  flickThreshold = 0.5,
+}: {
+  images: ImageData[]
+  flickThreshold?: number
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -13,6 +19,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const [isDragging, setIsDragging] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const touchStartX = useRef(0)
+  const touchStartTime = useRef(0)
 
   const measureContainerWidth = () => {
     const width = containerRef.current?.offsetWidth ?? 0
@@ -41,6 +48,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     measureContainerWidth()
     touchStartX.current = e.touches[0].clientX
+    touchStartTime.current = performance.now()
     setIsDragging(true)
   }
 
@@ -51,7 +59,18 @@ export function Carousel({ images }: { images: ImageData[] }) {
 
   const handleTouchEnd = () => {
     setIsDragging(false)
-    if (containerWidth && Math.abs(effectiveDrag) > containerWidth / 2) {
+    const elapsed = performance.now() - touchStartTime.current
+    const velocity = elapsed > 0 ? dragOffset / elapsed : 0 // pixels per milliseconds
+
+    if (Math.abs(velocity) > flickThreshold) {
+      // Flick gesture detected: move one slide based on direction.
+      if (velocity > 0 && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1)
+      } else if (velocity < 0 && currentIndex < images.length - 1) {
+        setCurrentIndex(currentIndex + 1)
+      }
+    } else if (containerWidth && Math.abs(effectiveDrag) > containerWidth / 2) {
+      // Use drag distance to determine if we should move to the next slide.
       if (effectiveDrag > 0 && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1)
       } else if (effectiveDrag < 0 && currentIndex < images.length - 1) {
