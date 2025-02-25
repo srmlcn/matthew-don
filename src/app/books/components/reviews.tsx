@@ -5,8 +5,8 @@ import DOMPurify from "isomorphic-dompurify"
 export function Reviews({ reviewData }: { reviewData: ReviewData[] }) {
   return (
     <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-      {reviewData.map((review) => (
-        <div key={review.name} className="flex flex-col gap-4">
+      {reviewData.map((review, index) => (
+        <div key={`${review.name}-${index}`} className="flex flex-col gap-4">
           <p className="text-center">{review.review}</p>
 
           <div>
