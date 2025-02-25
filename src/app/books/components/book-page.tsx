@@ -1,9 +1,9 @@
+import { BookCover } from "@/app/components/book-cover"
 import { LinkButtons } from "@/app/components/link-buttons"
 import { BookData } from "@/lib/book-data"
 import { Availability } from "./availability"
 import { BookInfo } from "./book-info"
 import { Carousel } from "./carousel"
-import { CoverImage } from "./cover-image"
 import { Reviews } from "./reviews"
 
 export function BookPage({
@@ -17,7 +17,10 @@ export function BookPage({
 }: BookData) {
   return (
     <div className="flex flex-col items-center gap-24">
-      <CoverImage imageData={imageData} />
+      <BookCover
+        imageData={imageData}
+        className="max-h-[72rem] h-full w-full flex items-center"
+      />
 
       <BookInfo title={title} descriptionsExpanded={descriptionsExpanded} />
 
