@@ -1,7 +1,7 @@
 import { ImageData } from "@/lib/image-data"
 import Image from "next/image"
 
-export function CoverImage(imageData: ImageData) {
+export function CoverImage({ imageData }: { imageData: ImageData }) {
   return (
     <section className="max-h-[72rem] h-full w-full flex items-center">
       <Image

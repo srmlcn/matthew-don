@@ -17,7 +17,7 @@ export function BookPage({
 }: BookData) {
   return (
     <div className="flex flex-col items-center gap-24">
-      <CoverImage {...imageData} />
+      <CoverImage imageData={imageData} />
 
       <BookInfo title={title} descriptionsExpanded={descriptionsExpanded} />
 
