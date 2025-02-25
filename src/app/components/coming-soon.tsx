@@ -1,9 +1,10 @@
 import { upcomingBooks } from "@/lib/book-data"
 import { Book } from "./book"
+import { AnimatedSection } from "./animated-section"
 
 export function ComingSoon() {
   return (
-    <section className="flex flex-col items-center gap-12">
+    <AnimatedSection className="flex flex-col items-center gap-12">
       <h2 className="font-bold text-4xl text-center">
         Here's what is coming next!
       </h2>
@@ -12,6 +13,6 @@ export function ComingSoon() {
           <Book key={book.title} {...book} />
         ))}
       </div>
-    </section>
+    </AnimatedSection>
   )
 }
