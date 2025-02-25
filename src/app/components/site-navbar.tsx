@@ -58,7 +58,7 @@ export function SiteNavbar() {
               alt="MoPete"
               width={50}
               height={50}
-              className="h-full w-auto"
+              className="h-full m-auto object-scale-down"
             />
           </div>
           <p className="font-bold text-lg">Matthew Don</p>
