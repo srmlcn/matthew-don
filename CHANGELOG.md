@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.2.1 (2025-02-25)</small>
+
+### Bug Fixes
+
+* render aspect ratios correctly in responsive layouts ([015b03d](https://github.com/cainspencerm/matthew-don/commit/015b03de6619c2930d32abca0311492dd0951fe3))
+
 ## 3.2.0 (2025-02-24)
 
 ### Features
