@@ -6,6 +6,7 @@ import { Carousel } from "./carousel"
 import { BookData } from "@/lib/book-data"
 import DOMPurify from "isomorphic-dompurify"
 import { CoverImage } from "./cover-image"
+import { BookInfo } from "./book-info"
 
 export function BookPage({
   title,
@@ -20,14 +21,8 @@ export function BookPage({
     <div className="flex flex-col items-center gap-24">
       <CoverImage {...imageData} />
 
-      <section className="flex flex-col items-center gap-4">
-        <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
-        {descriptionsExpanded?.map((description, index) => (
-          <p className="text-indent sm:indent-8" key={index}>
-            {DOMPurify.sanitize(description)}
-          </p>
-        ))}
-      </section>
+      <BookInfo title={title} descriptionsExpanded={descriptionsExpanded} />
+
       <section className="max-h-[64rem] w-full">
         <Carousel images={previewImagesData ?? []} />
       </section>

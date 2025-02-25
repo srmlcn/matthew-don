@@ -1,0 +1,15 @@
+import { BookData } from "@/lib/book-data"
+import DOMPurify from "isomorphic-dompurify"
+
+export function BookInfo({ title, descriptionsExpanded }: Partial<BookData>) {
+  return (
+    <section className="flex flex-col items-center gap-4">
+      <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
+      {descriptionsExpanded?.map((description, index) => (
+        <p className="text-indent sm:indent-8" key={index}>
+          {DOMPurify.sanitize(description)}
+        </p>
+      ))}
+    </section>
+  )
+}
