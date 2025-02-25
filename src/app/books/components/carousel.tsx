@@ -109,7 +109,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
                 alt={alt}
                 width={width}
                 height={height}
-                className="object-cover w-full"
+                className="h-full m-auto object-scale-down"
               />
             </div>
           ))}
