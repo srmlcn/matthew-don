@@ -1,10 +1,11 @@
+import { AnimatedSection } from "@/app/components/animated-section"
 import { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
 import DOMPurify from "isomorphic-dompurify"
 
 export function Reviews({ reviewData }: { reviewData: ReviewData[] }) {
   return (
-    <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+    <AnimatedSection className="grid grid-cols-1 gap-8 sm:grid-cols-2 opacity-0 translate-y-8 transition-all duration-500 ease-out">
       {reviewData.map((review, index) => (
         <div key={`${review.name}-${index}`} className="flex flex-col gap-4">
           <p className="text-center">{review.review}</p>
@@ -23,6 +24,6 @@ export function Reviews({ reviewData }: { reviewData: ReviewData[] }) {
           </div>
         </div>
       ))}
-    </section>
+    </AnimatedSection>
   )
 }

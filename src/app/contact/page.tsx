@@ -3,12 +3,13 @@
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
+import { AnimatedSection } from "../components/animated-section"
 
 export default function ContactPage() {
   return (
     <div className="flex flex-col items-center gap-8">
       <h1 className="font-bold text-4xl">Wanna get in touch?</h1>
-      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center place-items-center">
+      <AnimatedSection className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center place-items-center">
         <Image
           src="/profile-picture.png"
           alt="Profile Picture"
@@ -44,7 +45,7 @@ export default function ContactPage() {
             </Button>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </div>
   )
 }

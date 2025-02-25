@@ -2,10 +2,11 @@
 
 import { Button } from "@heroui/react"
 import Link from "next/link"
+import { AnimatedSection } from "./animated-section"
 
 export function Invitation() {
   return (
-    <section className="flex flex-col items-center gap-8">
+    <AnimatedSection className="flex flex-col items-center gap-8">
       <h2 className="font-bold text-4xl text-center">
         Wanna know a little about me?
       </h2>
@@ -17,6 +18,6 @@ export function Invitation() {
       >
         I dunno, maybe click this button here then.
       </Button>
-    </section>
+    </AnimatedSection>
   )
 }
