@@ -4,10 +4,10 @@ import { LinkButtons } from "@/app/components/link-buttons"
 
 import { Carousel } from "./carousel"
 import { BookData } from "@/lib/book-data"
-import DOMPurify from "isomorphic-dompurify"
 import { CoverImage } from "./cover-image"
 import { BookInfo } from "./book-info"
 import { Reviews } from "./reviews"
+import { Availability } from "./availability"
 
 export function BookPage({
   title,
@@ -32,7 +32,8 @@ export function BookPage({
       <Reviews reviewData={reviewData ?? []} />
 
       <LinkButtons linkData={linkData} />
-      <p className="text-center">{DOMPurify.sanitize(availability ?? "")}</p>
+
+      <Availability availability={availability ?? ""} />
     </div>
   )
 }
