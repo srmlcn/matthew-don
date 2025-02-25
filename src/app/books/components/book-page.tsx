@@ -1,13 +1,10 @@
-"use client"
-
 import { LinkButtons } from "@/app/components/link-buttons"
-
-import { Carousel } from "./carousel"
 import { BookData } from "@/lib/book-data"
-import { CoverImage } from "./cover-image"
-import { BookInfo } from "./book-info"
-import { Reviews } from "./reviews"
 import { Availability } from "./availability"
+import { BookInfo } from "./book-info"
+import { Carousel } from "./carousel"
+import { CoverImage } from "./cover-image"
+import { Reviews } from "./reviews"
 
 export function BookPage({
   title,
