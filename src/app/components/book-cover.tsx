@@ -22,7 +22,7 @@ export function BookCover({
       />
     </AnimatedSection>
   ) : (
-    <section>
+    <section className={className}>
       <Image
         src={imageData.src}
         alt={imageData.alt}
