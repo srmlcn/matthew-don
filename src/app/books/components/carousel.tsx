@@ -81,8 +81,8 @@ export function Carousel({ images }: { images: ImageData[] }) {
       role="region"
       aria-label="Image carousel"
       onKeyDown={(e) => {
-        if (e.key === 'ArrowLeft') handlePrev()
-        if (e.key === 'ArrowRight') handleNext()
+        if (e.key === "ArrowLeft") handlePrev()
+        if (e.key === "ArrowRight") handleNext()
       }}
       tabIndex={0}
     >
@@ -93,23 +93,30 @@ export function Carousel({ images }: { images: ImageData[] }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
-          className={`flex ${!isDragging ? 'transition-transform duration-300 ease-out' : ''}`}
+          className={`flex ${
+            !isDragging ? "transition-transform duration-300 ease-out" : ""
+          }`}
           role="list"
           style={{
-            transform: `translateX(${-currentIndex * containerWidth + effectiveDrag}px)`,
+            transform: `translateX(${
+              -currentIndex * containerWidth + effectiveDrag
+            }px)`,
           }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           {images.map(({ src, alt, width, height }, index) => (
-            <div key={index} className="flex-shrink-0 w-full">
+            <div
+              key={index}
+              className="flex-shrink-0 w-full flex flex-col items-center"
+            >
               <Image
                 src={src}
                 alt={alt}
                 width={width}
                 height={height}
-                className="object-cover w-full"
+                className="h-full m-auto object-scale-down"
               />
             </div>
           ))}
@@ -119,7 +126,9 @@ export function Carousel({ images }: { images: ImageData[] }) {
           onClick={handlePrev}
           disabled={currentIndex === 0}
           aria-label="Previous image"
-          className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         >
           <ArrowLeftIcon className="w-6" />
         </button>
@@ -127,7 +136,9 @@ export function Carousel({ images }: { images: ImageData[] }) {
           onClick={handleNext}
           disabled={currentIndex === images.length - 1}
           aria-label="Next image"
-          className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
+            isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         >
           <ArrowRightIcon className="w-6" />
         </button>
@@ -137,7 +148,9 @@ export function Carousel({ images }: { images: ImageData[] }) {
         {images.map((_, index) => (
           <div
             key={index}
-            className={`w-2 h-2 rounded-full transition-colors duration-300 ${index === currentIndex ? 'bg-gray-800' : 'bg-gray-400'}`}
+            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+              index === currentIndex ? "bg-gray-800" : "bg-gray-400"
+            }`}
             role="listitem"
             aria-label={`Image ${index + 1} of ${images.length}`}
           />
