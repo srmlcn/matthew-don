@@ -7,9 +7,18 @@ import { ReactNode } from "react"
 import { FaAmazon, FaGoodreadsG } from "react-icons/fa"
 import { AnimatedSection } from "./animated-section"
 
-export function LinkButtons({ linkData }: { linkData: LinkData }) {
+export function LinkButtons({
+  linkData,
+  animate = true,
+}: {
+  linkData: LinkData
+  animate?: boolean
+}) {
   return (
-    <AnimatedSection className="flex flex-col gap-4 items-center">
+    <AnimatedSection
+      animate={animate}
+      className="flex flex-col gap-4 items-center"
+    >
       {linkData.external.map((link) => {
         const classes: Record<string, string> = {
           amazon: "bg-amazon",

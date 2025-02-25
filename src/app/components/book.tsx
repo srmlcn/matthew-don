@@ -33,7 +33,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
           </p>
         ))}
       </div>
-      <LinkButtons linkData={linkData} />
+      <LinkButtons linkData={linkData} animate={false} />
     </div>
   )
 }
