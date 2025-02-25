@@ -57,7 +57,15 @@ export function Carousel({ images }: { images: ImageData[] }) {
     const velocity = dragOffset / elapsed // pixels per millisecond
     const flickThreshold = 0.5
 
-    if (containerWidth && Math.abs(effectiveDrag) > containerWidth / 2) {
+    if (Math.abs(velocity) > flickThreshold) {
+      // Flick gesture detected: move one slide based on direction.
+      if (velocity > 0 && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1)
+      } else if (velocity < 0 && currentIndex < images.length - 1) {
+        setCurrentIndex(currentIndex + 1)
+      }
+    } else if (containerWidth && Math.abs(effectiveDrag) > containerWidth / 2) {
+      // Use drag distance to determine if we should move to the next slide.
       if (effectiveDrag > 0 && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1)
       } else if (effectiveDrag < 0 && currentIndex < images.length - 1) {
