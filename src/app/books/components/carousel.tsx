@@ -54,7 +54,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const handleTouchEnd = () => {
     setIsDragging(false)
     const elapsed = performance.now() - touchStartTime.current
-    const velocity = dragOffset / elapsed // pixels per millisecond
+    const velocity = elapsed > 0 ? dragOffset / elapsed : 0 // pixels per milliseconds
     const flickThreshold = 0.5
 
     if (Math.abs(velocity) > flickThreshold) {
