@@ -2,10 +2,10 @@
 
 import { LinkButtons } from "@/app/components/link-buttons"
 import { StarIcon } from "@heroicons/react/24/solid"
-import Image from "next/image"
 import { Carousel } from "./carousel"
 import { BookData } from "@/lib/book-data"
 import DOMPurify from "isomorphic-dompurify"
+import { CoverImage } from "./cover-image"
 
 export function BookPage({
   title,
@@ -18,15 +18,7 @@ export function BookPage({
 }: BookData) {
   return (
     <div className="flex flex-col items-center gap-24">
-      <section>
-        <Image
-          src={imageData.src}
-          alt={imageData.alt}
-          width={imageData.width}
-          height={imageData.height}
-          className="max-h-[72rem] h-full m-auto object-scale-down"
-        />
-      </section>
+      <CoverImage {...imageData} />
 
       <section className="flex flex-col items-center gap-4">
         <h1 className="font-bold text-4xl text-center mb-4">{title}</h1>
