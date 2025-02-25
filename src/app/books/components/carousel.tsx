@@ -5,7 +5,13 @@ import Image from "next/image"
 import type { ImageData } from "@/lib/image-data"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 
-export function Carousel({ images }: { images: ImageData[] }) {
+export function Carousel({
+  images,
+  flickThreshold = 0.5,
+}: {
+  images: ImageData[]
+  flickThreshold?: number
+}) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [containerWidth, setContainerWidth] = useState(0)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -55,7 +61,6 @@ export function Carousel({ images }: { images: ImageData[] }) {
     setIsDragging(false)
     const elapsed = performance.now() - touchStartTime.current
     const velocity = elapsed > 0 ? dragOffset / elapsed : 0 // pixels per milliseconds
-    const flickThreshold = 0.5
 
     if (Math.abs(velocity) > flickThreshold) {
       // Flick gesture detected: move one slide based on direction.
