@@ -5,6 +5,7 @@ import Link from "next/link"
 import { LinkButtons } from "./link-buttons"
 import { BookData } from "@/lib/book-data"
 import DOMPurify from "isomorphic-dompurify"
+import { AnimatedSection } from "./animated-section"
 
 export function Book({ title, descriptions, imageData, linkData }: BookData) {
   const bookCover = (
@@ -18,7 +19,7 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
   )
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <AnimatedSection className="flex flex-col items-center gap-4">
       {linkData.internal ? (
         <Link href={linkData.internal.href}>{bookCover}</Link>
       ) : (
@@ -34,6 +35,6 @@ export function Book({ title, descriptions, imageData, linkData }: BookData) {
         ))}
       </div>
       <LinkButtons linkData={linkData} animate={false} />
-    </div>
+    </AnimatedSection>
   )
 }
