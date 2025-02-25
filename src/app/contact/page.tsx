@@ -17,14 +17,16 @@ export default function ContactPage() {
           height={482}
           className="w-full h-auto"
         />
-        <div className="flex flex-col gap-4">
-          <p>
-            Have any questions you'd like to ask me? Would you like to complain
-            about a spelling error you found? Just wanna say hi? Are you a
-            publisher or movie producer who wants to pay me insane amounts of
-            money to buy the rights to my stories? Message me on Instagram or
-            TikTok!
-          </p>
+        <div className="flex flex-col gap-8">
+          <div className="prose">
+            <p>
+              Have any questions you'd like to ask me? Would you like to
+              complain about a spelling error you found? Just wanna say hi? Are
+              you a publisher or movie producer who wants to pay me insane
+              amounts of money to buy the rights to my stories? Message me on
+              Instagram or TikTok!
+            </p>
+          </div>
 
           <div className="flex items-center justify-center gap-4">
             <Button
