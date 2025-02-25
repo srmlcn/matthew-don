@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="flex flex-col items-center gap-8">
       <h1 className="font-bold text-4xl">Like I said, I'm Matt.</h1>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-start place-items-center">
+      <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-start place-items-center">
         <Image
           src="/matthew-don.jpg"
           alt="Matthew Don"
@@ -67,7 +67,7 @@ export default function AboutPage() {
             </Button>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
