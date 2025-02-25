@@ -13,6 +13,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const [isDragging, setIsDragging] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const touchStartX = useRef(0)
+  const touchStartTime = useRef(0)
 
   const measureContainerWidth = () => {
     const width = containerRef.current?.offsetWidth ?? 0
@@ -41,6 +42,7 @@ export function Carousel({ images }: { images: ImageData[] }) {
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     measureContainerWidth()
     touchStartX.current = e.touches[0].clientX
+    touchStartTime.current = performance.now()
     setIsDragging(true)
   }
 
