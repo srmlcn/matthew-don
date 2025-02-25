@@ -1,19 +1,13 @@
-import Image from "next/image"
-import Link from "next/link"
-import { LinkButtons } from "./link-buttons"
 import { BookData } from "@/lib/book-data"
 import DOMPurify from "isomorphic-dompurify"
+import Link from "next/link"
 import { AnimatedSection } from "./animated-section"
+import { BookCover } from "./book-cover"
+import { LinkButtons } from "./link-buttons"
 
 export function Book({ title, descriptions, imageData, linkData }: BookData) {
   const bookCover = (
-    <Image
-      src={imageData.src}
-      alt={imageData.alt}
-      width={imageData.width}
-      height={imageData.height}
-      className="max-h-[32rem] h-full m-auto object-scale-down"
-    />
+    <BookCover imageData={imageData} className="max-h-[32rem]" />
   )
 
   return (
