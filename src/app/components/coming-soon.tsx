@@ -3,7 +3,7 @@ import { Book } from "./book"
 
 export function ComingSoon() {
   return (
-    <div className="flex flex-col items-center gap-12">
+    <section className="flex flex-col items-center gap-12">
       <h2 className="font-bold text-4xl text-center">
         Here's what is coming next!
       </h2>
@@ -12,6 +12,6 @@ export function ComingSoon() {
           <Book key={book.title} {...book} />
         ))}
       </div>
-    </div>
+    </section>
   )
 }
