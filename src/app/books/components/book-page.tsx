@@ -19,7 +19,7 @@ export function BookPage({
     <div className="flex flex-col items-center gap-24">
       <BookCover
         imageData={imageData}
-        className="max-h-[72rem] h-full w-full flex items-center"
+        classNames={{ image: "max-h-[48rem]" }}
       />
 
       <BookInfo title={title} descriptionsExpanded={descriptionsExpanded} />
