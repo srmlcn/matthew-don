@@ -7,7 +7,11 @@ import { LinkButtons } from "./link-buttons"
 
 export function Book({ title, descriptions, imageData, linkData }: BookData) {
   const bookCover = (
-    <BookCover imageData={imageData} className="max-h-[32rem]" />
+    <BookCover
+      imageData={imageData}
+      animate={false}
+      className="max-h-[32rem]"
+    />
   )
 
   return (
