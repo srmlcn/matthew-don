@@ -23,9 +23,10 @@ export function BookPage({
 
       <BookInfo title={title} descriptionsExpanded={descriptionsExpanded} />
 
-      <section className="max-h-[64rem] w-full">
-        <Carousel images={previewImagesData ?? []} />
-      </section>
+      <Carousel
+        images={previewImagesData ?? []}
+        className="max-h-[64rem] w-full"
+      />
       <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {reviewData?.map((review) => (
           <div key={review.name} className="flex flex-col gap-4">
