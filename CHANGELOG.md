@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.4.0 (2025-02-25)
+
+### Features
+
+* slide sections into view on viewport entry ([b34246f](https://github.com/cainspencerm/matthew-don/commit/b34246fec2921b43bb0dd9a59e4cdc467dac0d4f))
+
 ## 3.3.0 (2025-02-25)
 
 ### Features
