@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.4.1 (2025-02-25)</small>
+
+### Bug Fixes
+
+* format paragraphs with prose ([7128483](https://github.com/cainspencerm/matthew-don/commit/71284833b7cd1cb5d8fd5396e968838902d470f6))
+
 ## 3.4.0 (2025-02-25)
 
 ### Features
