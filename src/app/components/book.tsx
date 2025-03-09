@@ -4,13 +4,25 @@ import Link from "next/link"
 import { AnimatedSection } from "./animated-section"
 import { BookCover } from "./book-cover"
 import { LinkButtons } from "./link-buttons"
+import { cn } from "@/lib/utils"
 
-export function Book({ title, descriptions, imageData, linkData }: BookData) {
+export function Book({
+  title,
+  descriptions,
+  imageData,
+  linkData,
+  size = "sm",
+}: BookData & { size?: "sm" | "md" | "lg" }) {
+  const sizeMap = {
+    sm: "max-h-[28rem]",
+    md: "max-h-[32rem]",
+    lg: "max-h-[48rem]",
+  }
   const bookCover = (
     <BookCover
       imageData={imageData}
       animate={false}
-      classNames={{ image: "max-h-[32rem]" }}
+      classNames={{ image: cn(sizeMap[size]) }}
     />
   )
 
