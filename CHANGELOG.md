@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.5.0 (2025-03-09)
+
+### Features
+
+* update book information ([9d3d522](https://github.com/cainspencerm/matthew-don/commit/9d3d522c45ce92604caec512c1ab70a7a93ad417))
+
 ## <small>3.4.2 (2025-03-09)</small>
 
 ### Bug Fixes
