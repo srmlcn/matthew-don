@@ -63,15 +63,17 @@ export function SiteNavbar() {
           </div>
           <p className="font-bold text-lg">Matthew Don</p>
         </NavbarBrand>
-        <NavbarItem className="hidden sm:flex">
-          <Link href="/">Home</Link>
-        </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
-          <Link href="/about">About</Link>
-        </NavbarItem>
-        <NavbarItem className="hidden sm:flex">
-          <Link href="/contact">Contact</Link>
-        </NavbarItem>
+        <div className="flex items-center gap-8">
+          <NavbarItem className="hidden sm:flex">
+            <Link href="/">Home</Link>
+          </NavbarItem>
+          <NavbarItem className="hidden sm:flex">
+            <Link href="/about">About</Link>
+          </NavbarItem>
+          <NavbarItem className="hidden sm:flex">
+            <Link href="/contact">Contact</Link>
+          </NavbarItem>
+        </div>
         <NavbarItem className="hidden sm:flex">
           <Dropdown
             isOpen={isDropdownOpen}
