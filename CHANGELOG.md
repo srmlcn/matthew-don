@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.4.2 (2025-03-09)</small>
+
+### Bug Fixes
+
+* evenly space navbar buttons in the desktop layout ([5611630](https://github.com/cainspencerm/matthew-don/commit/5611630d4777ca1663cadc268450b28d9a7ceccd))
+
 ## <small>3.4.1 (2025-02-25)</small>
 
 ### Bug Fixes
