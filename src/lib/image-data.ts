@@ -205,3 +205,10 @@ export const celebrationOfTheHistoryOfCelebratingHistoryImagesData: ImageData[] 
       height: 2856,
     },
   ]
+
+export const adventuresOfLucaAndKaiTheComicsAuthorImageData: ImageData = {
+  src: "/adventures/comics-author.jpg",
+  alt: "Matthew Don, author of The Adventures of Luca and Kai: The Comics",
+  width: 1226,
+  height: 1850,
+}
