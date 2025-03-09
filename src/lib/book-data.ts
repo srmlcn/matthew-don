@@ -1,6 +1,8 @@
 import {
   adventuresOfLucaAndKaiBook2of3ImageData,
   adventuresOfLucaAndKaiBook3of3ImageData,
+  adventuresOfLucaAndKaiTheComicsImageData,
+  adventuresOfLucaAndKaiTheComicsImagesData,
   adventuresOfLucaAndKaiTheMoonQueenImageData,
   adventuresOfLucaAndKaiTheMoonQueenImagesData,
   celebrationOfTheHistoryOfCelebratingHistoryImageData,
@@ -10,6 +12,7 @@ import {
 import {
   adventuresOfLucaAndKaiBook2of3LinkData,
   adventuresOfLucaAndKaiBook3of3LinkData,
+  adventuresOfLucaAndKaiTheComicsLinkData,
   adventuresOfLucaAndKaiTheMoonQueenLinkData,
   celebrationOfTheHistoryOfCelebratingHistoryLinkData,
   type LinkData,
@@ -46,6 +49,23 @@ export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
   previewImagesData: adventuresOfLucaAndKaiTheMoonQueenImagesData,
   linkData: adventuresOfLucaAndKaiTheMoonQueenLinkData,
   reviewData: adventuresOfLucaAndKaiTheMoonQueenReviewsData,
+}
+
+export const adventuresOfLucaAndKaiTheComicsBookData: BookData = {
+  title: "The Adventures of Luca and Kai: The Comics",
+  descriptions: [
+    "Fun for all ages!",
+    "Available in paperback, Ebook, and Free through Kindle Unlimited",
+  ],
+  descriptionsExpanded: [
+    "Join Luca and Kai on their adventures in a brand new way! Featuring original artwork by Christopher Don, travel the cosmos through the beautiful, fully colored panels of Adventures of Luca and Kai: The Comics!",
+  ],
+  availability:
+    "Available now in paperback, Ebook, and FREE through Kindle Unlimited!",
+  imageData: adventuresOfLucaAndKaiTheComicsImageData,
+  previewImagesData: adventuresOfLucaAndKaiTheComicsImagesData,
+  linkData: adventuresOfLucaAndKaiTheComicsLinkData,
+  reviewData: [],
 }
 
 export const adventuresOfLucaAndKaiBook2of3BookData: BookData = {
