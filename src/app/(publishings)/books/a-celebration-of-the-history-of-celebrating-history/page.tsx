@@ -1,5 +1,4 @@
-import { BookPage } from "../components/book-page"
-
+import { BookPage } from "@/app/(publishings)/books/components/book-page"
 import { celebrationOfTheHistoryOfCelebratingHistoryBookData as book } from "@/lib/book-data"
 
 export default function Page() {
