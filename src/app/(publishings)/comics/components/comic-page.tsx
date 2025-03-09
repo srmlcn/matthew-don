@@ -1,6 +1,7 @@
 import { BookCover } from "@/app/components/book-cover"
 import { LinkButtons } from "@/app/components/link-buttons"
 import { BookData } from "@/lib/book-data"
+import { AboutSection } from "./about-section"
 import { Availability } from "../../components/availability"
 import { BookInfo } from "../../components/book-info"
 import { Carousel } from "../../components/carousel"
@@ -28,6 +29,8 @@ export function ComicPage({
         images={previewImagesData ?? []}
         className="max-h-[64rem] w-full"
       />
+
+      <AboutSection />
 
       <Reviews reviewData={reviewData ?? []} />
 
