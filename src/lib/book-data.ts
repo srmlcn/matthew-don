@@ -49,15 +49,15 @@ export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
 }
 
 export const adventuresOfLucaAndKaiBook2of3BookData: BookData = {
-  title: "The Adventures of Luca and Kai (Book 2 of 3)",
-  descriptions: ["Coming Soon..."],
+  title: "The Adventures of Luca and Kai: The Celestial Samurai (Book 2 of 3)",
+  descriptions: ["Coming 2025"],
   imageData: adventuresOfLucaAndKaiBook2of3ImageData,
   linkData: adventuresOfLucaAndKaiBook2of3LinkData,
 }
 
 export const adventuresOfLucaAndKaiBook3of3BookData: BookData = {
   title: "The Adventures of Luca and Kai (Book 3 of 3)",
-  descriptions: ["Coming Not Quite As Soon..."],
+  descriptions: ["Coming Later..."],
   imageData: adventuresOfLucaAndKaiBook3of3ImageData,
   linkData: adventuresOfLucaAndKaiBook3of3LinkData,
 }
