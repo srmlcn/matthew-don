@@ -57,7 +57,7 @@ export const adventuresOfLucaAndKaiBook2of3BookData: BookData = {
 
 export const adventuresOfLucaAndKaiBook3of3BookData: BookData = {
   title: "The Adventures of Luca and Kai (Book 3 of 3)",
-  descriptions: ["Coming Not Quite As Soon..."],
+  descriptions: ["Coming Later..."],
   imageData: adventuresOfLucaAndKaiBook3of3ImageData,
   linkData: adventuresOfLucaAndKaiBook3of3LinkData,
 }
