@@ -27,6 +27,24 @@ export const adventuresOfLucaAndKaiTheMoonQueenLinkData: LinkData = {
   },
 }
 
+export const adventuresOfLucaAndKaiTheComicsLinkData: LinkData = {
+  external: [
+    {
+      vendor: "amazon",
+      href: "https://www.amazon.com/Adventures-Luca-Kai-Queen-Comics/dp/B0DWMWC7LQ",
+      label: "Check out on Amazon!",
+    },
+    {
+      vendor: "goodreads",
+      href: "https://www.goodreads.com/book/show/227847038-the-adventures-of-luca-and-kai",
+      label: "Check out on Goodreads!",
+    },
+  ],
+  internal: {
+    href: "/comics/the-adventures-of-luca-and-kai-the-comics",
+  },
+}
+
 export const adventuresOfLucaAndKaiBook2of3LinkData: LinkData = {
   external: [
     {
