@@ -133,6 +133,21 @@ export const adventuresOfLucaAndKaiTheMoonQueenImagesData: ImageData[] = [
   },
 ]
 
+export const adventuresOfLucaAndKaiTheComicsImagesData: ImageData[] = [
+  {
+    src: "/adventures/comics-1.jpg",
+    alt: "The Adventures of Luca and Kai: The Comics (1)",
+    width: 1225,
+    height: 1850,
+  },
+  {
+    src: "/adventures/comics-2.jpg",
+    alt: "The Adventures of Luca and Kai: The Comics (2)",
+    width: 1225,
+    height: 1850,
+  },
+]
+
 export const celebrationOfTheHistoryOfCelebratingHistoryImagesData: ImageData[] =
   [
     {
