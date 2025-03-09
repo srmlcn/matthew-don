@@ -212,3 +212,10 @@ export const adventuresOfLucaAndKaiTheComicsAuthorImageData: ImageData = {
   width: 1226,
   height: 1850,
 }
+
+export const adventuresOfLucaAndKaiTheComicsIllustratorImageData: ImageData = {
+  src: "/adventures/comics-illustrator.jpg",
+  alt: "Christopher Don, illustrator of The Adventures of Luca and Kai: The Comics",
+  width: 1226,
+  height: 1850,
+}
