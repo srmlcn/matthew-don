@@ -12,6 +12,13 @@ export const adventuresOfLucaAndKaiTheMoonQueenImageData: ImageData = {
   height: 1749,
 }
 
+export const adventuresOfLucaAndKaiTheComicsImageData: ImageData = {
+  src: "/adventures/comics-cover.jpg",
+  alt: "The Adventures of Luca and Kai: The Comics",
+  width: 1231,
+  height: 1850,
+}
+
 export const adventuresOfLucaAndKaiBook2of3ImageData: ImageData = {
   src: "/adventures/book2-cover.png",
   alt: "The Adventures of Luca and Kai (Book 2 of 3)",
