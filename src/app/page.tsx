@@ -4,6 +4,8 @@ import type { Metadata } from "next"
 import { Welcome } from "./components/welcome"
 import { Books } from "./components/books"
 import { ComingSoon } from "./components/coming-soon"
+import { NewRelease } from "./components/new-release"
+import { adventuresOfLucaAndKaiTheComicsBookData as bookData } from "@/lib/book-data"
 
 export const metadata: Metadata = {
   title: "Home | Matthew Don",
@@ -56,6 +58,10 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center py-20 gap-20">
       <Welcome />
+
+      <Divider orientation="horizontal" />
+
+      <NewRelease bookData={bookData} />
 
       <Divider orientation="horizontal" />
 
