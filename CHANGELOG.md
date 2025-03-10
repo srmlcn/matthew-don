@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.9.3 (2025-03-10)</small>
+
+### Bug Fixes
+
+* recolor section titles on the navbar menu ([5459cc1](https://github.com/cainspencerm/matthew-don/commit/5459cc1a9ea3332035ec1d419f337005f44a5939))
+
 ## <small>3.9.2 (2025-03-10)</small>
 
 ### Bug Fixes
