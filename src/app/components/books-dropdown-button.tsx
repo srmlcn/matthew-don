@@ -1,6 +1,6 @@
 "use client"
 
-import { books } from "@/lib/book-data"
+import { BOOK_CATEGORIES, books } from "@/lib/book-data"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import {
   Button,
@@ -41,7 +41,9 @@ export function BooksDropdownButton() {
         <DropdownSection
           title="The Adventures of Luca and Kai"
           items={books.filter(
-            (book) => book.linkData.internal && book.category === "adventures"
+            (book) =>
+              book.linkData.internal &&
+              book.category === BOOK_CATEGORIES.ADVENTURES
           )}
         >
           {(item) => (
@@ -57,7 +59,8 @@ export function BooksDropdownButton() {
         <DropdownSection
           title="Others"
           items={books.filter(
-            (book) => book.linkData.internal && book.category === "others"
+            (book) =>
+              book.linkData.internal && book.category === BOOK_CATEGORIES.OTHERS
           )}
         >
           {(item) => (
