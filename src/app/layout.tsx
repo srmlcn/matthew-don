@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="transition-colors duration-1000 ease-in-out">
       <body className={`antialiased min-h-screen flex flex-col`}>
         <div className="flex-1">
           <Providers>
