@@ -30,7 +30,7 @@ export default {
         },
         dark: {
           colors: {
-            primary: "var(--foreground)",
+            primary: "#ffffff",
             secondary: "#00ff77",
           },
         },
