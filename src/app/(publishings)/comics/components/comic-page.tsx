@@ -21,10 +21,12 @@ export function ComicPage({
 }: BookData) {
   useEffect(() => {
     const html = document.documentElement
+    html.classList.remove("light")
     html.classList.add("dark")
 
     return () => {
       html.classList.remove("dark")
+      html.classList.add("light")
     }
   }, [])
 
