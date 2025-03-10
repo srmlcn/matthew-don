@@ -62,16 +62,12 @@ export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
 
 export const adventuresOfLucaAndKaiTheComicsBookData: BookData = {
   title: "The Adventures of Luca and Kai: The Comics",
-  descriptions: [
-    "Fun for all ages!",
-    "Available in paperback, Ebook, and Free through Kindle Unlimited",
-  ],
+  descriptions: ["Fun for all ages!", "Available in paperback"],
   descriptionsExpanded: [
     "Join Luca and Kai on their adventures in a brand new way! Featuring original artwork by Christopher Don, travel the cosmos through the beautiful, fully colored panels of Adventures of Luca and Kai: The Comics!",
   ],
   category: BOOK_CATEGORIES.ADVENTURES,
-  availability:
-    "Available now in paperback, Ebook, and FREE through Kindle Unlimited!",
+  availability: "Available now in paperback!",
   imageData: adventuresOfLucaAndKaiTheComicsImageData,
   previewImagesData: adventuresOfLucaAndKaiTheComicsImagesData,
   linkData: adventuresOfLucaAndKaiTheComicsLinkData,
