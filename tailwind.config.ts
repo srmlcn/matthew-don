@@ -24,12 +24,14 @@ export default {
       themes: {
         light: {
           colors: {
-            primary: "#00ff77",
+            primary: "var(--foreground)",
+            secondary: "#00ff77",
           },
         },
         dark: {
           colors: {
-            primary: "#00ff77",
+            primary: "var(--foreground)",
+            secondary: "#00ff77",
           },
         },
       },
