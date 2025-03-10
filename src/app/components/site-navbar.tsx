@@ -72,7 +72,7 @@ export function SiteNavbar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu className="bg-white/40 dark:bg-black/40">
+      <NavbarMenu className="bg-white/40 dark:bg-black/40 backdrop-blur-3xl">
         <NavbarMenuItem key="home">
           <Link onClick={() => setIsMenuOpen(false)} href="/">
             Home
