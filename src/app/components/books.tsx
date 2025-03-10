@@ -9,6 +9,8 @@ export function Books() {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {books
           .filter((book) => book.releaseDate !== undefined)
+          .sort((a, b) => a.releaseDate!.getTime() - b.releaseDate!.getTime())
+          .reverse()
           .map((book) => (
             <Book key={book.title} {...book} />
           ))}
