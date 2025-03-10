@@ -95,7 +95,7 @@ export function SiteNavbar() {
 
         <span />
 
-        <h2 className="text-sm font-semibold text-zinc-500">
+        <h2 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
           The Adventures of Luca and Kai
         </h2>
         <FilteredMenuItems
@@ -105,7 +105,9 @@ export function SiteNavbar() {
 
         <span />
 
-        <h2 className="text-sm font-semibold text-zinc-500">Others</h2>
+        <h2 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
+          Others
+        </h2>
         <FilteredMenuItems
           filter={BOOK_CATEGORIES.OTHERS}
           onSelect={() => setIsMenuOpen(false)}
