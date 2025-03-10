@@ -37,7 +37,7 @@ export function BooksDropdownButton() {
           Books
         </Button>
       </DropdownTrigger>
-      <DropdownMenu>
+      <DropdownMenu classNames={{ base: "max-w-96" }}>
         <DropdownSection
           title="The Adventures of Luca and Kai"
           items={books.filter(
