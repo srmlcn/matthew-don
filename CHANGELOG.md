@@ -2,6 +2,18 @@
 
 ## 3.7.0 (2025-03-10)
 
+### Bug Fixes
+
+* correct colors in dark and light themes ([5e48e51](https://github.com/cainspencerm/matthew-don/commit/5e48e5165da5836279ba4c743e52c5efaee29916))
+
+
+### Features
+
+* add book sections to navigation menus ([a742e46](https://github.com/cainspencerm/matthew-don/commit/a742e46803e9142188d9a1ea3382b3cb8ed1bbf5))
+* **comics:** use dark mode on the comic book pages ([52a9f0a](https://github.com/cainspencerm/matthew-don/commit/52a9f0ac6d86a6306e189443cb41849205a5c203))
+
+## 3.7.0 (2025-03-10)
+
 ### Features
 
 * add book sections to navigation menus ([a742e46](https://github.com/cainspencerm/matthew-don/commit/a742e46803e9142188d9a1ea3382b3cb8ed1bbf5))
