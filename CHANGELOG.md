@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.8.0 (2025-03-10)
+
+### Features
+
+* organize books by release date ([2219560](https://github.com/cainspencerm/matthew-don/commit/221956023974b4f5eb00c531073c5ef83347bc4d))
+
 ## 3.7.0 (2025-03-10)
 
 ### Bug Fixes
