@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.9.0 (2025-03-10)
+
+### Features
+
+* create a hero-style new release section on the home page ([9f6ae1f](https://github.com/cainspencerm/matthew-don/commit/9f6ae1f9f9927cb26c254e132b7b5416cd4cc1bb))
+
 ## 3.8.0 (2025-03-10)
 
 ### Features
