@@ -65,7 +65,7 @@ export function BooksDropdownButton() {
         >
           {(item) => (
             <DropdownItem key={item.title}>
-              <Link href={item.linkData.internal!.href}>
+              <Link href={item.linkData.internal?.href || "#"}>
                 <p className="-indent-2 pl-2 text-foreground text-balance">
                   {item.title}
                 </p>
