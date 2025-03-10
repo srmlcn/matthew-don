@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.7.0 (2025-03-10)
+
+### Features
+
+* **comics:** use dark mode on the comic book pages ([672fea0](https://github.com/cainspencerm/matthew-don/commit/672fea0e38305d35fd591295f2871f864bc8f689))
+
 ## 3.6.0 (2025-03-10)
 
 ### Features
