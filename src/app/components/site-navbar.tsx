@@ -89,7 +89,7 @@ export function SiteNavbar() {
           </Link>
         </NavbarMenuItem>
 
-        <Divider className="mt-4" />
+        <Divider className="mt-2" />
 
         <h1 className="text-sm font-bold">Books</h1>
 
