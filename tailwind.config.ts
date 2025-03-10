@@ -24,7 +24,7 @@ export default {
       themes: {
         light: {
           colors: {
-            primary: "var(--foreground)",
+            primary: "#171717",
             secondary: "#00ff77",
           },
         },
