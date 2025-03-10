@@ -13,7 +13,7 @@ export function Invitation() {
       <Button
         as={Link}
         href="/about"
-        color="primary"
+        color="secondary"
         className="text-xl h-full px-4 py-2 text-wrap w-48 sm:w-fit text-center"
       >
         I dunno, maybe click this button here then.
