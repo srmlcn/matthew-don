@@ -1,6 +1,7 @@
 "use client"
 
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
+import { books } from "@/lib/book-data"
 import {
   Navbar,
   NavbarBrand,
@@ -92,23 +93,49 @@ export function SiteNavbar() {
 
         <p className="text-sm font-bold">Books</p>
 
-        <NavbarMenuItem key="the-adventures-of-luca-and-kai-the-moon-queen">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/books/the-adventures-of-luca-and-kai-the-moon-queen"
-          >
-            The Adventures of Luca and Kai: The Moon Queen
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem key="a-celebration-of-the-history-of-celebrating-history">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/books/a-celebration-of-the-history-of-celebrating-history"
-          >
-            A Celebration of the History of Celebrating History
-          </Link>
-        </NavbarMenuItem>
+        <span />
+
+        <h2 className="text-sm font-semibold text-zinc-500">
+          The Adventures of Luca and Kai
+        </h2>
+        <FilteredMenuItems
+          filter="adventures"
+          onSelect={() => setIsMenuOpen(false)}
+        />
+
+        <span />
+
+        <h2 className="text-sm font-semibold text-zinc-500">Others</h2>
+        <FilteredMenuItems
+          filter="others"
+          onSelect={() => setIsMenuOpen(false)}
+        />
       </NavbarMenu>
     </Navbar>
+  )
+}
+
+function FilteredMenuItems({
+  filter,
+  onSelect,
+}: {
+  filter: string
+  onSelect: Function
+}) {
+  return (
+    <>
+      {books
+        .filter((book) => book.linkData.internal && book.category === filter)
+        .map((book) => (
+          <NavbarMenuItem key={book.title} className="px-1">
+            <Link
+              onClick={() => onSelect()}
+              href={book.linkData.internal!.href}
+            >
+              <p className="-indent-4 pl-4">{book.title}</p>
+            </Link>
+          </NavbarMenuItem>
+        ))}
+    </>
   )
 }
