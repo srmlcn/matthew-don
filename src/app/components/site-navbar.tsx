@@ -91,7 +91,7 @@ export function SiteNavbar() {
 
         <Divider className="mt-4" />
 
-        <p className="text-sm font-bold">Books</p>
+        <h1 className="text-sm font-bold">Books</h1>
 
         <span />
 
