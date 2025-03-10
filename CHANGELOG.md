@@ -4,6 +4,13 @@
 
 ### Features
 
+* add book sections to navigation menus ([a742e46](https://github.com/cainspencerm/matthew-don/commit/a742e46803e9142188d9a1ea3382b3cb8ed1bbf5))
+* **comics:** use dark mode on the comic book pages ([52a9f0a](https://github.com/cainspencerm/matthew-don/commit/52a9f0ac6d86a6306e189443cb41849205a5c203))
+
+## 3.7.0 (2025-03-10)
+
+### Features
+
 * **comics:** use dark mode on the comic book pages ([672fea0](https://github.com/cainspencerm/matthew-don/commit/672fea0e38305d35fd591295f2871f864bc8f689))
 
 ## 3.6.0 (2025-03-10)
