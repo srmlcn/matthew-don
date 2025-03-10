@@ -21,7 +21,7 @@ export function LinkButtons({
     >
       {linkData.external.map((link) => {
         const classes: Record<string, string> = {
-          amazon: "bg-amazon",
+          amazon: "bg-amazon text-black",
           goodreads: "bg-goodreads text-white",
         }
 

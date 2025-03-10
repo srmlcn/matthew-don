@@ -31,7 +31,7 @@ export function SiteNavbar() {
       height="4rem"
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      classNames={{ base: "bg-white/40" }}
+      classNames={{ base: "bg-white/40 dark:bg-black/40" }}
     >
       <NavbarContent justify="start" className="flex gap-4">
         <NavbarMenuToggle
@@ -112,7 +112,7 @@ export function SiteNavbar() {
         </NavbarItem>
       </NavbarContent>
 
-      <NavbarMenu className="bg-white/40">
+      <NavbarMenu className="bg-white/40 dark:bg-black/40">
         <NavbarMenuItem key="home">
           <Link onClick={() => setIsMenuOpen(false)} href="/">
             Home

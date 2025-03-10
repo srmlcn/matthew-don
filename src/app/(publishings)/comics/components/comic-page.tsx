@@ -1,3 +1,5 @@
+"use client"
+
 import { Availability } from "@/app/(publishings)/components/availability"
 import { BookInfo } from "@/app/(publishings)/components/book-info"
 import { Carousel } from "@/app/(publishings)/components/carousel"
@@ -5,6 +7,7 @@ import { Reviews } from "@/app/(publishings)/components/reviews"
 import { BookCover } from "@/app/components/book-cover"
 import { LinkButtons } from "@/app/components/link-buttons"
 import { BookData } from "@/lib/book-data"
+import { useEffect } from "react"
 import { AboutSection } from "./about-section"
 
 export function ComicPage({
@@ -16,6 +19,15 @@ export function ComicPage({
   linkData,
   reviewData,
 }: BookData) {
+  useEffect(() => {
+    const html = document.documentElement
+    html.classList.add("dark")
+
+    return () => {
+      html.classList.remove("dark")
+    }
+  }, [])
+
   return (
     <div className="flex flex-col items-center gap-24">
       <BookCover

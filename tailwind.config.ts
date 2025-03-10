@@ -2,6 +2,7 @@ import type { Config } from "tailwindcss"
 import { heroui } from "@heroui/react"
 
 export default {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,6 +23,11 @@ export default {
     heroui({
       themes: {
         light: {
+          colors: {
+            primary: "#00ff77",
+          },
+        },
+        dark: {
           colors: {
             primary: "#00ff77",
           },
