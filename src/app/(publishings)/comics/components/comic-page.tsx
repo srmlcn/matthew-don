@@ -1,11 +1,11 @@
+import { Availability } from "@/app/(publishings)/components/availability"
+import { BookInfo } from "@/app/(publishings)/components/book-info"
+import { Carousel } from "@/app/(publishings)/components/carousel"
+import { Reviews } from "@/app/(publishings)/components/reviews"
 import { BookCover } from "@/app/components/book-cover"
 import { LinkButtons } from "@/app/components/link-buttons"
 import { BookData } from "@/lib/book-data"
 import { AboutSection } from "./about-section"
-import { Availability } from "../../components/availability"
-import { BookInfo } from "../../components/book-info"
-import { Carousel } from "../../components/carousel"
-import { Reviews } from "../../components/reviews"
 
 export function ComicPage({
   title,
