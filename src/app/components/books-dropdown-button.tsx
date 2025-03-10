@@ -1,11 +1,13 @@
 "use client"
 
+import { books } from "@/lib/book-data"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import {
   Button,
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  DropdownSection,
   DropdownTrigger,
   Link,
 } from "@heroui/react"
@@ -36,21 +38,38 @@ export function BooksDropdownButton() {
         </Button>
       </DropdownTrigger>
       <DropdownMenu>
-        <DropdownItem key="the-adventures-of-luca-and-kai-the-moon-queen">
-          <Link href="/books/the-adventures-of-luca-and-kai-the-moon-queen">
-            The Adventures of Luca and Kai: The Moon Queen
-          </Link>
-        </DropdownItem>
-        <DropdownItem key="the-adventures-of-luca-and-kai-the-comics">
-          <Link href="/comics/the-adventures-of-luca-and-kai-the-comics">
-            The Adventures of Luca and Kai: The Comics
-          </Link>
-        </DropdownItem>
-        <DropdownItem key="a-celebration-of-the-history-of-celebrating-history">
-          <Link href="/books/a-celebration-of-the-history-of-celebrating-history">
-            A Celebration of the History of Celebrating History
-          </Link>
-        </DropdownItem>
+        <DropdownSection
+          title="The Adventures of Luca and Kai"
+          items={books.filter(
+            (book) => book.linkData.internal && book.category === "adventures"
+          )}
+        >
+          {(item) => (
+            <DropdownItem key={item.title}>
+              <Link href={item.linkData.internal!.href}>
+                <p className="-indent-2 pl-2 text-foreground text-balance">
+                  {item.title}
+                </p>
+              </Link>
+            </DropdownItem>
+          )}
+        </DropdownSection>
+        <DropdownSection
+          title="Others"
+          items={books.filter(
+            (book) => book.linkData.internal && book.category === "others"
+          )}
+        >
+          {(item) => (
+            <DropdownItem key={item.title}>
+              <Link href={item.linkData.internal!.href}>
+                <p className="-indent-2 pl-2 text-foreground text-balance">
+                  {item.title}
+                </p>
+              </Link>
+            </DropdownItem>
+          )}
+        </DropdownSection>
       </DropdownMenu>
     </Dropdown>
   )
