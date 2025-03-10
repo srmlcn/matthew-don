@@ -130,7 +130,7 @@ function FilteredMenuItems({
           <NavbarMenuItem key={book.title} className="px-1">
             <Link
               onClick={() => onSelect()}
-              href={book.linkData.internal!.href}
+              href={book.linkData.internal?.href || "#"}
             >
               <p className="-indent-4 pl-4">{book.title}</p>
             </Link>
