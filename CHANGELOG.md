@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.9.1 (2025-03-10)</small>
+
+### Bug Fixes
+
+* restore the color of the call to action button on the home page ([549a96a](https://github.com/cainspencerm/matthew-don/commit/549a96acaeead0e6194b645b3e0c9916c42e089b))
+
 ## 3.9.0 (2025-03-10)
 
 ### Features
