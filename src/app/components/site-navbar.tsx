@@ -1,29 +1,22 @@
 "use client"
 
-import { ChevronDownIcon } from "@heroicons/react/24/solid"
+import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
+import { BOOK_CATEGORIES, books } from "@/lib/book-data"
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  NavbarMenuToggle,
 } from "@heroui/navbar"
-import {
-  Button,
-  Divider,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@heroui/react"
+import { Divider } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 
 export function SiteNavbar() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
@@ -75,40 +68,7 @@ export function SiteNavbar() {
           </NavbarItem>
         </div>
         <NavbarItem className="hidden sm:flex">
-          <Dropdown
-            isOpen={isDropdownOpen}
-            onOpenChange={setIsDropdownOpen}
-            placement="bottom-end"
-          >
-            <DropdownTrigger>
-              <Button
-                className="text-base"
-                variant="light"
-                endContent={
-                  <ChevronDownIcon
-                    height="16px"
-                    className={`transform-all duration-150 ${
-                      isDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                }
-              >
-                Books
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem key="the-adventures-of-luca-and-kai-the-moon-queen">
-                <Link href="/books/the-adventures-of-luca-and-kai-the-moon-queen">
-                  The Adventures of Luca and Kai: The Moon Queen
-                </Link>
-              </DropdownItem>
-              <DropdownItem key="a-celebration-of-the-history-of-celebrating-history">
-                <Link href="/books/a-celebration-of-the-history-of-celebrating-history">
-                  A Celebration of the History of Celebrating History
-                </Link>
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <BooksDropdownButton />
         </NavbarItem>
       </NavbarContent>
 
@@ -129,27 +89,53 @@ export function SiteNavbar() {
           </Link>
         </NavbarMenuItem>
 
-        <Divider className="mt-4" />
+        <Divider className="mt-2" />
 
-        <p className="text-sm font-bold">Books</p>
+        <h1 className="text-sm font-bold">Books</h1>
 
-        <NavbarMenuItem key="the-adventures-of-luca-and-kai-the-moon-queen">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/books/the-adventures-of-luca-and-kai-the-moon-queen"
-          >
-            The Adventures of Luca and Kai: The Moon Queen
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem key="a-celebration-of-the-history-of-celebrating-history">
-          <Link
-            onClick={() => setIsMenuOpen(false)}
-            href="/books/a-celebration-of-the-history-of-celebrating-history"
-          >
-            A Celebration of the History of Celebrating History
-          </Link>
-        </NavbarMenuItem>
+        <span />
+
+        <h2 className="text-sm font-semibold text-zinc-500">
+          The Adventures of Luca and Kai
+        </h2>
+        <FilteredMenuItems
+          filter={BOOK_CATEGORIES.ADVENTURES}
+          onSelect={() => setIsMenuOpen(false)}
+        />
+
+        <span />
+
+        <h2 className="text-sm font-semibold text-zinc-500">Others</h2>
+        <FilteredMenuItems
+          filter={BOOK_CATEGORIES.OTHERS}
+          onSelect={() => setIsMenuOpen(false)}
+        />
       </NavbarMenu>
     </Navbar>
+  )
+}
+
+function FilteredMenuItems({
+  filter,
+  onSelect,
+}: {
+  filter: string
+  onSelect: Function
+}) {
+  return (
+    <>
+      {books
+        .filter((book) => book.linkData.internal && book.category === filter)
+        .map((book) => (
+          <NavbarMenuItem key={book.title} className="px-1">
+            <Link
+              onClick={() => onSelect()}
+              href={book.linkData.internal?.href || "#"}
+            >
+              <p className="-indent-4 pl-4">{book.title}</p>
+            </Link>
+          </NavbarMenuItem>
+        ))}
+    </>
   )
 }
