@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.9.4 (2025-03-10)</small>
+
+### Bug Fixes
+
+* change the availability of the comic book to paperback ([38b47ba](https://github.com/cainspencerm/matthew-don/commit/38b47bad81a2df933ef452a8bb5640f4215675bf))
+
 ## <small>3.9.3 (2025-03-10)</small>
 
 ### Bug Fixes
