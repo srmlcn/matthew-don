@@ -1,9 +1,9 @@
 "use client"
 
+import { AnimatedSection } from "@/app/components/animated-section"
 import { Button } from "@heroui/react"
 import Image from "next/image"
 import Link from "next/link"
-import { AnimatedSection } from "../components/animated-section"
 
 export default function AboutPage() {
   return (

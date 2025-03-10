@@ -149,7 +149,7 @@ export function Carousel({
             onClick={handlePrev}
             disabled={currentIndex === 0}
             aria-label="Previous image"
-            className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
+            className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
               isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
@@ -159,7 +159,7 @@ export function Carousel({
             onClick={handleNext}
             disabled={currentIndex === images.length - 1}
             aria-label="Next image"
-            className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-black/40 backdrop-blur text-white disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
+            className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
               isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >

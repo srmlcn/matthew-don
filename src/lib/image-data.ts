@@ -12,6 +12,13 @@ export const adventuresOfLucaAndKaiTheMoonQueenImageData: ImageData = {
   height: 1749,
 }
 
+export const adventuresOfLucaAndKaiTheComicsImageData: ImageData = {
+  src: "/adventures/comics-cover.jpg",
+  alt: "The Adventures of Luca and Kai: The Comics",
+  width: 1231,
+  height: 1850,
+}
+
 export const adventuresOfLucaAndKaiBook2of3ImageData: ImageData = {
   src: "/adventures/book2-cover.png",
   alt: "The Adventures of Luca and Kai (Book 2 of 3)",
@@ -126,6 +133,21 @@ export const adventuresOfLucaAndKaiTheMoonQueenImagesData: ImageData[] = [
   },
 ]
 
+export const adventuresOfLucaAndKaiTheComicsImagesData: ImageData[] = [
+  {
+    src: "/adventures/comics-1.jpg",
+    alt: "The Adventures of Luca and Kai: The Comics (1)",
+    width: 1225,
+    height: 1850,
+  },
+  {
+    src: "/adventures/comics-2.jpg",
+    alt: "The Adventures of Luca and Kai: The Comics (2)",
+    width: 1225,
+    height: 1850,
+  },
+]
+
 export const celebrationOfTheHistoryOfCelebratingHistoryImagesData: ImageData[] =
   [
     {
@@ -183,3 +205,17 @@ export const celebrationOfTheHistoryOfCelebratingHistoryImagesData: ImageData[] 
       height: 2856,
     },
   ]
+
+export const adventuresOfLucaAndKaiTheComicsAuthorImageData: ImageData = {
+  src: "/adventures/comics-author.jpg",
+  alt: "Matthew Don, author of The Adventures of Luca and Kai: The Comics",
+  width: 1226,
+  height: 1850,
+}
+
+export const adventuresOfLucaAndKaiTheComicsIllustratorImageData: ImageData = {
+  src: "/adventures/comics-illustrator.jpg",
+  alt: "Christopher Don, illustrator of The Adventures of Luca and Kai: The Comics",
+  width: 1226,
+  height: 1850,
+}

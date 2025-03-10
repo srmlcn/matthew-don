@@ -1,10 +1,10 @@
+import { Availability } from "@/app/(publishings)/components/availability"
+import { BookInfo } from "@/app/(publishings)/components/book-info"
+import { Carousel } from "@/app/(publishings)/components/carousel"
+import { Reviews } from "@/app/(publishings)/components/reviews"
 import { BookCover } from "@/app/components/book-cover"
 import { LinkButtons } from "@/app/components/link-buttons"
 import { BookData } from "@/lib/book-data"
-import { Availability } from "./availability"
-import { BookInfo } from "./book-info"
-import { Carousel } from "./carousel"
-import { Reviews } from "./reviews"
 
 export function BookPage({
   title,
