@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.6.0 (2025-03-10)
+
+### Features
+
+* **comics:** create a comic book page for the adventures comics ([b4348ac](https://github.com/cainspencerm/matthew-don/commit/b4348ac2c4f30bf7b856196c710b4802b77482bb))
+
 ## 3.5.0 (2025-03-09)
 
 ### Features
