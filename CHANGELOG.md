@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.9.2 (2025-03-10)</small>
+
+### Bug Fixes
+
+* define heroui theme colors using hex representation ([6f29df5](https://github.com/cainspencerm/matthew-don/commit/6f29df5005033930b85ddaffdf96b90109849754))
+
 ## <small>3.9.1 (2025-03-10)</small>
 
 ### Bug Fixes
