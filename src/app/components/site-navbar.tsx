@@ -1,7 +1,7 @@
 "use client"
 
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
-import { books } from "@/lib/book-data"
+import { BOOK_CATEGORIES, books } from "@/lib/book-data"
 import {
   Navbar,
   NavbarBrand,
@@ -99,7 +99,7 @@ export function SiteNavbar() {
           The Adventures of Luca and Kai
         </h2>
         <FilteredMenuItems
-          filter="adventures"
+          filter={BOOK_CATEGORIES.ADVENTURES}
           onSelect={() => setIsMenuOpen(false)}
         />
 
@@ -107,7 +107,7 @@ export function SiteNavbar() {
 
         <h2 className="text-sm font-semibold text-zinc-500">Others</h2>
         <FilteredMenuItems
-          filter="others"
+          filter={BOOK_CATEGORIES.OTHERS}
           onSelect={() => setIsMenuOpen(false)}
         />
       </NavbarMenu>
