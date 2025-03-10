@@ -38,6 +38,7 @@ export type BookData = {
   linkData: LinkData
   previewImagesData?: ImageData[]
   reviewData?: ReviewData[]
+  releaseDate?: Date
 }
 
 export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
@@ -56,6 +57,7 @@ export const adventuresOfLucaAndKaiBook1of3BookData: BookData = {
   previewImagesData: adventuresOfLucaAndKaiTheMoonQueenImagesData,
   linkData: adventuresOfLucaAndKaiTheMoonQueenLinkData,
   reviewData: adventuresOfLucaAndKaiTheMoonQueenReviewsData,
+  releaseDate: new Date("2024-06-28"),
 }
 
 export const adventuresOfLucaAndKaiTheComicsBookData: BookData = {
@@ -74,6 +76,7 @@ export const adventuresOfLucaAndKaiTheComicsBookData: BookData = {
   previewImagesData: adventuresOfLucaAndKaiTheComicsImagesData,
   linkData: adventuresOfLucaAndKaiTheComicsLinkData,
   reviewData: [],
+  releaseDate: new Date("2025-01-13"),
 }
 
 export const adventuresOfLucaAndKaiBook2of3BookData: BookData = {
@@ -109,6 +112,7 @@ export const celebrationOfTheHistoryOfCelebratingHistoryBookData: BookData = {
   previewImagesData: celebrationOfTheHistoryOfCelebratingHistoryImagesData,
   linkData: celebrationOfTheHistoryOfCelebratingHistoryLinkData,
   reviewData: celebrationOfTheHistoryOfCelebratingHistoryReviewsData,
+  releaseDate: new Date("2015-05-26"),
 }
 
 export const books: BookData[] = [
