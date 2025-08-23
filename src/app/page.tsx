@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "humor books",
     "The Adventures of Luca and Kai",
     "The Moon Queen",
+    "The Celestial Samurai",
     "A Celebration of the History of Celebrating History",
     "author",
     "new books",
