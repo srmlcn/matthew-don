@@ -34,7 +34,7 @@ export function Book({
         bookCover
       )}
 
-      <h3 className="font-bold text-xl text-center">{title}</h3>
+      <h3 className="font-bold text-xl text-center text-balance">{title}</h3>
       <div className="flex flex-col items-center gap-2">
         {descriptions.map((description, index) => (
           <p className="text-center" key={index}>
