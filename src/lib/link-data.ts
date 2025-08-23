@@ -58,6 +58,9 @@ export const adventuresOfLucaAndKaiBook2of3LinkData: LinkData = {
       label: "Check out on Goodreads!",
     },
   ],
+  internal: {
+    href: "/books/the-adventures-of-luca-and-kai-the-celestial-samurai",
+  },
 }
 
 export const adventuresOfLucaAndKaiBook3of3LinkData: LinkData = {
