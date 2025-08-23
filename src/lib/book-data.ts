@@ -120,11 +120,11 @@ export const celebrationOfTheHistoryOfCelebratingHistoryBookData: BookData = {
 
 export const books: BookData[] = [
   adventuresOfLucaAndKaiBook1of3BookData,
+  adventuresOfLucaAndKaiBook2of3BookData,
   adventuresOfLucaAndKaiTheComicsBookData,
   celebrationOfTheHistoryOfCelebratingHistoryBookData,
 ]
 
 export const upcomingBooks: BookData[] = [
-  adventuresOfLucaAndKaiBook2of3BookData,
   adventuresOfLucaAndKaiBook3of3BookData,
 ]
