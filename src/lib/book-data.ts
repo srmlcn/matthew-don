@@ -77,10 +77,17 @@ export const adventuresOfLucaAndKaiTheComicsBookData: BookData = {
 
 export const adventuresOfLucaAndKaiBook2of3BookData: BookData = {
   title: "The Adventures of Luca and Kai: The Celestial Samurai (Book 2 of 3)",
-  descriptions: ["Coming 2025"],
+  descriptions: [
+    "Fun for all ages!",
+    "Available in paperback, Ebook, and FREE through Kindle Unlimited",
+  ],
+  descriptionsExpanded: [
+    "Five years have passed since the crew of The Esby heroically saved the children on the moon. Luca and Kai have become celebrities, with the story of their bravery becoming known worldwide. But some doubt them, and after years without seeing their former crew, Luca and Kai begin to doubt themselves. That is until a familiar face returns, threatening the existence of Earth itself. Will the courageous brothers be able to stop The Celestial Samurai?",
+  ],
   category: BOOK_CATEGORIES.ADVENTURES,
   imageData: adventuresOfLucaAndKaiBook2of3ImageData,
   linkData: adventuresOfLucaAndKaiBook2of3LinkData,
+  releaseDate: new Date("2025-08-23"),
 }
 
 export const adventuresOfLucaAndKaiBook3of3BookData: BookData = {
