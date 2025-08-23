@@ -1,5 +1,27 @@
 # Changelog
 
+## 3.10.0 (2025-08-23)
+
+### Bug Fixes
+
+* wrap book titles on the Book component ([a408dc8](https://github.com/srmlcn/matthew-don/commit/a408dc851be87b4f0f96aa5a6961a0d11490ea09))
+
+
+### Features
+
+* add a book page for ALK 2 ([ab98138](https://github.com/srmlcn/matthew-don/commit/ab98138b152daa563e1814faf7ef90d136adea4c))
+* add a confetti component with a timeout ([8f28c0b](https://github.com/srmlcn/matthew-don/commit/8f28c0b9dab3c55b053f6360fdee11d4185e3f45))
+* add the ALK 2 book cover to the image data ([1f27fcb](https://github.com/srmlcn/matthew-don/commit/1f27fcb1250f7446a0a2f32196069086ebee832c))
+* add the ALK 2 book images to the image data ([b6fb91d](https://github.com/srmlcn/matthew-don/commit/b6fb91d4e7a4ca117902e35cd01cc2bddd5778c0))
+* add the book page link to the ALK 2 link data ([68d10e1](https://github.com/srmlcn/matthew-don/commit/68d10e17c8e861dc107debd86b3811c28c15f431))
+* add The Celestial Samurai to the home page metadata keywords ([802e8e3](https://github.com/srmlcn/matthew-don/commit/802e8e397536546ef2b4459611643456e990e91f))
+* add the confetti component to the NewRelease component ([0775912](https://github.com/srmlcn/matthew-don/commit/0775912d273a7e209a284f734bedcd18d210ef8f))
+* extend the confetti 10px above and below the NewRelease component ([15da835](https://github.com/srmlcn/matthew-don/commit/15da8351b8a47dd7f823ea68ae678d867e9fb526))
+* move the ALK 2 book from the upcoming to current category ([2fcbf76](https://github.com/srmlcn/matthew-don/commit/2fcbf767e89a0654e392405d7b34c8614c4e1a03))
+* set the home page latest book to ALK 2 ([92bb359](https://github.com/srmlcn/matthew-don/commit/92bb359714f9dd4cfe8e2e6bb5e2526a74be6a30))
+* update the ALK 2 link data ([8601ac6](https://github.com/srmlcn/matthew-don/commit/8601ac602a2252b36ff06ab28856ed42c8e884a3))
+* update the descriptions and release date for ALK 2 ([3b46fe2](https://github.com/srmlcn/matthew-don/commit/3b46fe299b1bc68b35b5a724b6454e630974b984))
+
 ## <small>3.9.4 (2025-03-10)</small>
 
 ### Bug Fixes
