@@ -20,10 +20,10 @@ export const adventuresOfLucaAndKaiTheComicsImageData: ImageData = {
 }
 
 export const adventuresOfLucaAndKaiBook2of3ImageData: ImageData = {
-  src: "/adventures/book2-cover.png",
+  src: "/adventures/book2-cover.jpg",
   alt: "The Adventures of Luca and Kai (Book 2 of 3)",
-  width: 1047,
-  height: 1571,
+  width: 1233,
+  height: 1850,
 }
 
 export const adventuresOfLucaAndKaiBook3of3ImageData: ImageData = {
@@ -130,6 +130,135 @@ export const adventuresOfLucaAndKaiTheMoonQueenImagesData: ImageData[] = [
     alt: "The Adventures of Luca and Kai: The Moon Queen (15)",
     width: 1075,
     height: 1613,
+  },
+]
+
+export const adventuresOfLucaAndKaiBook2of3ImagesData: ImageData[] = [
+  {
+    src: "/adventures/book2-1.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (1)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-2.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (2)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-3.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (3)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-4.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (4)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-5.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (5)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-6.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (6)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-7.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (7)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-8.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (8)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-9.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (9)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-10.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (10)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-11.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (11)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-12.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (12)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-13.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (13)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-14.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (14)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-15.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (15)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-16.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (16)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-17.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (17)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-18.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (18)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-19.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (19)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-20.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (20)",
+    width: 1200,
+    height: 1800,
+  },
+  {
+    src: "/adventures/book2-21.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai (21)",
+    width: 1200,
+    height: 1800,
   },
 ]
 

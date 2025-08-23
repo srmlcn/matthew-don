@@ -5,7 +5,7 @@ import { Welcome } from "./components/welcome"
 import { Books } from "./components/books"
 import { ComingSoon } from "./components/coming-soon"
 import { NewRelease } from "./components/new-release"
-import { adventuresOfLucaAndKaiTheComicsBookData as bookData } from "@/lib/book-data"
+import { adventuresOfLucaAndKaiBook2of3BookData as bookData } from "@/lib/book-data"
 
 export const metadata: Metadata = {
   title: "Home | Matthew Don",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "humor books",
     "The Adventures of Luca and Kai",
     "The Moon Queen",
+    "The Celestial Samurai",
     "A Celebration of the History of Celebrating History",
     "author",
     "new books",
