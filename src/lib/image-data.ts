@@ -20,10 +20,10 @@ export const adventuresOfLucaAndKaiTheComicsImageData: ImageData = {
 }
 
 export const adventuresOfLucaAndKaiBook2of3ImageData: ImageData = {
-  src: "/adventures/book2-cover.png",
+  src: "/adventures/book2-cover.jpg",
   alt: "The Adventures of Luca and Kai (Book 2 of 3)",
-  width: 1047,
-  height: 1571,
+  width: 1233,
+  height: 1850,
 }
 
 export const adventuresOfLucaAndKaiBook3of3ImageData: ImageData = {
