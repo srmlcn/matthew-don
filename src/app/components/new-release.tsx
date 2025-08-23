@@ -5,7 +5,7 @@ import { Confetti } from "@/app/components/confetti"
 
 export function NewRelease({ bookData }: { bookData: BookData }) {
   return (
-    <AnimatedSection className="flex flex-col items-center gap-12">
+    <AnimatedSection className="flex flex-col items-center gap-12 relative -my-10 py-10">
       <Confetti total={99} />
       <h2 className="font-bold text-4xl text-center">My latest release!</h2>
       <Book size="lg" {...bookData} />
