@@ -49,13 +49,13 @@ export const adventuresOfLucaAndKaiBook2of3LinkData: LinkData = {
   external: [
     {
       vendor: "amazon",
-      href: "https://www.amazon.com/stores/Matthew-Don/author/B00YF2KSWO?ref=ap_rdr&isDramIntegrated=true&shoppingPortalEnabled=true",
-      label: "Follow on Amazon",
+      href: "https://a.co/d/6XwHEyG",
+      label: "Check out on Amazon!",
     },
     {
       vendor: "goodreads",
-      href: "https://www.goodreads.com/author/show/21029434.Matthew_Don",
-      label: "Follow on Goodreads",
+      href: "https://www.goodreads.com/book/show/239357868-the-adventures-of-luca-and-kai",
+      label: "Check out on Goodreads!",
     },
   ],
 }
