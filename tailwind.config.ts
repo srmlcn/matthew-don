@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss"
-import { heroui } from "@heroui/react"
 import { colors } from "./src/lib/theme/colors"
 
 export default {
@@ -8,7 +7,6 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -32,23 +30,5 @@ export default {
       },
     },
   },
-  plugins: [
-    heroui({
-      themes: {
-        light: {
-          colors: {
-            primary: colors.brand.primary.default,
-            secondary: colors.brand.secondary.default,
-          },
-        },
-        dark: {
-          colors: {
-            primary: "#ffffff",
-            secondary: colors.brand.secondary.default,
-          },
-        },
-      },
-    }),
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 } satisfies Config
