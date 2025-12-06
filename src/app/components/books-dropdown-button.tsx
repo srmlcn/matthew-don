@@ -1,6 +1,6 @@
 "use client"
 
-import { BOOK_CATEGORIES, books } from "@/lib/book-data"
+import { adventureBooks, comedyBooks } from "@/lib/data/books"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import {
   Button,
@@ -9,12 +9,17 @@ import {
   DropdownMenu,
   DropdownSection,
   DropdownTrigger,
-  Link,
 } from "@heroui/react"
 import { useState } from "react"
 
 export function BooksDropdownButton() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const adventureBooksWithLinks = adventureBooks.filter(
+    (book) => book.links.internal
+  )
+  const comedyBooksWithLinks = comedyBooks.filter((book) => book.links.internal)
+
   return (
     <Dropdown
       isOpen={isDropdownOpen}
@@ -25,47 +30,42 @@ export function BooksDropdownButton() {
         <Button
           className="text-base"
           variant="light"
+          aria-label="Books menu"
           endContent={
             <ChevronDownIcon
               height="16px"
               className={`transform-all duration-150 ${
                 isDropdownOpen ? "rotate-180" : ""
               }`}
+              aria-hidden="true"
             />
           }
         >
           Books
         </Button>
       </DropdownTrigger>
-      <DropdownMenu classNames={{ base: "max-w-96" }}>
+      <DropdownMenu
+        classNames={{ base: "max-w-96" }}
+        aria-label="Books navigation"
+      >
         <DropdownSection
           title="The Adventures of Luca and Kai"
-          items={books.filter(
-            (book) =>
-              book.linkData.internal &&
-              book.category === BOOK_CATEGORIES.ADVENTURES
-          )}
+          items={adventureBooksWithLinks}
         >
           {(item) => (
-            <DropdownItem key={item.title}>
-              <Link href={item.linkData.internal!.href}>
-                <p className="-indent-2 pl-2 text-balance">{item.title}</p>
-              </Link>
+            <DropdownItem key={item.id} href={item.links.internal || "#"}>
+              <span className="-indent-2 pl-2 text-balance block">
+                {item.subtitle ? `${item.title}: ${item.subtitle}` : item.title}
+              </span>
             </DropdownItem>
           )}
         </DropdownSection>
-        <DropdownSection
-          title="Others"
-          items={books.filter(
-            (book) =>
-              book.linkData.internal && book.category === BOOK_CATEGORIES.OTHERS
-          )}
-        >
+        <DropdownSection title="Other Books" items={comedyBooksWithLinks}>
           {(item) => (
-            <DropdownItem key={item.title}>
-              <Link href={item.linkData.internal?.href || "#"}>
-                <p className="-indent-2 pl-2 text-balance">{item.title}</p>
-              </Link>
+            <DropdownItem key={item.id} href={item.links.internal || "#"}>
+              <span className="-indent-2 pl-2 text-balance block">
+                {item.title}
+              </span>
             </DropdownItem>
           )}
         </DropdownSection>

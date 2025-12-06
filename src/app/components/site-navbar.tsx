@@ -1,7 +1,8 @@
 "use client"
 
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
-import { BOOK_CATEGORIES, books } from "@/lib/book-data"
+import { adventureBooks, comedyBooks } from "@/lib/data/books"
+import { siteConfig } from "@/lib/config/site"
 import {
   Navbar,
   NavbarBrand,
@@ -25,6 +26,8 @@ export function SiteNavbar() {
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       classNames={{ base: "bg-white/40 dark:bg-black/40" }}
+      as="nav"
+      aria-label="Main navigation"
     >
       <NavbarContent justify="start" className="flex gap-4">
         <NavbarMenuToggle
@@ -33,13 +36,14 @@ export function SiteNavbar() {
         />
         <NavbarBrand className="h-full py-2 hidden sm:flex gap-2 justify-start">
           <Image
-            src="/profile-picture.png"
-            alt="MoPete"
+            src={siteConfig.images.profilePicture}
+            alt={`${siteConfig.author.name} profile picture`}
             width={50}
             height={50}
             className="h-full w-auto overflow-hidden rounded-full"
+            priority
           />
-          <p className="font-bold text-lg">Matthew Don</p>
+          <span className="font-bold text-lg">{siteConfig.name}</span>
         </NavbarBrand>
       </NavbarContent>
 
@@ -47,14 +51,15 @@ export function SiteNavbar() {
         <NavbarBrand className="h-full py-2 sm:hidden flex gap-2 justify-end">
           <div className="w-fit h-fit overflow-hidden rounded-full">
             <Image
-              src="/profile-picture.png"
-              alt="MoPete"
+              src={siteConfig.images.profilePicture}
+              alt={`${siteConfig.author.name} profile picture`}
               width={50}
               height={50}
               className="h-full m-auto object-scale-down"
+              priority
             />
           </div>
-          <p className="font-bold text-lg">Matthew Don</p>
+          <span className="font-bold text-lg">{siteConfig.name}</span>
         </NavbarBrand>
         <div className="flex items-center gap-8">
           <NavbarItem className="hidden sm:flex">
@@ -91,50 +96,59 @@ export function SiteNavbar() {
 
         <Divider className="mt-2" />
 
-        <h1 className="text-sm font-bold">Books</h1>
+        <div role="group" aria-labelledby="books-heading">
+          <h2 id="books-heading" className="text-sm font-bold">
+            Books
+          </h2>
 
-        <span />
+          <div className="mt-2" />
 
-        <h2 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
-          The Adventures of Luca and Kai
-        </h2>
-        <FilteredMenuItems
-          filter={BOOK_CATEGORIES.ADVENTURES}
-          onSelect={() => setIsMenuOpen(false)}
-        />
+          <h3 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
+            The Adventures of Luca and Kai
+          </h3>
+          <FilteredMenuItems
+            books={adventureBooks}
+            onSelect={() => setIsMenuOpen(false)}
+          />
 
-        <span />
+          <div className="mt-2" />
 
-        <h2 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
-          Others
-        </h2>
-        <FilteredMenuItems
-          filter={BOOK_CATEGORIES.OTHERS}
-          onSelect={() => setIsMenuOpen(false)}
-        />
+          <h3 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
+            Other Books
+          </h3>
+          <FilteredMenuItems
+            books={comedyBooks}
+            onSelect={() => setIsMenuOpen(false)}
+          />
+        </div>
       </NavbarMenu>
     </Navbar>
   )
 }
 
 function FilteredMenuItems({
-  filter,
+  books,
   onSelect,
 }: {
-  filter: string
-  onSelect: Function
+  books: Array<{
+    title: string
+    subtitle?: string
+    links: { internal?: string }
+  }>
+  onSelect: () => void
 }) {
   return (
     <>
       {books
-        .filter((book) => book.linkData.internal && book.category === filter)
+        .filter((book) => book.links.internal)
         .map((book) => (
           <NavbarMenuItem key={book.title} className="px-1">
             <Link
               onClick={() => onSelect()}
-              href={book.linkData.internal?.href || "#"}
+              href={book.links.internal || "#"}
+              className="-indent-4 pl-4 block"
             >
-              <p className="-indent-4 pl-4">{book.title}</p>
+              {book.subtitle ? `${book.title}: ${book.subtitle}` : book.title}
             </Link>
           </NavbarMenuItem>
         ))}
