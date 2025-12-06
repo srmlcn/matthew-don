@@ -2,17 +2,20 @@
 
 import { adventureBooks, comedyBooks } from "@/lib/data/books"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
+import { buttonVariants } from "@/components/ui/button"
 import {
-  Button,
   Dropdown,
-  DropdownItem,
+  DropdownTrigger,
   DropdownMenu,
   DropdownSection,
-  DropdownTrigger,
-} from "@heroui/react"
+  DropdownItem,
+} from "@/components/ui/dropdown"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { cn } from "@/lib/utils/cn"
 
 export function BooksDropdownButton() {
+  const router = useRouter()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const adventureBooksWithLinks = adventureBooks.filter(
@@ -21,53 +24,39 @@ export function BooksDropdownButton() {
   const comedyBooksWithLinks = comedyBooks.filter((book) => book.links.internal)
 
   return (
-    <Dropdown
-      isOpen={isDropdownOpen}
-      onOpenChange={setIsDropdownOpen}
-      placement="bottom-end"
-    >
-      <DropdownTrigger>
-        <Button
-          className="text-base"
-          variant="light"
-          aria-label="Books menu"
-          endContent={
-            <ChevronDownIcon
-              height="16px"
-              className={`transform-all duration-150 ${
-                isDropdownOpen ? "rotate-180" : ""
-              }`}
-              aria-hidden="true"
-            />
-          }
-        >
-          Books
-        </Button>
-      </DropdownTrigger>
-      <DropdownMenu
-        classNames={{ base: "max-w-96" }}
-        aria-label="Books navigation"
+    <Dropdown>
+      <DropdownTrigger
+        className={cn(buttonVariants({ variant: "ghost" }), "text-base gap-1")}
       >
-        <DropdownSection
-          title="The Adventures of Luca and Kai"
-          items={adventureBooksWithLinks}
-        >
-          {(item) => (
-            <DropdownItem key={item.id} href={item.links.internal || "#"}>
-              <span className="-indent-2 pl-2 text-balance block">
+        Books
+        <ChevronDownIcon
+          height={16}
+          className="transition-transform duration-150"
+          aria-hidden="true"
+        />
+      </DropdownTrigger>
+      <DropdownMenu className="w-96">
+        <DropdownSection title="The Adventures of Luca and Kai">
+          {adventureBooksWithLinks.map((item) => (
+            <DropdownItem
+              key={item.id}
+              onClick={() => router.push(item.links.internal || "#")}
+            >
+              <span className="block text-balance">
                 {item.subtitle ? `${item.title}: ${item.subtitle}` : item.title}
               </span>
             </DropdownItem>
-          )}
+          ))}
         </DropdownSection>
-        <DropdownSection title="Other Books" items={comedyBooksWithLinks}>
-          {(item) => (
-            <DropdownItem key={item.id} href={item.links.internal || "#"}>
-              <span className="-indent-2 pl-2 text-balance block">
-                {item.title}
-              </span>
+        <DropdownSection title="Other Books">
+          {comedyBooksWithLinks.map((item) => (
+            <DropdownItem
+              key={item.id}
+              onClick={() => router.push(item.links.internal || "#")}
+            >
+              <span className="block text-balance">{item.title}</span>
             </DropdownItem>
-          )}
+          ))}
         </DropdownSection>
       </DropdownMenu>
     </Dropdown>

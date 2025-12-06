@@ -11,146 +11,172 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-  Divider,
-} from "@heroui/react"
+} from "@/components/ui/navbar"
+import { Divider } from "@/components/ui/divider"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import { Disclosure } from "@headlessui/react"
 
 export function SiteNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <Navbar
-      height="4rem"
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
-      classNames={{ base: "bg-white/40 dark:bg-black/40" }}
-      as="nav"
-      aria-label="Main navigation"
-    >
-      <NavbarContent justify="start" className="flex gap-4">
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-        <NavbarBrand className="h-full py-2 hidden sm:flex gap-2 justify-start">
-          <Image
-            src={siteConfig.images.profilePicture}
-            alt={`${siteConfig.author.name} profile picture`}
-            width={50}
-            height={50}
-            className="h-full w-auto overflow-hidden rounded-full"
-            priority
-          />
-          <span className="font-bold text-lg">{siteConfig.name}</span>
-        </NavbarBrand>
-      </NavbarContent>
+    <Disclosure as="nav" aria-label="Main navigation">
+      {({ open }) => (
+        <>
+          <div
+            className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-950/95 dark:supports-[backdrop-filter]:bg-gray-950/60"
+            style={{ height: "4rem" }}
+          >
+            <div className="container mx-auto h-full flex items-center justify-between px-4">
+              {/* Mobile menu button */}
+              <div className="flex items-center gap-4">
+                <Disclosure.Button className="sm:hidden inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:text-gray-300 dark:hover:bg-gray-800">
+                  <span className="sr-only">
+                    {open ? "Close menu" : "Open menu"}
+                  </span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  </svg>
+                </Disclosure.Button>
 
-      <NavbarContent justify="end" className="flex gap-4">
-        <NavbarBrand className="h-full py-2 sm:hidden flex gap-2 justify-end">
-          <div className="w-fit h-fit overflow-hidden rounded-full">
-            <Image
-              src={siteConfig.images.profilePicture}
-              alt={`${siteConfig.author.name} profile picture`}
-              width={50}
-              height={50}
-              className="h-full m-auto object-scale-down"
-              priority
-            />
+                {/* Desktop brand */}
+                <div className="h-full py-2 hidden sm:flex gap-2 items-center">
+                  <Image
+                    src={siteConfig.images.profilePicture}
+                    alt={`${siteConfig.author.name} profile picture`}
+                    width={50}
+                    height={50}
+                    className="h-full w-auto overflow-hidden rounded-full"
+                    priority
+                  />
+                  <span className="font-bold text-lg">{siteConfig.name}</span>
+                </div>
+              </div>
+
+              {/* Mobile brand (center) */}
+              <div className="h-full py-2 sm:hidden flex gap-2 items-center">
+                <div className="w-fit h-fit overflow-hidden rounded-full">
+                  <Image
+                    src={siteConfig.images.profilePicture}
+                    alt={`${siteConfig.author.name} profile picture`}
+                    width={50}
+                    height={50}
+                    className="h-full m-auto object-scale-down"
+                    priority
+                  />
+                </div>
+                <span className="font-bold text-lg">{siteConfig.name}</span>
+              </div>
+
+              {/* Desktop navigation */}
+              <div className="hidden sm:flex items-center gap-8">
+                <Link
+                  href="/"
+                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/about"
+                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+                >
+                  About
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+                >
+                  Contact
+                </Link>
+                <BooksDropdownButton />
+              </div>
+            </div>
           </div>
-          <span className="font-bold text-lg">{siteConfig.name}</span>
-        </NavbarBrand>
-        <div className="flex items-center gap-8">
-          <NavbarItem className="hidden sm:flex">
-            <Link href="/">Home</Link>
-          </NavbarItem>
-          <NavbarItem className="hidden sm:flex">
-            <Link href="/about">About</Link>
-          </NavbarItem>
-          <NavbarItem className="hidden sm:flex">
-            <Link href="/contact">Contact</Link>
-          </NavbarItem>
-        </div>
-        <NavbarItem className="hidden sm:flex">
-          <BooksDropdownButton />
-        </NavbarItem>
-      </NavbarContent>
 
-      <NavbarMenu className="bg-white/40 dark:bg-black/40 backdrop-blur-3xl">
-        <NavbarMenuItem key="home">
-          <Link onClick={() => setIsMenuOpen(false)} href="/">
-            Home
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem key="about">
-          <Link onClick={() => setIsMenuOpen(false)} href="/about">
-            About
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem key="contact">
-          <Link onClick={() => setIsMenuOpen(false)} href="/contact">
-            Contact
-          </Link>
-        </NavbarMenuItem>
+          {/* Mobile menu */}
+          <Disclosure.Panel className="sm:hidden border-b bg-white/95 backdrop-blur dark:bg-gray-950/95">
+            <div className="space-y-1 px-4 pb-3 pt-2">
+              <Disclosure.Button
+                as={Link}
+                href="/"
+                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Home
+              </Disclosure.Button>
+              <Disclosure.Button
+                as={Link}
+                href="/about"
+                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                About
+              </Disclosure.Button>
+              <Disclosure.Button
+                as={Link}
+                href="/contact"
+                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                Contact
+              </Disclosure.Button>
 
-        <Divider className="mt-2" />
+              <Divider className="my-2" />
 
-        <div role="group" aria-labelledby="books-heading">
-          <h2 id="books-heading" className="text-sm font-bold">
-            Books
-          </h2>
+              <div role="group" aria-labelledby="books-heading">
+                <h2 id="books-heading" className="px-3 py-2 text-sm font-bold">
+                  Books
+                </h2>
 
-          <div className="mt-2" />
+                <h3 className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
+                  The Adventures of Luca and Kai
+                </h3>
+                <FilteredMenuItems books={adventureBooks} />
 
-          <h3 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
-            The Adventures of Luca and Kai
-          </h3>
-          <FilteredMenuItems
-            books={adventureBooks}
-            onSelect={() => setIsMenuOpen(false)}
-          />
-
-          <div className="mt-2" />
-
-          <h3 className="text-sm font-semibold light:text-zinc-500 dark:text-zinc-300">
-            Other Books
-          </h3>
-          <FilteredMenuItems
-            books={comedyBooks}
-            onSelect={() => setIsMenuOpen(false)}
-          />
-        </div>
-      </NavbarMenu>
-    </Navbar>
+                <h3 className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2">
+                  Other Books
+                </h3>
+                <FilteredMenuItems books={comedyBooks} />
+              </div>
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   )
 }
 
 function FilteredMenuItems({
   books,
-  onSelect,
 }: {
   books: Array<{
     title: string
     subtitle?: string
     links: { internal?: string }
   }>
-  onSelect: () => void
 }) {
   return (
     <>
       {books
         .filter((book) => book.links.internal)
         .map((book) => (
-          <NavbarMenuItem key={book.title} className="px-1">
-            <Link
-              onClick={() => onSelect()}
-              href={book.links.internal || "#"}
-              className="-indent-4 pl-4 block"
-            >
-              {book.subtitle ? `${book.title}: ${book.subtitle}` : book.title}
-            </Link>
-          </NavbarMenuItem>
+          <Disclosure.Button
+            key={book.title}
+            as={Link}
+            href={book.links.internal || "#"}
+            className="block rounded-md px-6 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            {book.subtitle ? `${book.title}: ${book.subtitle}` : book.title}
+          </Disclosure.Button>
         ))}
     </>
   )
