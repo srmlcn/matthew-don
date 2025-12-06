@@ -3,32 +3,17 @@
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
 import { adventureBooks, comedyBooks } from "@/lib/data/books"
 import { siteConfig } from "@/lib/config/site"
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarMenuToggle,
-} from "@/components/ui/navbar"
 import { Divider } from "@/components/ui/divider"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
 import { Disclosure } from "@headlessui/react"
 
 export function SiteNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   return (
     <Disclosure as="nav" aria-label="Main navigation">
       {({ open }) => (
         <>
-          <div
-            className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-950/95 dark:supports-[backdrop-filter]:bg-gray-950/60"
-            style={{ height: "4rem" }}
-          >
+          <div className="sticky top-0 z-50 w-full h-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-gray-950/95 dark:supports-[backdrop-filter]:bg-gray-950/60">
             <div className="container mx-auto h-full flex items-center justify-between px-4">
               {/* Mobile menu button */}
               <div className="flex items-center gap-4">
@@ -58,7 +43,7 @@ export function SiteNavbar() {
                     alt={`${siteConfig.author.name} profile picture`}
                     width={50}
                     height={50}
-                    className="h-full w-auto overflow-hidden rounded-full"
+                    className="h-12 w-auto overflow-hidden rounded-full"
                     priority
                   />
                   <span className="font-bold text-lg">{siteConfig.name}</span>
@@ -73,7 +58,7 @@ export function SiteNavbar() {
                     alt={`${siteConfig.author.name} profile picture`}
                     width={50}
                     height={50}
-                    className="h-full m-auto object-scale-down"
+                    className="h-12 m-auto object-scale-down"
                     priority
                   />
                 </div>
