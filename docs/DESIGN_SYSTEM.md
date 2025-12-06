@@ -5,6 +5,7 @@ The Matthew Don website design system provides a consistent visual language and 
 ## Overview
 
 The design system is centralized in `/src/lib/theme/` and provides:
+
 - **Colors**: Brand colors, semantic colors, vendor colors, and neutral scale
 - **Typography**: Display, heading, and body text scales
 - **Spacing**: Component gaps, section padding, and container widths
@@ -18,24 +19,27 @@ The design system is centralized in `/src/lib/theme/` and provides:
 The primary brand colors establish the visual identity.
 
 #### Primary (Black)
+
 - **Default**: `#171717` - Main brand color, used for headers and important UI elements
 - **Hover**: `#262626` - Slightly lighter for interactive states
 - **Active**: `#404040` - Even lighter for active/pressed states
 
 ```tsx
-import { colors } from '@/lib/theme';
+import { colors } from "@/lib/theme"
 
-<button style={{ backgroundColor: colors.brand.primary.default }}>
+;<button style={{ backgroundColor: colors.brand.primary.default }}>
   Button
 </button>
 ```
 
 #### Secondary (Neon Green)
+
 - **Default**: `#00ff77` - Accent color for CTAs and highlights
 - **Hover**: `#00e66d` - Hover state
 - **Active**: `#00cc63` - Active state
 
 #### Accent (Coral Red)
+
 - **Default**: `#FF6B6B` - For alerts, warnings, and special callouts
 - **Hover**: `#FF5252`
 - **Active**: `#FF3838`
@@ -44,40 +48,40 @@ import { colors } from '@/lib/theme';
 
 Colors with specific meanings:
 
-| Color | Hex | Usage |
-|-------|-----|-------|
+| Color   | Hex       | Usage                           |
+| ------- | --------- | ------------------------------- |
 | Success | `#00ff77` | Success messages, confirmations |
-| Warning | `#FFA500` | Warnings, cautionary messages |
-| Error | `#FF3838` | Errors, destructive actions |
-| Info | `#3B82F6` | Informational messages |
+| Warning | `#FFA500` | Warnings, cautionary messages   |
+| Error   | `#FF3838` | Errors, destructive actions     |
+| Info    | `#3B82F6` | Informational messages          |
 
 ### Vendor Colors
 
 Brand colors for external platforms:
 
-| Vendor | Hex | Usage |
-|--------|-----|-------|
-| Amazon | `#febd69` | Amazon purchase links |
+| Vendor    | Hex       | Usage                   |
+| --------- | --------- | ----------------------- |
+| Amazon    | `#febd69` | Amazon purchase links   |
 | Goodreads | `#553b08` | Goodreads profile links |
-| Instagram | `#E4405F` | Instagram social link |
-| TikTok | `#000000` | TikTok social link |
+| Instagram | `#E4405F` | Instagram social link   |
+| TikTok    | `#000000` | TikTok social link      |
 
 ### Neutral Scale
 
 Gray scale for text, borders, and backgrounds:
 
-| Level | Hex | Usage |
-|-------|-----|-------|
-| 50 | `#FAFAFA` | Lightest background |
-| 100 | `#F5F5F5` | Light background |
-| 200 | `#E5E5E5` | Borders, dividers |
-| 300 | `#D4D4D4` | Disabled states |
-| 400 | `#A3A3A3` | Placeholders |
-| 500 | `#737373` | Secondary text |
-| 600 | `#525252` | Body text |
-| 700 | `#404040` | Headings |
-| 800 | `#262626` | Dark headings |
-| 900 | `#171717` | Darkest text |
+| Level | Hex       | Usage               |
+| ----- | --------- | ------------------- |
+| 50    | `#FAFAFA` | Lightest background |
+| 100   | `#F5F5F5` | Light background    |
+| 200   | `#E5E5E5` | Borders, dividers   |
+| 300   | `#D4D4D4` | Disabled states     |
+| 400   | `#A3A3A3` | Placeholders        |
+| 500   | `#737373` | Secondary text      |
+| 600   | `#525252` | Body text           |
+| 700   | `#404040` | Headings            |
+| 800   | `#262626` | Dark headings       |
+| 900   | `#171717` | Darkest text        |
 
 ## Typography
 
@@ -87,43 +91,41 @@ Typography uses the **Outfit** font family from Google Fonts with a consistent s
 
 For hero sections and large headings:
 
-| Size | Tailwind Class | Pixel Size | Usage |
-|------|----------------|------------|-------|
-| Large | `text-6xl font-bold` | 60px | Hero titles |
-| Medium | `text-5xl font-bold` | 48px | Page heroes |
-| Small | `text-4xl font-bold` | 36px | Section heroes |
+| Size   | Tailwind Class       | Pixel Size | Usage          |
+| ------ | -------------------- | ---------- | -------------- |
+| Large  | `text-6xl font-bold` | 60px       | Hero titles    |
+| Medium | `text-5xl font-bold` | 48px       | Page heroes    |
+| Small  | `text-4xl font-bold` | 36px       | Section heroes |
 
 ```tsx
-import { typography } from '@/lib/theme';
+import { typography } from "@/lib/theme"
 
-<h1 className={typography.display.large}>
-  The Adventures of Luca and Kai
-</h1>
+;<h1 className={typography.display.large}>The Adventures of Luca and Kai</h1>
 ```
 
 ### Headings
 
 For section and component headings:
 
-| Level | Tailwind Class | Pixel Size |
-|-------|----------------|------------|
-| H1 | `text-4xl font-bold` | 36px |
-| H2 | `text-3xl font-bold` | 30px |
-| H3 | `text-2xl font-semibold` | 24px |
-| H4 | `text-xl font-semibold` | 20px |
-| H5 | `text-lg font-semibold` | 18px |
-| H6 | `text-base font-semibold` | 16px |
+| Level | Tailwind Class            | Pixel Size |
+| ----- | ------------------------- | ---------- |
+| H1    | `text-4xl font-bold`      | 36px       |
+| H2    | `text-3xl font-bold`      | 30px       |
+| H3    | `text-2xl font-semibold`  | 24px       |
+| H4    | `text-xl font-semibold`   | 20px       |
+| H5    | `text-lg font-semibold`   | 18px       |
+| H6    | `text-base font-semibold` | 16px       |
 
 ### Body Text
 
 For paragraphs and general content:
 
-| Size | Tailwind Class | Pixel Size | Usage |
-|------|----------------|------------|-------|
-| Large | `text-lg` | 18px | Lead paragraphs |
-| Base | `text-base` | 16px | Body text |
-| Small | `text-sm` | 14px | Captions, meta |
-| Tiny | `text-xs` | 12px | Labels, fine print |
+| Size  | Tailwind Class | Pixel Size | Usage              |
+| ----- | -------------- | ---------- | ------------------ |
+| Large | `text-lg`      | 18px       | Lead paragraphs    |
+| Base  | `text-base`    | 16px       | Body text          |
+| Small | `text-sm`      | 14px       | Captions, meta     |
+| Tiny  | `text-xs`      | 12px       | Labels, fine print |
 
 ## Spacing
 
@@ -131,18 +133,18 @@ For paragraphs and general content:
 
 Internal spacing within components:
 
-| Size | Tailwind Class | Pixel Size | Usage |
-|------|----------------|------------|-------|
-| XS | `gap-2` | 8px | Tight spacing |
-| SM | `gap-4` | 16px | Default spacing |
-| MD | `gap-6` | 24px | Comfortable spacing |
-| LG | `gap-8` | 32px | Loose spacing |
-| XL | `gap-12` | 48px | Section gaps |
+| Size | Tailwind Class | Pixel Size | Usage               |
+| ---- | -------------- | ---------- | ------------------- |
+| XS   | `gap-2`        | 8px        | Tight spacing       |
+| SM   | `gap-4`        | 16px       | Default spacing     |
+| MD   | `gap-6`        | 24px       | Comfortable spacing |
+| LG   | `gap-8`        | 32px       | Loose spacing       |
+| XL   | `gap-12`       | 48px       | Section gaps        |
 
 ```tsx
-import { spacing } from '@/lib/theme';
+import { spacing } from "@/lib/theme"
 
-<div className={`flex ${spacing.component.md}`}>
+;<div className={`flex ${spacing.component.md}`}>
   <Card />
   <Card />
 </div>
@@ -153,22 +155,22 @@ import { spacing } from '@/lib/theme';
 Spacing between major page sections:
 
 | Breakpoint | Tailwind Class | Vertical Padding |
-|------------|----------------|------------------|
-| Mobile | `py-16` | 64px |
-| Tablet | `py-24` | 96px |
-| Desktop | `py-32` | 128px |
+| ---------- | -------------- | ---------------- |
+| Mobile     | `py-16`        | 64px             |
+| Tablet     | `py-24`        | 96px             |
+| Desktop    | `py-32`        | 128px            |
 
 ### Container Widths
 
 Content container max-widths:
 
 | Size | Tailwind Class | Max Width |
-|------|----------------|-----------|
-| SM | `max-w-2xl` | 672px |
-| MD | `max-w-4xl` | 896px |
-| LG | `max-w-6xl` | 1152px |
-| XL | `max-w-7xl` | 1280px |
-| Full | `max-w-full` | 100% |
+| ---- | -------------- | --------- |
+| SM   | `max-w-2xl`    | 672px     |
+| MD   | `max-w-4xl`    | 896px     |
+| LG   | `max-w-6xl`    | 1152px    |
+| XL   | `max-w-7xl`    | 1280px    |
+| Full | `max-w-full`   | 100%      |
 
 ## Animations
 
@@ -201,10 +203,11 @@ easing: {
 Pre-built animation variants:
 
 #### Fade
-```tsx
-import { animations } from '@/lib/theme';
 
-<motion.div
+```tsx
+import { animations } from "@/lib/theme"
+
+;<motion.div
   initial="hidden"
   animate="visible"
   variants={animations.variants.fade}
@@ -214,6 +217,7 @@ import { animations } from '@/lib/theme';
 ```
 
 #### Slide Up
+
 ```tsx
 <motion.div
   initial="hidden"
@@ -225,6 +229,7 @@ import { animations } from '@/lib/theme';
 ```
 
 Available variants:
+
 - `fade` - Fade in/out
 - `slideUp` - Slide from bottom
 - `slideDown` - Slide from top
@@ -262,14 +267,15 @@ Accessible focus indicators using Tailwind's `focus-visible` utilities.
 The design system exports a `focusRing` utility:
 
 ```tsx
-import { focusRing } from '@/lib/theme';
+import { focusRing } from "@/lib/theme"
 
-<a href="/" className={focusRing}>
+;<a href="/" className={focusRing}>
   Link
 </a>
 ```
 
 This applies:
+
 ```css
 focus-visible:outline-none
 focus-visible:ring-2
@@ -282,79 +288,72 @@ focus-visible:ring-brand-primary
 ### Button Component
 
 ```tsx
-import { colors, typography, focusRing } from '@/lib/theme';
-import { cn } from '@/lib/utils';
+import { colors, typography, focusRing } from "@/lib/theme"
+import { cn } from "@/lib/utils"
 
-export function Button({ children, variant = 'primary' }) {
+export function Button({ children, variant = "primary" }) {
   return (
     <button
       className={cn(
         typography.body.base,
         focusRing,
-        'px-6 py-3 rounded-md font-semibold transition-colors',
-        variant === 'primary' && [
-          'bg-brand-primary text-white',
-          'hover:bg-brand-primary-hover',
-          'active:bg-brand-primary-active',
+        "px-6 py-3 rounded-md font-semibold transition-colors",
+        variant === "primary" && [
+          "bg-brand-primary text-white",
+          "hover:bg-brand-primary-hover",
+          "active:bg-brand-primary-active",
         ],
-        variant === 'secondary' && [
-          'bg-brand-secondary text-black',
-          'hover:bg-brand-secondary-hover',
-          'active:bg-brand-secondary-active',
+        variant === "secondary" && [
+          "bg-brand-secondary text-black",
+          "hover:bg-brand-secondary-hover",
+          "active:bg-brand-secondary-active",
         ]
       )}
     >
       {children}
     </button>
-  );
+  )
 }
 ```
 
 ### Card Component
 
 ```tsx
-import { spacing, focusRing } from '@/lib/theme';
-import { motion } from 'framer-motion';
-import { animations } from '@/lib/theme';
+import { spacing, focusRing } from "@/lib/theme"
+import { motion } from "framer-motion"
+import { animations } from "@/lib/theme"
 
 export function Card({ title, description }) {
   return (
     <motion.article
       variants={animations.variants.slideUp}
       className={cn(
-        'p-6 rounded-lg',
-        'bg-white dark:bg-neutral-900',
-        'border border-neutral-200 dark:border-neutral-800',
+        "p-6 rounded-lg",
+        "bg-white dark:bg-neutral-900",
+        "border border-neutral-200 dark:border-neutral-800",
         spacing.component.md
       )}
     >
       <h3 className={typography.heading.h3}>{title}</h3>
       <p className={typography.body.base}>{description}</p>
     </motion.article>
-  );
+  )
 }
 ```
 
 ### Section Layout
 
 ```tsx
-import { spacing } from '@/lib/theme';
+import { spacing } from "@/lib/theme"
 
 export function Section({ children }) {
   return (
-    <section className={cn(
-      spacing.section.mobile,
-      'md:py-24',
-      'lg:py-32'
-    )}>
-      <div className={cn(
-        'container mx-auto px-4',
-        spacing.container.lg
-      )}>
+    <section className={cn(spacing.section.mobile, "md:py-24", "lg:py-32")}>
+      <div className={cn("container mx-auto px-4", spacing.container.lg)}>
         {children}
       </div>
     </section>
-  );
+  )
 }
 ```
 
@@ -380,6 +379,7 @@ The design system supports dark mode through Tailwind's `dark:` modifier.
 ### Color Contrast
 
 All color combinations meet WCAG AA standards:
+
 - **Normal text**: 4.5:1 contrast ratio minimum
 - **Large text** (18px+): 3:1 contrast ratio minimum
 
@@ -388,20 +388,22 @@ All color combinations meet WCAG AA standards:
 Respect user's motion preferences:
 
 ```tsx
-import { useReducedMotion } from '@/lib/hooks/use-reduced-motion';
-import { motion } from 'framer-motion';
+import { useReducedMotion } from "@/lib/hooks/use-reduced-motion"
+import { motion } from "framer-motion"
 
 export function AnimatedComponent() {
-  const shouldReduceMotion = useReducedMotion();
-  
+  const shouldReduceMotion = useReducedMotion()
+
   return (
     <motion.div
       animate={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
-      transition={shouldReduceMotion ? { duration: 0 } : animations.transitions.default}
+      transition={
+        shouldReduceMotion ? { duration: 0 } : animations.transitions.default
+      }
     >
       Content
     </motion.div>
-  );
+  )
 }
 ```
 
@@ -410,9 +412,9 @@ export function AnimatedComponent() {
 Always visible for keyboard navigation:
 
 ```tsx
-import { focusRing } from '@/lib/theme';
+import { focusRing } from "@/lib/theme"
 
-<a href="/" className={focusRing}>
+;<a href="/" className={focusRing}>
   Link text
 </a>
 ```
@@ -425,19 +427,19 @@ The design system is integrated with Tailwind CSS:
 
 ```typescript
 // tailwind.config.ts
-import { colors } from './src/lib/theme';
+import { colors } from "./src/lib/theme"
 
 export default {
   theme: {
     extend: {
       colors: {
-        'brand-primary': colors.brand.primary.default,
-        'brand-secondary': colors.brand.secondary.default,
+        "brand-primary": colors.brand.primary.default,
+        "brand-secondary": colors.brand.secondary.default,
         // ...
       },
     },
   },
-};
+}
 ```
 
 ### Adding New Colors
@@ -448,9 +450,9 @@ export default {
 export const colors = {
   // ... existing colors
   custom: {
-    purple: '#9333EA',
+    purple: "#9333EA",
   },
-} as const;
+} as const
 ```
 
 2. Update Tailwind config:
@@ -464,9 +466,7 @@ colors: {
 3. Use in components:
 
 ```tsx
-<div className="bg-custom-purple">
-  Content
-</div>
+<div className="bg-custom-purple">Content</div>
 ```
 
 ---
