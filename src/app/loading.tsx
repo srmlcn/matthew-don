@@ -1,4 +1,4 @@
-import { Divider } from "@heroui/react"
+import { Divider } from "@/components/ui/divider"
 
 export default function Loading() {
   return (
