@@ -1,24 +1,49 @@
-"use client"
-
 import { AnimatedSection } from "@/app/components/animated-section"
-import { Button } from "@heroui/react"
+import { LinkButton } from "@/components/ui/link-button"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
+import { getBreadcrumbs } from "@/lib/config/navigation"
 import Image from "next/image"
-import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About Matthew Don - Author Bio",
+  description:
+    "Learn about Matthew Don, author of The Adventures of Luca and Kai series and A Celebration of the History of Celebrating History. Based in Tucson, Arizona, Matt writes adventure fantasy for all ages and humorous fiction for adults.",
+  openGraph: {
+    title: "About Matthew Don - Author Bio",
+    description:
+      "Learn about Matthew Don, author of The Adventures of Luca and Kai series. Based in Tucson, Arizona, Matt writes adventure fantasy for all ages and humorous fiction for adults.",
+    images: [
+      {
+        url: "/matthew-don.jpg",
+        alt: "Matthew Don - Author",
+        width: 724,
+        height: 763,
+      },
+    ],
+  },
+}
 
 export default function AboutPage() {
+  const breadcrumbs = getBreadcrumbs("/about")
+
   return (
-    <div className="flex flex-col items-center gap-8">
-      <h1 className="font-bold text-4xl">Like I said, I'm Matt.</h1>
-      <AnimatedSection className="grid grid-cols-1 gap-8 sm:grid-cols-2 py-12 items-center place-items-center">
-        <Image
-          src="/matthew-don.jpg"
-          alt="Matthew Don"
-          width={724}
-          height={763}
-          className="w-full h-auto"
-        />
-        <div className="w-full flex flex-col items-center gap-8">
-          <div className="prose">
+    <div className="flex flex-col gap-8 max-w-5xl mx-auto">
+      <Breadcrumbs items={breadcrumbs} />
+
+      <h1 className="font-bold text-4xl text-center md:text-left">About Me</h1>
+      <AnimatedSection className="grid grid-cols-1 gap-8 md:grid-cols-2 items-start">
+        <div className="flex justify-center md:justify-start">
+          <Image
+            src="/matthew-don.jpg"
+            alt="Matthew Don - Author photo"
+            width={724}
+            height={763}
+            className="w-full max-w-md h-auto rounded-lg shadow-lg"
+          />
+        </div>
+        <div className="flex flex-col gap-6">
+          <div className="prose dark:prose-invert max-w-none">
             <p>
               That's me. Ok, the picture is over a decade old. I'm bald now. I'm
               not trying to catfish you or anything, so chill. This is an author
@@ -52,23 +77,27 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-4">
-            <Button
-              as={Link}
-              href="https://www.instagram.com/hiimmattdon/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </Button>
-            <Button
-              as={Link}
-              href="https://www.tiktok.com/@hiimmattdon"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              TikTok
-            </Button>
+          <div className="pt-4">
+            <p className="text-lg font-semibold mb-3">Connect with me:</p>
+            <div className="flex flex-wrap gap-3">
+              <LinkButton
+                href="https://www.instagram.com/hiimmattdon/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Matthew Don on Instagram"
+              >
+                Instagram
+              </LinkButton>
+              <LinkButton
+                href="https://www.tiktok.com/@hiimmattdon"
+                variant="outline"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Matthew Don on TikTok"
+              >
+                TikTok
+              </LinkButton>
+            </div>
           </div>
         </div>
       </AnimatedSection>

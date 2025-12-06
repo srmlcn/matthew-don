@@ -1,55 +1,57 @@
-import { Divider } from "@heroui/react"
+import { Divider } from "@/components/ui/divider"
+import { Hero } from "./components/hero"
+import { AllBooks } from "./components/all-books"
+import { NewsletterSignup } from "./components/newsletter-signup"
 import { Invitation } from "./components/invitation"
 import type { Metadata } from "next"
-import { Welcome } from "./components/welcome"
-import { Books } from "./components/books"
-import { ComingSoon } from "./components/coming-soon"
-import { NewRelease } from "./components/new-release"
-import { adventuresOfLucaAndKaiBook2of3BookData as bookData } from "@/lib/book-data"
+import { publishedBooks, upcomingBooks } from "@/lib/data/books"
 
 export const metadata: Metadata = {
-  title: "Home | Matthew Don",
+  title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
   description:
-    "Discover the works of Matthew Don, including the thrilling adventure 'The Adventures of Luca and Kai: The Moon Queen' and the satirical comedy 'A Celebration of the History of Celebrating History.' Explore stories that range from fun-filled journeys for all ages to irreverent humor for mature readers.",
+    "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences. Explore adventure fantasy, comics, and more.",
   keywords: [
-    "fiction books",
-    "adventure books",
-    "humor books",
+    "Matthew Don",
+    "author",
+    "adventure fantasy",
+    "children's books",
     "The Adventures of Luca and Kai",
     "The Moon Queen",
     "The Celestial Samurai",
+    "young adult fiction",
+    "comedy books",
+    "satirical fiction",
     "A Celebration of the History of Celebrating History",
-    "author",
-    "new books",
     "book series",
-    "upcoming books",
+    "family-friendly books",
+    "Tucson author",
   ],
   openGraph: {
-    title: "Home | Matthew Don",
+    title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
     description:
-      "Discover the works of Matthew Don, including the thrilling adventure 'The Adventures of Luca and Kai: The Moon Queen' and the satirical comedy 'A Celebration of the History of Celebrating History.' Explore stories that range from fun-filled journeys for all ages to irreverent humor for mature readers.",
+      "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
     images: [
       {
         url: "/matthew-don.jpg",
-        alt: "Matthew Don",
+        alt: "Matthew Don - Author",
         width: 724,
         height: 763,
       },
     ],
+    type: "website",
+    url: "https://matthewdon.com",
   },
   twitter: {
     card: "summary_large_image",
     site: "@MatthewDon",
-    title: "Home | Matthew Don",
+    title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
     description:
-      "Discover the works of Matthew Don, including the thrilling adventure 'The Adventures of Luca and Kai: The Moon Queen' and the satirical comedy 'A Celebration of the History of Celebrating History.' Explore stories that range from fun-filled journeys for all ages to irreverent humor for mature readers.",
+      "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
     creator: "@MatthewDon",
     images: [
       {
         url: "/matthew-don.jpg",
-        alt: "Matthew Don",
-        width: 724,
-        height: 763,
+        alt: "Matthew Don - Author",
       },
     ],
   },
@@ -57,23 +59,23 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center py-20 gap-20">
-      <Welcome />
+    <div className="flex flex-col gap-16 max-w-6xl mx-auto w-full">
+      {/* Hero Section */}
+      <Hero />
 
-      <Divider orientation="horizontal" />
+      <Divider />
 
-      <NewRelease bookData={bookData} />
+      {/* All Books in a Unified Display */}
+      <AllBooks books={publishedBooks} upcomingBooks={upcomingBooks} />
 
-      <Divider orientation="horizontal" />
+      <Divider />
 
-      <Books />
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
 
-      <Divider orientation="horizontal" />
+      <Divider />
 
-      <ComingSoon />
-
-      <Divider orientation="horizontal" />
-
+      {/* Contact Invitation */}
       <Invitation />
     </div>
   )

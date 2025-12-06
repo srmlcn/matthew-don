@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Matthew Don - Author Website
 
-## Getting Started
+Official website for author Matthew Don, showcasing his books including The Adventures of Luca and Kai series and other published works.
 
-First, run the development server:
+## 📚 About
+
+This is a modern, accessible website built with Next.js featuring:
+
+- Book catalog with detailed information
+- Author biography and contact information
+- Responsive design for all devices
+- Accessibility-first approach (WCAG AA compliant)
+- Optimized performance and SEO
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 16.0.7 (App Router)
+- **UI Library**: HeroUI 2.6.14
+- **Styling**: Tailwind CSS 3.4.1
+- **Animations**: Framer Motion 12.4.1
+- **Language**: TypeScript 5 (Strict Mode)
+- **Font**: Outfit (Google Fonts)
+- **Icons**: Heroicons v2, React Icons
+- **Package Manager**: pnpm
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 20+ or 24+
+- pnpm (recommended) or npm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone the repository
+git clone https://github.com/cainspencerm/matthew-don.git
+cd matthew-don
+
+# Install dependencies
+pnpm install
+
+# Run development server
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm dev          # Start development server with Turbopack
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+```
 
-## Learn More
+## 📁 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                      # Next.js app router pages
+│   ├── (catalog)/           # Book catalog routes
+│   ├── components/          # Page-specific components
+│   ├── about/              # About page
+│   ├── contact/            # Contact page
+│   └── layout.tsx          # Root layout
+├── components/              # Shared components
+│   ├── layout/             # Layout components
+│   └── ui/                 # Reusable UI components
+├── lib/
+│   ├── config/             # Site configuration
+│   ├── data/               # Centralized data
+│   │   └── books/         # Book data and types
+│   ├── hooks/              # Custom React hooks
+│   ├── theme/              # Design system tokens
+│   └── utils/              # Utility functions
+└── styles/
+    └── globals.css         # Global styles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site uses a centralized design system with:
 
-## Deploy on Vercel
+- **Colors**: Brand colors, semantic colors, vendor colors, neutral scale
+- **Typography**: Display, heading, and body text scales
+- **Spacing**: Consistent gaps, padding, and container widths
+- **Animations**: Motion presets with reduced-motion support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See `src/lib/theme/` for the full design system.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ♿️ Accessibility
+
+We're committed to making this site accessible to everyone:
+
+- ✅ WCAG AA compliance
+- ✅ Keyboard navigation support
+- ✅ Screen reader optimized
+- ✅ Reduced motion support
+- ✅ Focus management
+- ✅ Semantic HTML and ARIA labels
+
+## 📖 Adding/Updating Books
+
+Books are managed in `src/lib/data/books/`:
+
+1. Add book data to the appropriate file:
+
+   - `adventures-series.ts` - Luca and Kai books
+   - `comics.ts` - Comic books
+   - `standalone.ts` - Standalone titles
+
+2. Follow the `Book` interface in `types.ts`
+
+3. Books will automatically appear on the site
+
+## 🚢 Deployment
+
+The site is optimized for deployment on Vercel:
+
+```bash
+# Build the project
+pnpm build
+
+# The build output will be in .next/
+```
+
+For other platforms, refer to [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## 📝 License
+
+Copyright © 2025 Matthew Don. All rights reserved.
+
+## 🤝 Contributing
+
+This is a personal website. For bug reports or suggestions, please open an issue.
+
+## 📧 Contact
+
+- Instagram: [@hiimmattdon](https://www.instagram.com/hiimmattdon/)
+- TikTok: [@hiimmattdon](https://www.tiktok.com/@hiimmattdon)
+- Amazon: [Author Page](https://www.amazon.com/stores/Matthew-Don/author/B00YF2KSWO)
+- Goodreads: [Author Profile](https://www.goodreads.com/author/show/21029434.Matthew_Don)

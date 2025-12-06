@@ -1,7 +1,6 @@
 "use client"
 
-import { Button } from "@heroui/react"
-import Link from "next/link"
+import { LinkButton } from "@/components/ui/link-button"
 import { AnimatedSection } from "./animated-section"
 
 export function Invitation() {
@@ -10,14 +9,13 @@ export function Invitation() {
       <h2 className="font-bold text-4xl text-center">
         Wanna know a little about me?
       </h2>
-      <Button
-        as={Link}
+      <LinkButton
         href="/about"
-        color="secondary"
+        variant="ghost"
         className="text-xl h-full px-4 py-2 text-wrap w-48 sm:w-fit text-center"
       >
         I dunno, maybe click this button here then.
-      </Button>
+      </LinkButton>
     </AnimatedSection>
   )
 }

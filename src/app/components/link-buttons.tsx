@@ -1,8 +1,7 @@
 "use client"
 
 import { LinkData } from "@/lib/link-data"
-import { Button } from "@heroui/react"
-import Link from "next/link"
+import { LinkButton } from "@/components/ui/link-button"
 import { ReactNode } from "react"
 import { FaAmazon, FaGoodreadsG } from "react-icons/fa"
 import { AnimatedSection } from "./animated-section"
@@ -31,17 +30,18 @@ export function LinkButtons({
         }
 
         return (
-          <Button
-            as={Link}
+          <LinkButton
             key={link.vendor}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            startContent={icons[link.vendor] ?? undefined}
             className={classes[link.vendor] ?? ""}
           >
+            {icons[link.vendor] && (
+              <span className="mr-2">{icons[link.vendor]}</span>
+            )}
             {link.label}
-          </Button>
+          </LinkButton>
         )
       })}
     </AnimatedSection>
