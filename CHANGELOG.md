@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>3.10.1 (2025-12-06)</small>
+
+### Bug Fixes
+
+* update nextjs ([bf02d65](https://github.com/srmlcn/matthew-don/commit/bf02d65cf02c96bdd92501d56b1aa2262ed753a0))
+
 ## 3.10.0 (2025-08-23)
 
 ### Bug Fixes
