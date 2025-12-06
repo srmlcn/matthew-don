@@ -104,6 +104,27 @@ const celestialSamuraiCover: BookImage = {
   height: 1850,
 }
 
+const celestialSamuraiPreviews: BookImage[] = [
+  {
+    src: "/adventures/book2-1.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai - Preview page 1",
+    width: 1026,
+    height: 1539,
+  },
+  {
+    src: "/adventures/book2-2.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai - Preview page 2",
+    width: 1026,
+    height: 1539,
+  },
+  {
+    src: "/adventures/book2-3.jpg",
+    alt: "The Adventures of Luca and Kai: The Celestial Samurai - Preview page 3",
+    width: 1026,
+    height: 1539,
+  },
+]
+
 export const celestialSamurai: Book = {
   id: "luca-kai-2-celestial-samurai",
   slug: "the-adventures-of-luca-and-kai-the-celestial-samurai",
@@ -116,7 +137,7 @@ export const celestialSamurai: Book = {
     total: 3,
   },
 
-  status: "preorder",
+  status: "published",
   category: "adventures",
   releaseDate: new Date("2025-08-23"),
   featured: true,
@@ -128,7 +149,7 @@ export const celestialSamurai: Book = {
   ],
 
   cover: celestialSamuraiCover,
-  previewImages: [],
+  previewImages: celestialSamuraiPreviews,
 
   links: {
     amazon: {
@@ -145,7 +166,7 @@ export const celestialSamurai: Book = {
   reviews: [],
 
   availability:
-    "Pre-order now! Available in paperback, Ebook, and FREE through Kindle Unlimited!",
+    "Available now in paperback, Ebook, and FREE through Kindle Unlimited!",
 }
 
 // Book 3: Upcoming
@@ -190,7 +211,6 @@ export const book3: Book = {
       url: "https://www.goodreads.com/author/show/21029434.Matthew_Don",
       label: "Follow on Goodreads",
     },
-    internal: "/books/the-adventures-of-luca-and-kai-book-3",
   },
 
   reviews: [],
