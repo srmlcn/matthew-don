@@ -3,11 +3,20 @@ import { SiteNavbar } from "./components/site-navbar"
 import { Providers } from "./providers"
 import { Outfit } from "next/font/google"
 import { SiteFooter } from "./components/site-footer"
+import type { Metadata } from "next"
 
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
 })
+
+export const metadata: Metadata = {
+  title: {
+    default: "Matthew Don - Author",
+    template: "%s | Matthew Don",
+  },
+  description: "Official website of author Matthew Don",
+}
 
 export default function RootLayout({
   children,

@@ -1,7 +1,6 @@
 import { AnimatedSection } from "@/app/components/animated-section"
 import { ReviewData } from "@/lib/review-data"
 import { StarIcon } from "@heroicons/react/24/solid"
-import DOMPurify from "isomorphic-dompurify"
 
 export function Reviews({ reviewData }: { reviewData: ReviewData[] }) {
   return (
@@ -18,9 +17,7 @@ export function Reviews({ reviewData }: { reviewData: ReviewData[] }) {
 
               <div>
                 <p className="font-bold text-xl text-center">{review.name}</p>
-                <p className="text-center">
-                  {DOMPurify.sanitize(review.description)}
-                </p>
+                <p className="text-center">{review.description}</p>
               </div>
 
               <div className="flex justify-center gap-2">

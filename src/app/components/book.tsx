@@ -1,5 +1,4 @@
 import { BookData } from "@/lib/book-data"
-import DOMPurify from "isomorphic-dompurify"
 import Link from "next/link"
 import { AnimatedSection } from "./animated-section"
 import { BookCover } from "./book-cover"
@@ -38,7 +37,7 @@ export function Book({
       <div className="flex flex-col items-center gap-2">
         {descriptions.map((description, index) => (
           <p className="text-center" key={index}>
-            {DOMPurify.sanitize(description)}
+            {description}
           </p>
         ))}
       </div>
