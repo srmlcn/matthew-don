@@ -1,5 +1,32 @@
 # Changelog
 
+## 3.11.0 (2025-12-06)
+
+### Bug Fixes
+
+* **animations:** prevent re-render issues on route navigation ([c93c299](https://github.com/srmlcn/matthew-don/commit/c93c2992959b66c1824f05dcab10c22a19135512))
+* replace Button asChild with LinkButton component ([442c4a9](https://github.com/srmlcn/matthew-don/commit/442c4a9830fb23af74d69c64ee5c162d3bb20517))
+* update Celestial Samurai to published status and add preview images ([2a46c20](https://github.com/srmlcn/matthew-don/commit/2a46c20c4a915f731783c4126a630a3c3149ad3a))
+
+
+### Features
+
+* **a11y:** add focus management and skip-to-content link ([fbbf609](https://github.com/srmlcn/matthew-don/commit/fbbf60966a56bc7a4d36d5f56e2f8ac873b015e3))
+* **a11y:** implement reduced motion support ([fb0fb96](https://github.com/srmlcn/matthew-don/commit/fb0fb9629eb37486438ec4fd0f56ed449a427147))
+* **a11y:** improve ARIA labels and semantic HTML in navigation ([12ac04e](https://github.com/srmlcn/matthew-don/commit/12ac04ea180ec7f18e2b95a241b1e5c99a48c705))
+* **books:** create enhanced book detail pages ([ee4762f](https://github.com/srmlcn/matthew-don/commit/ee4762feaf7eff9c1c0dab74999a233627261e08))
+* **config:** centralize site configuration and book data ([284449f](https://github.com/srmlcn/matthew-don/commit/284449f44f15d529b931121e81bd7bf6536a5968))
+* **config:** create centralized site configuration ([d0cb953](https://github.com/srmlcn/matthew-don/commit/d0cb95344c3f78873764b8e8410ca2800de33c4a))
+* **data:** consolidate book data structure and add TypeScript strict mode ([787571b](https://github.com/srmlcn/matthew-don/commit/787571b82dd2533dfabf35b02e5662f0598a7a87))
+* **dx:** add error boundaries and loading states ([5571b3b](https://github.com/srmlcn/matthew-don/commit/5571b3b278f3751df40ded37883847eea8ef6023))
+* **home:** redesign home page for small book catalog ([93d5e7a](https://github.com/srmlcn/matthew-don/commit/93d5e7aab299bff7669cf747bc5105547740d487))
+* **navigation:** add breadcrumb navigation component ([f5f2a78](https://github.com/srmlcn/matthew-don/commit/f5f2a78a1003507c6ea5dc39e4dbc28c6e9cdf36))
+* **pages:** update About and Contact pages ([d6e217e](https://github.com/srmlcn/matthew-don/commit/d6e217e4ade65f98b3870f9695c98aada51abd42))
+* **theme:** create centralized theme configuration ([b9ab42e](https://github.com/srmlcn/matthew-don/commit/b9ab42e6970f1546c0a27157ebe82f6469e13b11))
+* **ui:** add core UI utilities and components ([4f72d8a](https://github.com/srmlcn/matthew-don/commit/4f72d8a5fc22914e0dba6b35e0bbb4a6148f8f02))
+* **ui:** add HeadlessUI-based navigation components ([bf2f98d](https://github.com/srmlcn/matthew-don/commit/bf2f98d675f59091b8325f4afc2444f69de3b0a3))
+* upgrade next ([0cb171c](https://github.com/srmlcn/matthew-don/commit/0cb171c2fac65fd0df1469a148a4897c207c1903))
+
 ## <small>3.10.1 (2025-12-06)</small>
 
 ### Bug Fixes
