@@ -52,13 +52,13 @@ export function Carousel({
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     measureContainerWidth()
-    touchStartX.current = e.touches[0].clientX
+    touchStartX.current = e.touches[0]?.clientX ?? 0
     touchStartTime.current = performance.now()
     setIsDragging(true)
   }
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const currentX = e.touches[0].clientX
+    const currentX = e.touches[0]?.clientX ?? 0
     setDragOffset(currentX - touchStartX.current)
   }
 
@@ -119,7 +119,9 @@ export function Carousel({
         >
           <div
             className={`flex ${
-              !isDragging && !shouldReduceMotion ? "transition-transform duration-300 ease-out" : ""
+              !isDragging && !shouldReduceMotion
+                ? "transition-transform duration-300 ease-out"
+                : ""
             }`}
             role="list"
             style={{
@@ -152,7 +154,9 @@ export function Carousel({
             disabled={currentIndex === 0}
             aria-label="Previous image"
             className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 disabled:opacity-30 p-2 rounded-full transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-60 md:opacity-0 md:pointer-events-none"
+              isHovered
+                ? "opacity-100"
+                : "opacity-60 md:opacity-0 md:pointer-events-none"
             }`}
           >
             <ArrowLeftIcon className="w-6" />
@@ -162,7 +166,9 @@ export function Carousel({
             disabled={currentIndex === images.length - 1}
             aria-label="Next image"
             className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 disabled:opacity-30 p-2 rounded-full transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-60 md:opacity-0 md:pointer-events-none"
+              isHovered
+                ? "opacity-100"
+                : "opacity-60 md:opacity-0 md:pointer-events-none"
             }`}
           >
             <ArrowRightIcon className="w-6" />
