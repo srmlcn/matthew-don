@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import _Confetti from "@tholman/confetti"
+import { useReducedMotion } from "@/lib/hooks/use-reduced-motion"
 
 export function Confetti({
   timeout = 10000,
@@ -9,8 +10,15 @@ export function Confetti({
 }: { timeout?: number } & any) {
   const [isVisible, setIsVisible] = useState(true)
   const [isAnimating, setIsAnimating] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
+    // If user prefers reduced motion, hide confetti immediately
+    if (shouldReduceMotion) {
+      setIsVisible(false)
+      return
+    }
+
     // Start fade out animation before timeout
     const fadeOutTimer = setTimeout(() => {
       setIsAnimating(true)
@@ -25,9 +33,9 @@ export function Confetti({
       clearTimeout(fadeOutTimer)
       clearTimeout(unmountTimer)
     }
-  }, [timeout])
+  }, [timeout, shouldReduceMotion])
 
-  if (!isVisible) {
+  if (!isVisible || shouldReduceMotion) {
     return null
   }
 
@@ -36,6 +44,7 @@ export function Confetti({
       className={`w-full h-full absolute transition-opacity duration-500 ${
         isAnimating ? "opacity-0" : "opacity-100"
       }`}
+      aria-hidden="true"
     >
       <_Confetti total={props.total ?? undefined} />
     </div>

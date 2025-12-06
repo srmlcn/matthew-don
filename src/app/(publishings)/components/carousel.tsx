@@ -5,6 +5,7 @@ import Image from "next/image"
 import type { ImageData } from "@/lib/image-data"
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 import { AnimatedSection } from "@/app/components/animated-section"
+import { useReducedMotion } from "@/lib/hooks/use-reduced-motion"
 
 export function Carousel({
   images,
@@ -23,6 +24,7 @@ export function Carousel({
   const [isHovered, setIsHovered] = useState(false)
   const touchStartX = useRef(0)
   const touchStartTime = useRef(0)
+  const shouldReduceMotion = useReducedMotion()
 
   const measureContainerWidth = () => {
     const width = containerRef.current?.offsetWidth ?? 0
@@ -117,7 +119,7 @@ export function Carousel({
         >
           <div
             className={`flex ${
-              !isDragging ? "transition-transform duration-300 ease-out" : ""
+              !isDragging && !shouldReduceMotion ? "transition-transform duration-300 ease-out" : ""
             }`}
             role="list"
             style={{
@@ -149,8 +151,8 @@ export function Carousel({
             onClick={handlePrev}
             disabled={currentIndex === 0}
             aria-label="Previous image"
-            className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`absolute z-10 top-1/2 left-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 disabled:opacity-30 p-2 rounded-full transition-opacity duration-300 ${
+              isHovered ? "opacity-100" : "opacity-60 md:opacity-0 md:pointer-events-none"
             }`}
           >
             <ArrowLeftIcon className="w-6" />
@@ -159,8 +161,8 @@ export function Carousel({
             onClick={handleNext}
             disabled={currentIndex === images.length - 1}
             aria-label="Next image"
-            className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 p-2 rounded-full transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`absolute z-10 top-1/2 right-4 transform -translate-y-1/2 bg-foreground/40 backdrop-blur disabled:text-gray-500 disabled:opacity-30 p-2 rounded-full transition-opacity duration-300 ${
+              isHovered ? "opacity-100" : "opacity-60 md:opacity-0 md:pointer-events-none"
             }`}
           >
             <ArrowRightIcon className="w-6" />
