@@ -3,6 +3,7 @@ import { SiteNavbar } from "./components/site-navbar"
 import { Providers } from "./providers"
 import { Outfit } from "next/font/google"
 import { SiteFooter } from "./components/site-footer"
+import { SkipToContent } from "@/components/layout/skip-to-content"
 import type { Metadata } from "next"
 
 const outfit = Outfit({
@@ -29,10 +30,14 @@ export default function RootLayout({
       className="light transition-colors duration-1000 ease-in-out"
     >
       <body className={`antialiased min-h-screen flex flex-col`}>
+        <SkipToContent />
         <div className="flex-1">
           <Providers>
             <SiteNavbar />
-            <main className="flex flex-col items-center flex-1">
+            <main
+              id="main-content"
+              className="flex flex-col items-center flex-1"
+            >
               <div className="container px-4 py-20">{children}</div>
             </main>
           </Providers>

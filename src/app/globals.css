@@ -18,6 +18,21 @@ body {
   font-family: Outfit, Arial, Helvetica, sans-serif;
 }
 
+/* Enhanced focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #00ff77;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #00ff77;
+  outline-offset: 2px;
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
