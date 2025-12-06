@@ -1,6 +1,6 @@
 /**
  * Slug Utilities
- * 
+ *
  * Functions for generating and working with URL slugs.
  */
 
@@ -8,23 +8,25 @@
  * Generate a URL-safe slug from a string
  * @param text - The text to convert to a slug
  * @returns A URL-safe slug
- * 
+ *
  * @example
  * generateSlug('The Adventures of Luca and Kai: The Moon Queen')
  * // Returns: 'the-adventures-of-luca-and-kai-the-moon-queen'
  */
 export function generateSlug(text: string): string {
-  return text
-    .toLowerCase()
-    .trim()
-    // Remove special characters except spaces and hyphens
-    .replace(/[^\w\s-]/g, '')
-    // Replace spaces with hyphens
-    .replace(/\s+/g, '-')
-    // Replace multiple hyphens with single hyphen
-    .replace(/-+/g, '-')
-    // Remove leading/trailing hyphens
-    .replace(/^-+|-+$/g, '');
+  return (
+    text
+      .toLowerCase()
+      .trim()
+      // Remove special characters except spaces and hyphens
+      .replace(/[^\w\s-]/g, "")
+      // Replace spaces with hyphens
+      .replace(/\s+/g, "-")
+      // Replace multiple hyphens with single hyphen
+      .replace(/-+/g, "-")
+      // Remove leading/trailing hyphens
+      .replace(/^-+|-+$/g, "")
+  )
 }
 
 /**
@@ -35,8 +37,8 @@ export function generateSlug(text: string): string {
 export function isValidSlug(slug: string): boolean {
   // Slug should only contain lowercase letters, numbers, and hyphens
   // Should not start or end with a hyphen
-  const slugPattern = /^[a-z0-9]+(-[a-z0-9]+)*$/;
-  return slugPattern.test(slug);
+  const slugPattern = /^[a-z0-9]+(-[a-z0-9]+)*$/
+  return slugPattern.test(slug)
 }
 
 /**
@@ -49,13 +51,13 @@ export function createUniqueSlug(
   baseSlug: string,
   existingSlugs: string[]
 ): string {
-  let slug = baseSlug;
-  let counter = 1;
-  
+  let slug = baseSlug
+  let counter = 1
+
   while (existingSlugs.includes(slug)) {
-    slug = `${baseSlug}-${counter}`;
-    counter++;
+    slug = `${baseSlug}-${counter}`
+    counter++
   }
-  
-  return slug;
+
+  return slug
 }

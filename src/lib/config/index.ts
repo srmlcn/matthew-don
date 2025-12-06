@@ -1,13 +1,13 @@
 /**
  * Configuration
- * 
+ *
  * Centralized export for all site configuration.
- * 
+ *
  * @example
  * import { siteConfig, mainNav, vendors } from '@/lib/config';
  */
 
-export { siteConfig, type SiteConfig } from './site';
+export { siteConfig, type SiteConfig } from "./site"
 export {
   mainNav,
   booksNav,
@@ -15,7 +15,7 @@ export {
   socialNav,
   type NavItem,
   type NavSection,
-} from './navigation';
+} from "./navigation"
 export {
   vendors,
   detectVendor,
@@ -23,4 +23,4 @@ export {
   formatVendorLabel,
   type VendorName,
   type VendorConfig,
-} from './vendors';
+} from "./vendors"
