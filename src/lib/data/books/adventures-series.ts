@@ -169,7 +169,7 @@ export const celestialSamurai: Book = {
     "Available now in paperback, Ebook, and FREE through Kindle Unlimited!",
 }
 
-// Book 3: Upcoming
+// Book 3: Hyogikai
 const book3Cover: BookImage = {
   src: "/adventures/book3-cover.png",
   alt: "The Adventures of Luca and Kai Book 3 - Coming Soon",
@@ -179,10 +179,10 @@ const book3Cover: BookImage = {
 
 export const book3: Book = {
   id: "luca-kai-3",
-  slug: "the-adventures-of-luca-and-kai-book-3",
+  slug: "the-adventures-of-luca-and-kai-hyogikai",
 
   title: "The Adventures of Luca and Kai",
-  subtitle: "Book 3",
+  subtitle: "Hyogikai",
   seriesInfo: {
     name: "The Adventures of Luca and Kai",
     book: 3,
@@ -194,7 +194,7 @@ export const book3: Book = {
   featured: false,
   order: 100,
 
-  shortDescription: "Coming Later...",
+  shortDescription: "Coming Soon...",
   longDescription: [
     "The epic conclusion to the Adventures of Luca and Kai trilogy is coming soon! Stay tuned for more updates.",
   ],
