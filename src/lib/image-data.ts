@@ -28,7 +28,7 @@ export const adventuresOfLucaAndKaiBook2of3ImageData: ImageData = {
 
 export const adventuresOfLucaAndKaiBook3of3ImageData: ImageData = {
   src: "/adventures/book3-cover.png",
-  alt: "The Adventures of Luca and Kai (Book 3 of 3)",
+  alt: "The Adventures of Luca and Kai: Hyogikai (Book 3 of 3)",
   width: 1271,
   height: 1906,
 }
