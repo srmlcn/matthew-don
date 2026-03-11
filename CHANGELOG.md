@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.12.0 (2026-03-11)
+
+### Features
+
+* update the cover of alk book 3 ([0b11633](https://github.com/srmlcn/matthew-don/commit/0b116334c7a546ebbbee7a76557150d73e3ac6c7))
+* update the title of alk book 3 ([4dae8e3](https://github.com/srmlcn/matthew-don/commit/4dae8e305bba84f9065d6d7d94dcf6ec4fb44863))
+
 ## 3.11.0 (2025-12-06)
 
 ### Bug Fixes
