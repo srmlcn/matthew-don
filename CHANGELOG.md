@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.13.0 (2026-03-11)
+
+### Bug Fixes
+
+* **data:** set book 3 title, subtitle, and slug to Hyogikai ([788bb68](https://github.com/srmlcn/matthew-don/commit/788bb68f2ed0d6f100f508d46016ce041e8798bd))
+
+
+### Features
+
+* **books:** add Hyogikai book page and layout ([db48149](https://github.com/srmlcn/matthew-don/commit/db4814938279016e76733d0545cbfa6a38dd3443))
+
 ## 3.12.0 (2026-03-11)
 
 ### Features
