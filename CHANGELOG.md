@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.14.0 (2026-08-16)
+
+### Features
+
+* **catalog:** unify routes and add e2e tests ([1b08f47](https://github.com/srmlcn/matthew-don/commit/1b08f478ddf0fc5c869ab2c2c3a9480d6f2f48b7))
+
 ## 3.13.0 (2026-03-11)
 
 ### Bug Fixes
