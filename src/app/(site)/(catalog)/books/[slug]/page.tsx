@@ -1,6 +1,6 @@
 import { EnhancedBookPage } from "@/app/components/enhanced-book-page"
 import {
-  allBooks,
+  getAllBooks,
   generateBookMetadata,
   getBookBySlug,
 } from "@/lib/data/books"
@@ -11,7 +11,8 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const allBooks = await getAllBooks()
   return allBooks
     .filter((book) => book.category !== "comics")
     .map((book) => ({ slug: book.slug }))
@@ -21,7 +22,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const book = getBookBySlug(slug)
+  const book = await getBookBySlug(slug)
 
   if (!book || book.category === "comics") {
     return {}
@@ -32,7 +33,7 @@ export async function generateMetadata({
 
 export default async function BookPage({ params }: PageProps) {
   const { slug } = await params
-  const book = getBookBySlug(slug)
+  const book = await getBookBySlug(slug)
 
   if (!book || book.category === "comics") {
     notFound()

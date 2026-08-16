@@ -42,7 +42,9 @@ export const mainNav: NavItem[] = [
 /**
  * Generate breadcrumbs for a given path
  */
-export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
+export async function getBreadcrumbs(
+  pathname: string,
+): Promise<BreadcrumbItem[]> {
   const breadcrumbs: BreadcrumbItem[] = [{ label: "Home", href: "/" }]
 
   if (pathname === "/") return breadcrumbs
@@ -57,7 +59,7 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
     })
 
     if (segments[1]) {
-      const book = getBookByPath(pathname)
+      const book = await getBookByPath(pathname)
       if (book) {
         breadcrumbs.push({ label: getBookNavLabel(book) })
       }

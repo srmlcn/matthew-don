@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function ContactPage() {
-  const breadcrumbs = getBreadcrumbs("/contact")
+export default async function ContactPage() {
+  const breadcrumbs = await getBreadcrumbs("/contact")
 
   return (
     <div className="flex flex-col gap-8 max-w-4xl mx-auto">
