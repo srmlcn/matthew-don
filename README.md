@@ -40,6 +40,13 @@ cd matthew-don
 # Install dependencies
 pnpm install
 
+# Copy environment template and set DATABASE_URL (Neon connection string)
+cp .env.example .env.local
+
+# Apply migrations and seed catalog (first-time setup)
+pnpm db:migrate
+pnpm db:seed
+
 # Run development server
 pnpm dev
 ```
@@ -53,6 +60,10 @@ pnpm dev          # Start development server with Turbopack
 pnpm build        # Build for production
 pnpm start        # Start production server
 pnpm lint         # Run ESLint
+pnpm db:generate  # Generate migration from schema changes
+pnpm db:migrate   # Apply migrations to DATABASE_URL
+pnpm db:seed      # Upsert catalog from src/lib/db/seed-data/books.json
+pnpm db:studio    # Open Drizzle Studio (catalog browser/editor)
 ```
 
 ## 📁 Project Structure
@@ -74,8 +85,19 @@ src/
 ├── components/                   # Shared UI and layout components
 └── lib/
     ├── config/                   # Site configuration
-    └── data/books/               # Book catalog, types, and query helpers
+    ├── db/                       # Drizzle schema, Neon client, seed data
+    └── data/books/               # Book types and async query helpers
 ```
+
+## Environment
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DATABASE_URL` | Yes | Neon Postgres connection string (dev branch locally, prod in Vercel) |
+
+Copy `.env.example` to `.env.local` for local development. Production and CI builds need `DATABASE_URL` set because catalog pages pre-render at build time.
+
+For CI and Playwright (`pnpm test:e2e`), configure a Neon dev-branch URL as a secret.
 
 ## 🎨 Design System
 
@@ -101,16 +123,19 @@ We're committed to making this site accessible to everyone:
 
 ## Adding/Updating Books
 
-Books are managed in `src/lib/data/books/`:
+The catalog is stored in Neon Postgres. Until the admin panel exists, use one of:
 
-1. Add a record to the appropriate file:
-   - `adventures-series.ts` — Luca and Kai series
-   - `comics.ts` — Comic books
-   - `standalone.ts` — Standalone titles
-2. Register it in `allBooks` inside `index.ts`
-3. Follow the `Book` interface in `types.ts`
+1. **Drizzle Studio** — `pnpm db:studio`
+2. **Seed JSON** — edit `src/lib/db/seed-data/books.json`, then `pnpm db:seed`
+3. **Neon SQL console** — direct table edits
 
-No per-book page files or navigation edits are required. The site derives URLs (`getBookPath`), nav (`getBooksNav`), breadcrumbs, and detail pages from the catalog automatically.
+Workflow for a new title:
+
+1. Add cover/preview images under `public/`
+2. Insert or seed a book row matching the `Book` interface in `src/lib/data/books/types.ts`
+3. Add related rows in `book_images`, `book_links`, and `book_reviews` as needed
+
+No per-book page files or navigation edits are required. The site derives URLs (`getBookPath`), nav (`getBooksNav`), breadcrumbs, and detail pages from the database automatically.
 
 ## Testing
 
