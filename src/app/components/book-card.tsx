@@ -8,6 +8,7 @@ import * as React from "react"
 import Image from "next/image"
 import { LinkButton } from "@/components/ui/link-button"
 import type { Book } from "@/lib/data/books"
+import { getBookPath } from "@/lib/data/books"
 
 interface BookCardProps {
   book: Book
@@ -70,8 +71,8 @@ export function BookCard({ book }: BookCardProps) {
         )}
 
         <div className="flex flex-col gap-2 mt-auto">
-          {book.links.internal && book.status !== "upcoming" && (
-            <LinkButton href={book.links.internal} size="sm">
+          {book.status !== "upcoming" && (
+            <LinkButton href={getBookPath(book)} size="sm">
               Learn More
             </LinkButton>
           )}

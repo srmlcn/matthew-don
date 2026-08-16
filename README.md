@@ -59,24 +59,22 @@ pnpm lint         # Run ESLint
 
 ```
 src/
-├── app/                      # Next.js app router pages
-│   ├── (catalog)/           # Book catalog routes
-│   ├── components/          # Page-specific components
-│   ├── about/              # About page
-│   ├── contact/            # Contact page
-│   └── layout.tsx          # Root layout
-├── components/              # Shared components
-│   ├── layout/             # Layout components
-│   └── ui/                 # Reusable UI components
-├── lib/
-│   ├── config/             # Site configuration
-│   ├── data/               # Centralized data
-│   │   └── books/         # Book data and types
-│   ├── hooks/              # Custom React hooks
-│   ├── theme/              # Design system tokens
-│   └── utils/              # Utility functions
-└── styles/
-    └── globals.css         # Global styles
+├── app/
+│   ├── (site)/                 # Public storefront (navbar, footer)
+│   │   ├── (catalog)/            # Dynamic book/comic routes
+│   │   │   ├── books/[slug]/
+│   │   │   └── comics/[slug]/
+│   │   ├── about/
+│   │   ├── contact/
+│   │   ├── layout.tsx            # Site chrome
+│   │   └── page.tsx              # Home
+│   ├── components/               # App-level components
+│   ├── layout.tsx                # Root layout (html, providers only)
+│   └── globals.css
+├── components/                   # Shared UI and layout components
+└── lib/
+    ├── config/                   # Site configuration
+    └── data/books/               # Book catalog, types, and query helpers
 ```
 
 ## 🎨 Design System
@@ -101,19 +99,30 @@ We're committed to making this site accessible to everyone:
 - ✅ Focus management
 - ✅ Semantic HTML and ARIA labels
 
-## 📖 Adding/Updating Books
+## Adding/Updating Books
 
 Books are managed in `src/lib/data/books/`:
 
-1. Add book data to the appropriate file:
+1. Add a record to the appropriate file:
+   - `adventures-series.ts` — Luca and Kai series
+   - `comics.ts` — Comic books
+   - `standalone.ts` — Standalone titles
+2. Register it in `allBooks` inside `index.ts`
+3. Follow the `Book` interface in `types.ts`
 
-   - `adventures-series.ts` - Luca and Kai books
-   - `comics.ts` - Comic books
-   - `standalone.ts` - Standalone titles
+No per-book page files or navigation edits are required. The site derives URLs (`getBookPath`), nav (`getBooksNav`), breadcrumbs, and detail pages from the catalog automatically.
 
-2. Follow the `Book` interface in `types.ts`
+## Testing
 
-3. Books will automatically appear on the site
+End-to-end tests use [Playwright](https://playwright.dev/):
+
+```bash
+pnpm test:e2e          # Run all e2e tests (builds and starts the app)
+pnpm test:e2e:ui       # Interactive test UI
+pnpm test:e2e:report   # Open the HTML report after a run
+```
+
+Tests run against desktop and mobile viewports (`chromium`, `mobile-chrome`).
 
 ## 🚢 Deployment
 

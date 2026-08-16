@@ -12,13 +12,14 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { getBreadcrumbs } from "@/lib/config/navigation"
 import { AnimatedSection } from "@/app/components/animated-section"
 import type { Book } from "@/lib/data/books"
+import { getBookPath } from "@/lib/data/books"
 
 interface EnhancedBookPageProps {
   book: Book
 }
 
 export function EnhancedBookPage({ book }: EnhancedBookPageProps) {
-  const breadcrumbs = getBreadcrumbs(book.links.internal || "")
+  const breadcrumbs = getBreadcrumbs(getBookPath(book))
   const isMature = book.category === "comedy"
 
   // Generate structured data for search engines

@@ -9,6 +9,7 @@ import Image from "next/image"
 import { LinkButton } from "@/components/ui/link-button"
 import { AnimatedSection } from "./animated-section"
 import type { Book } from "@/lib/data/books"
+import { getBookPath } from "@/lib/data/books"
 
 interface FeaturedReleaseProps {
   book: Book
@@ -74,8 +75,8 @@ export function FeaturedRelease({ book }: FeaturedReleaseProps) {
                 Read on Goodreads
               </LinkButton>
             )}
-            {book.links.internal && (
-              <LinkButton href={book.links.internal} variant="ghost">
+            {book.status !== "upcoming" && (
+              <LinkButton href={getBookPath(book)} variant="ghost">
                 Learn More
               </LinkButton>
             )}

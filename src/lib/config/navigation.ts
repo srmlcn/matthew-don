@@ -4,6 +4,8 @@
  * Centralized navigation structure for the site including breadcrumbs.
  */
 
+import { getBookByPath, getBookNavLabel } from "@/lib/data/books"
+
 export interface NavItem {
   label: string
   href: string
@@ -37,41 +39,6 @@ export const mainNav: NavItem[] = [
   },
 ]
 
-// Books dropdown navigation with improved descriptions
-export const booksNav: NavSection[] = [
-  {
-    title: "The Adventures of Luca and Kai",
-    items: [
-      {
-        label: "The Moon Queen (Book 1)",
-        href: "/books/the-adventures-of-luca-and-kai-the-moon-queen",
-        description:
-          "Where the adventure begins! Perfect for readers of all ages.",
-      },
-      {
-        label: "The Celestial Samurai (Book 2)",
-        href: "/books/the-adventures-of-luca-and-kai-the-celestial-samurai",
-        description: "The thrilling continuation of Luca and Kai's journey.",
-      },
-      {
-        label: "The Comics",
-        href: "/comics/the-adventures-of-luca-and-kai-the-comics",
-        description: "Visual adventures with Luca and Kai in comic form.",
-      },
-    ],
-  },
-  {
-    title: "Mature Readers",
-    items: [
-      {
-        label: "A Celebration of the History of Celebrating History",
-        href: "/books/a-celebration-of-the-history-of-celebrating-history",
-        description: "Satirical comedy for adult audiences.",
-      },
-    ],
-  },
-]
-
 /**
  * Generate breadcrumbs for a given path
  */
@@ -82,28 +49,17 @@ export function getBreadcrumbs(pathname: string): BreadcrumbItem[] {
 
   const segments = pathname.split("/").filter(Boolean)
 
-  // Handle books
-  if (segments[0] === "books") {
-    breadcrumbs.push({ label: "Books", href: "/#books" })
+  // Handle books and comics via catalog lookup
+  if (segments[0] === "books" || segments[0] === "comics") {
+    breadcrumbs.push({
+      label: segments[0] === "comics" ? "Comics" : "Books",
+      href: "/#books",
+    })
+
     if (segments[1]) {
-      // Find the book name from booksNav
-      const bookItem = booksNav
-        .flatMap((section) => section.items)
-        .find((item) => item.href === pathname)
-      if (bookItem) {
-        breadcrumbs.push({ label: bookItem.label })
-      }
-    }
-  }
-  // Handle comics
-  else if (segments[0] === "comics") {
-    breadcrumbs.push({ label: "Comics", href: "/#books" })
-    if (segments[1]) {
-      const comicItem = booksNav
-        .flatMap((section) => section.items)
-        .find((item) => item.href === pathname)
-      if (comicItem) {
-        breadcrumbs.push({ label: comicItem.label })
+      const book = getBookByPath(pathname)
+      if (book) {
+        breadcrumbs.push({ label: getBookNavLabel(book) })
       }
     }
   }

@@ -1,14 +1,18 @@
 "use client"
 
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
-import { adventureBooks, comedyBooks } from "@/lib/data/books"
 import { siteConfig } from "@/lib/config/site"
 import { Divider } from "@/components/ui/divider"
+import type { NavSection } from "@/lib/config/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Disclosure } from "@headlessui/react"
 
-export function SiteNavbar() {
+interface SiteNavbarProps {
+  booksNav: NavSection[]
+}
+
+export function SiteNavbar({ booksNav }: SiteNavbarProps) {
   return (
     <Disclosure as="nav" aria-label="Main navigation">
       {({ open }) => (
@@ -85,7 +89,7 @@ export function SiteNavbar() {
                 >
                   Contact
                 </Link>
-                <BooksDropdownButton />
+                <BooksDropdownButton booksNav={booksNav} />
               </div>
             </div>
           </div>
@@ -122,47 +126,28 @@ export function SiteNavbar() {
                   Books
                 </h2>
 
-                <h3 className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400">
-                  The Adventures of Luca and Kai
-                </h3>
-                <FilteredMenuItems books={adventureBooks} />
-
-                <h3 className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2">
-                  Other Books
-                </h3>
-                <FilteredMenuItems books={comedyBooks} />
+                {booksNav.map((section) => (
+                  <div key={section.title}>
+                    <h3 className="px-3 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2">
+                      {section.title}
+                    </h3>
+                    {section.items.map((item) => (
+                      <Disclosure.Button
+                        key={item.href}
+                        as={Link}
+                        href={item.href}
+                        className="block rounded-md px-6 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
+                      >
+                        {item.label}
+                      </Disclosure.Button>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </Disclosure.Panel>
         </>
       )}
     </Disclosure>
-  )
-}
-
-function FilteredMenuItems({
-  books,
-}: {
-  books: Array<{
-    title: string
-    subtitle?: string
-    links: { internal?: string }
-  }>
-}) {
-  return (
-    <>
-      {books
-        .filter((book) => book.links.internal)
-        .map((book) => (
-          <Disclosure.Button
-            key={book.title}
-            as={Link}
-            href={book.links.internal || "#"}
-            className="block rounded-md px-6 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            {book.subtitle ? `${book.title}: ${book.subtitle}` : book.title}
-          </Disclosure.Button>
-        ))}
-    </>
   )
 }

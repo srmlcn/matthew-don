@@ -1,6 +1,5 @@
 "use client"
 
-import { adventureBooks, comedyBooks } from "@/lib/data/books"
 import { ChevronDownIcon } from "@heroicons/react/24/solid"
 import { buttonVariants } from "@/components/ui/button"
 import {
@@ -10,18 +9,16 @@ import {
   DropdownSection,
   DropdownItem,
 } from "@/components/ui/dropdown"
-import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils/cn"
+import type { NavSection } from "@/lib/config/navigation"
 
-export function BooksDropdownButton() {
+interface BooksDropdownButtonProps {
+  booksNav: NavSection[]
+}
+
+export function BooksDropdownButton({ booksNav }: BooksDropdownButtonProps) {
   const router = useRouter()
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-  const adventureBooksWithLinks = adventureBooks.filter(
-    (book) => book.links.internal
-  )
-  const comedyBooksWithLinks = comedyBooks.filter((book) => book.links.internal)
 
   return (
     <Dropdown>
@@ -36,28 +33,18 @@ export function BooksDropdownButton() {
         />
       </DropdownTrigger>
       <DropdownMenu className="w-96">
-        <DropdownSection title="The Adventures of Luca and Kai">
-          {adventureBooksWithLinks.map((item) => (
-            <DropdownItem
-              key={item.id}
-              onClick={() => router.push(item.links.internal || "#")}
-            >
-              <span className="block text-balance">
-                {item.subtitle ? `${item.title}: ${item.subtitle}` : item.title}
-              </span>
-            </DropdownItem>
-          ))}
-        </DropdownSection>
-        <DropdownSection title="Other Books">
-          {comedyBooksWithLinks.map((item) => (
-            <DropdownItem
-              key={item.id}
-              onClick={() => router.push(item.links.internal || "#")}
-            >
-              <span className="block text-balance">{item.title}</span>
-            </DropdownItem>
-          ))}
-        </DropdownSection>
+        {booksNav.map((section) => (
+          <DropdownSection key={section.title} title={section.title}>
+            {section.items.map((item) => (
+              <DropdownItem
+                key={item.href}
+                onClick={() => router.push(item.href)}
+              >
+                <span className="block text-balance">{item.label}</span>
+              </DropdownItem>
+            ))}
+          </DropdownSection>
+        ))}
       </DropdownMenu>
     </Dropdown>
   )

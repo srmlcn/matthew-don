@@ -1,8 +1,8 @@
 import { Divider } from "@/components/ui/divider"
-import { Hero } from "./components/hero"
-import { AllBooks } from "./components/all-books"
-import { NewsletterSignup } from "./components/newsletter-signup"
-import { Invitation } from "./components/invitation"
+import { Hero } from "@/app/components/hero"
+import { AllBooks } from "@/app/components/all-books"
+import { NewsletterSignup } from "@/app/components/newsletter-signup"
+import { Invitation } from "@/app/components/invitation"
 import type { Metadata } from "next"
 import { publishedBooks, upcomingBooks } from "@/lib/data/books"
 
@@ -60,22 +60,18 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="flex flex-col gap-16 max-w-6xl mx-auto w-full">
-      {/* Hero Section */}
       <Hero />
 
       <Divider />
 
-      {/* All Books in a Unified Display */}
       <AllBooks books={publishedBooks} upcomingBooks={upcomingBooks} />
 
       <Divider />
 
-      {/* Newsletter Signup */}
       <NewsletterSignup />
 
       <Divider />
 
-      {/* Contact Invitation */}
       <Invitation />
     </div>
   )

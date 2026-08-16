@@ -17,13 +17,20 @@ The Matthew Don author website is built with Next.js 16 using the App Router pat
 
 Next.js App Router pages and layouts.
 
-- `(catalog)/` - Route group for book-related pages (books, comics)
+- `layout.tsx` - Root layout (html, font, providers only; no site chrome)
+- `(site)/` - Public storefront route group
+  - `layout.tsx` - Navbar, footer, main content wrapper
+  - `page.tsx` - Home page
+  - `about/`, `contact/` - Static pages
+  - `(catalog)/` - Dynamic book routes
+    - `books/[slug]/` - Book detail pages
+    - `comics/[slug]/` - Comic detail pages
+    - `error.tsx`, `loading.tsx` - Catalog error/loading states
 - `components/` - Components used within app pages
-- `about/`, `contact/` - Static pages
-- `layout.tsx` - Root layout with navbar and footer
-- `page.tsx` - Home page
-- `error.tsx`, `not-found.tsx` - Error pages
-- `loading.tsx` - Loading states
+- `error.tsx`, `not-found.tsx` - Root error pages
+- `loading.tsx` - Root loading state
+
+Future admin routes can live in a sibling route group (e.g. `(admin)/`) without inheriting storefront chrome.
 
 ### `/src/components/`
 
@@ -55,7 +62,9 @@ All data for the site.
   - `adventures-series.ts` - Luca and Kai series data
   - `comics.ts` - Comics data
   - `standalone.ts` - Standalone books
-  - `index.ts` - Exports and helper functions
+  - `navigation.ts` - `getBookPath`, `getBooksNav`, `getBookByPath`
+  - `metadata.ts` - `generateBookMetadata` for detail pages
+  - `index.ts` - Exports and query helpers
 
 #### `/src/lib/theme/`
 
@@ -85,13 +94,13 @@ Utility functions.
 ### Book Data Flow
 
 ```
-books/*.ts (Source data)
+books/*.ts (Source records)
   ↓
-books/index.ts (Exports + helpers)
+books/index.ts (allBooks + query helpers)
   ↓
-Page components (Import and use)
+(site) layout + [slug] pages (server-side catalog reads)
   ↓
-UI components (Display)
+UI components (display; nav passed as props from server)
 ```
 
 ### Configuration Flow
@@ -146,10 +155,16 @@ interface Book {
 Data modules export helper functions:
 
 ```typescript
-import { getBookBySlug, getBooksByCategory } from "@/lib/data/books"
+import {
+  getBookBySlug,
+  getBooksByCategory,
+  getBookPath,
+  getBooksNav,
+} from "@/lib/data/books"
 
-const book = getBookBySlug("the-moon-queen")
-const adventures = getBooksByCategory("adventures")
+const book = getBookBySlug("the-adventures-of-luca-and-kai-the-moon-queen")
+const path = getBookPath(book!)
+const nav = getBooksNav()
 ```
 
 **Benefits:**
@@ -207,19 +222,27 @@ const shouldReduceMotion = useReducedMotion()
 
 ### Dynamic Routes
 
-Book pages use dynamic `[slug]` parameter:
+Book pages use dynamic `[slug]` parameters under `(site)/(catalog)/`:
 
 ```typescript
-// app/(catalog)/books/[slug]/page.tsx
-export default function BookPage({ params }: { params: { slug: string } }) {
-  const book = getBookBySlug(params.slug)
-  // ...
+// app/(site)/(catalog)/books/[slug]/page.tsx
+export default async function BookPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const book = getBookBySlug(slug)
+  if (!book || book.category === "comics") notFound()
+  return <EnhancedBookPage book={book} />
 }
 ```
 
 ### Route Groups
 
-`(catalog)` is a route group that doesn't affect URL structure but allows shared layouts/errors.
+- `(site)` wraps public pages with storefront chrome (navbar, footer).
+- `(catalog)` groups book/comic routes with shared loading and error UI.
+- Route groups do not affect URL structure.
 
 ## Component Patterns
 
@@ -417,7 +440,7 @@ Errors show:
 2. **Blog**: Content marketing with blog posts
 3. **Newsletter**: Email capture and newsletter
 4. **Analytics**: Track user behavior
-5. **CMS**: Admin interface for content updates
+5. **CMS**: Admin interface for content updates (catalog query seam is in place; add `(admin)/` route group + writable store)
 6. **Testing**: Unit and E2E tests
 7. **i18n**: Multiple language support
 
@@ -440,5 +463,5 @@ Backward compatibility maintained through:
 
 ---
 
-**Last Updated**: December 6, 2025
+**Last Updated**: August 16, 2026
 **Version**: 1.0.0

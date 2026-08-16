@@ -10,7 +10,6 @@
 export { siteConfig, type SiteConfig } from "./site"
 export {
   mainNav,
-  booksNav,
   footerNav,
   socialNav,
   type NavItem,

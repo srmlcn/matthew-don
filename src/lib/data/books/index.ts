@@ -105,28 +105,14 @@ export function getFeaturedBook(): Book | undefined {
   return featuredBooks[0]
 }
 
-// Legacy data structure support (for backward compatibility during migration)
-// TODO: Remove once all components are updated
+export {
+  getBookPath,
+  getBookNavLabel,
+  getBooksNav,
+  getBookByPath,
+} from "./navigation"
+export { generateBookMetadata, getBookPageTitle } from "./metadata"
 
-export const BOOK_CATEGORIES = {
-  ADVENTURES: "adventures" as const,
-  COMEDY: "comedy" as const,
-  COMICS: "comics" as const,
-  OTHERS: "comedy" as const, // Alias for backward compatibility
-}
-
-// Individual book exports for direct access
 export { moonQueen, celestialSamurai, book3 } from "./adventures-series"
 export { lucaAndKaiComics } from "./comics"
 export { celebrationOfHistory } from "./standalone"
-
-// Legacy named exports (for backward compatibility)
-export const adventuresOfLucaAndKaiBook1of3BookData = moonQueen
-export const adventuresOfLucaAndKaiBook2of3BookData = celestialSamurai
-export const adventuresOfLucaAndKaiBook3of3BookData = book3
-export const adventuresOfLucaAndKaiTheComicsBookData = lucaAndKaiComics
-export const celebrationOfTheHistoryOfCelebratingHistoryBookData =
-  celebrationOfHistory
-
-// Legacy array exports
-export const books = publishedBooks

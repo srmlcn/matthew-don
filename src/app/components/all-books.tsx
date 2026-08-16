@@ -9,6 +9,7 @@ import Image from "next/image"
 import { LinkButton } from "@/components/ui/link-button"
 import { AnimatedSection } from "./animated-section"
 import type { Book } from "@/lib/data/books"
+import { getBookPath } from "@/lib/data/books"
 
 interface AllBooksProps {
   books: Book[]
@@ -184,8 +185,8 @@ function BookRow({
                 View on Goodreads
               </LinkButton>
             )}
-            {book.links.internal && (
-              <LinkButton href={book.links.internal} size="sm" variant="ghost">
+            {book.status !== "upcoming" && (
+              <LinkButton href={getBookPath(book)} size="sm" variant="ghost">
                 Learn More
               </LinkButton>
             )}
