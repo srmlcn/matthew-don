@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.15.0 (2026-08-16)
+
+### Bug Fixes
+
+* **catalog:** hydrate release dates after cache ([637e659](https://github.com/srmlcn/matthew-don/commit/637e659defd3acd91eb61e4f54d0739978fc6e5a))
+* **db:** load DATABASE_URL from .env.local ([1234079](https://github.com/srmlcn/matthew-don/commit/1234079d098588fb0176abe48d90fa57fe61264f))
+
+
+### Features
+
+* **catalog:** load books from postgres via async queries ([6e12cfb](https://github.com/srmlcn/matthew-don/commit/6e12cfbec19eb7232e0e94cfbf54885bd445c322))
+* **db:** add catalog schema and initial migration ([cd0753b](https://github.com/srmlcn/matthew-don/commit/cd0753baad88ada6089cad042db28d276332a879))
+* **db:** add rerunnable catalog seed from json ([254fe71](https://github.com/srmlcn/matthew-don/commit/254fe71ce3230b66c6c097e81e2be6f685e593ab))
+
 ## 3.14.0 (2026-08-16)
 
 ### Features
