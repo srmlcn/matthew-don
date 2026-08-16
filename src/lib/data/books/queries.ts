@@ -5,7 +5,7 @@
 import { unstable_cache } from "next/cache"
 import { asc, eq } from "drizzle-orm"
 import { db } from "@/lib/db/client"
-import { mapBook } from "@/lib/db/map-book"
+import { mapBook, hydrateBook } from "@/lib/db/map-book"
 import { books } from "@/lib/db/schema"
 import type { Book, BookCategory, BookStatus } from "./types"
 
@@ -31,7 +31,8 @@ const getCachedAllBooks = unstable_cache(
 )
 
 export async function getAllBooks(): Promise<Book[]> {
-  return getCachedAllBooks()
+  const books = await getCachedAllBooks()
+  return books.map(hydrateBook)
 }
 
 export async function getBookBySlug(slug: string): Promise<Book | undefined> {

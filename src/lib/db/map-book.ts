@@ -109,3 +109,19 @@ export function mapBook(row: BookWithRelations): Book {
 
   return book
 }
+
+/** Re-parse dates after unstable_cache JSON round-trip. */
+export function hydrateBook(book: Book): Book {
+  if (!book.releaseDate) {
+    return book
+  }
+
+  if (book.releaseDate instanceof Date) {
+    return book
+  }
+
+  return {
+    ...book,
+    releaseDate: new Date(book.releaseDate as string),
+  }
+}
