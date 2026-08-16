@@ -226,72 +226,43 @@ export function Button({
 
 ### Adding a New Book
 
-1. **Add book data** to appropriate file in `src/lib/data/books/`:
+1. **Add images** to `/public/` (cover and optional preview pages).
 
-   - `adventures-series.ts` for Luca and Kai books
-   - `comics.ts` for comics
-   - `standalone.ts` for standalone books
+2. **Insert catalog data** via Drizzle Studio (`pnpm db:studio`), Neon console, or seed JSON:
 
-2. **Use the Book interface**:
+   - Add an entry to `src/lib/db/seed-data/books.json` following the existing shape, then run `pnpm db:seed`
+   - Or insert directly into `books`, `book_images`, `book_links`, and `book_reviews`
+
+3. **Match the `Book` interface** in `src/lib/data/books/types.ts`:
 
 ```typescript
-import { Book } from "./types"
-
-export const newBook: Book = {
-  id: "unique-id",
-  slug: "url-friendly-slug",
-  title: "Book Title",
-  subtitle: "Optional Subtitle",
-  series: {
-    name: "Series Name",
-    number: 3,
-    total: 4,
-  },
-  description: "Full description...",
-  category: "adventures",
-  status: "published",
-  publishDate: "2025-01-15",
-  isbn: "979-8-12345-678-9",
-  pages: 250,
-  ageRange: "8-12",
-  images: {
-    cover: "/path/to/cover.jpg",
-    width: 800,
-    height: 1200,
-  },
-  links: [
-    {
-      vendor: "amazon",
-      url: "https://amazon.com/...",
-      primary: true,
-    },
-  ],
-  reviews: [
-    {
-      text: "Amazing book!",
-      author: "John Doe",
-      rating: 5,
-      verified: true,
-    },
-  ],
-  keywords: ["adventure", "samurai", "fantasy"],
+interface Book {
+  id: string
+  slug: string
+  title: string
+  subtitle?: string
+  seriesInfo?: { name: string; book: number; total: number }
+  status: "published" | "preorder" | "upcoming"
+  category: "adventures" | "comedy" | "comics"
+  releaseDate?: Date
+  featured: boolean
+  order: number
+  shortDescription: string
+  longDescription: string[]
+  contentWarnings?: string[]
+  cover: BookImage
+  previewImages: BookImage[]
+  links: { amazon?: BookLink; goodreads?: BookLink; internal?: string }
+  reviews: BookReview[]
+  availability: string
+  isbn?: string
+  pageCount?: number
 }
 ```
 
-3. **Export from index.ts**:
+4. **Test** that the book appears on the home page, nav dropdown, and `/books/[slug]` or `/comics/[slug]`.
 
-```typescript
-// books/index.ts
-import { newBook } from "./standalone"
-
-export const allBooks: Book[] = [
-  // ...existing books,
-  newBook,
-]
-```
-
-4. **Add images** to `/public/` directory
-5. **Test** that book appears in catalog
+Schema changes require `pnpm db:generate` then `pnpm db:migrate`.
 
 ### Updating Configuration
 

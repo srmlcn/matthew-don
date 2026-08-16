@@ -18,8 +18,8 @@ interface EnhancedBookPageProps {
   book: Book
 }
 
-export function EnhancedBookPage({ book }: EnhancedBookPageProps) {
-  const breadcrumbs = getBreadcrumbs(getBookPath(book))
+export async function EnhancedBookPage({ book }: EnhancedBookPageProps) {
+  const breadcrumbs = await getBreadcrumbs(getBookPath(book))
   const isMature = book.category === "comedy"
 
   // Generate structured data for search engines

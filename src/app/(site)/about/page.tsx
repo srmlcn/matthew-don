@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   },
 }
 
-export default function AboutPage() {
-  const breadcrumbs = getBreadcrumbs("/about")
+export default async function AboutPage() {
+  const breadcrumbs = await getBreadcrumbs("/about")
 
   return (
     <div className="flex flex-col gap-8 max-w-5xl mx-auto">

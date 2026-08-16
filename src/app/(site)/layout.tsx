@@ -3,12 +3,12 @@ import { SiteFooter } from "@/app/components/site-footer"
 import { SkipToContent } from "@/components/layout/skip-to-content"
 import { getBooksNav } from "@/lib/data/books"
 
-export default function SiteLayout({
+export default async function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const booksNav = getBooksNav()
+  const booksNav = await getBooksNav()
 
   return (
     <>

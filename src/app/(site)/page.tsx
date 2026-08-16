@@ -4,7 +4,7 @@ import { AllBooks } from "@/app/components/all-books"
 import { NewsletterSignup } from "@/app/components/newsletter-signup"
 import { Invitation } from "@/app/components/invitation"
 import type { Metadata } from "next"
-import { publishedBooks, upcomingBooks } from "@/lib/data/books"
+import { getBooksByStatus } from "@/lib/data/books"
 
 export const metadata: Metadata = {
   title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
@@ -57,7 +57,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Home() {
+export default async function Home() {
+  const publishedBooks = await getBooksByStatus("published")
+  const upcomingBooks = await getBooksByStatus("upcoming")
+
   return (
     <div className="flex flex-col gap-16 max-w-6xl mx-auto w-full">
       <Hero />

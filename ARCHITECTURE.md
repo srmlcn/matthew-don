@@ -55,16 +55,24 @@ Centralized site configuration.
 
 #### `/src/lib/data/`
 
-All data for the site.
+Catalog query layer and types. Book records live in Postgres (Neon), not TypeScript modules.
 
-- `books/` - Book catalog with types and helpers
+- `books/` - Book catalog types and async query helpers
   - `types.ts` - TypeScript interfaces for books
-  - `adventures-series.ts` - Luca and Kai series data
-  - `comics.ts` - Comics data
-  - `standalone.ts` - Standalone books
+  - `queries.ts` - `getAllBooks`, `getBookBySlug`, cached reads
   - `navigation.ts` - `getBookPath`, `getBooksNav`, `getBookByPath`
   - `metadata.ts` - `generateBookMetadata` for detail pages
-  - `index.ts` - Exports and query helpers
+  - `index.ts` - Barrel export
+
+#### `/src/lib/db/`
+
+Drizzle schema, Neon client, seed data, and mappers.
+
+- `schema.ts` - Postgres tables (`books`, `book_images`, `book_links`, `book_reviews`)
+- `client.ts` - Neon HTTP driver
+- `map-book.ts` - DB rows → `Book` interface
+- `seed-data/books.json` - Canonical seed catalog
+- `zod.ts` - Insert/select schemas for future admin forms
 
 #### `/src/lib/theme/`
 
@@ -94,11 +102,13 @@ Utility functions.
 ### Book Data Flow
 
 ```
-books/*.ts (Source records)
+Neon Postgres
   ↓
-books/index.ts (allBooks + query helpers)
+Drizzle schema + relations (src/lib/db/)
   ↓
-(site) layout + [slug] pages (server-side catalog reads)
+books/queries.ts (getAllBooks, getBookBySlug — unstable_cache tag: books)
+  ↓
+(site) layout + [slug] pages (await server-side catalog reads)
   ↓
 UI components (display; nav passed as props from server)
 ```
@@ -162,9 +172,9 @@ import {
   getBooksNav,
 } from "@/lib/data/books"
 
-const book = getBookBySlug("the-adventures-of-luca-and-kai-the-moon-queen")
+const book = await getBookBySlug("the-adventures-of-luca-and-kai-the-moon-queen")
 const path = getBookPath(book!)
-const nav = getBooksNav()
+const nav = await getBooksNav()
 ```
 
 **Benefits:**
@@ -232,7 +242,7 @@ export default async function BookPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const book = getBookBySlug(slug)
+  const book = await getBookBySlug(slug)
   if (!book || book.category === "comics") notFound()
   return <EnhancedBookPage book={book} />
 }
@@ -440,7 +450,7 @@ Errors show:
 2. **Blog**: Content marketing with blog posts
 3. **Newsletter**: Email capture and newsletter
 4. **Analytics**: Track user behavior
-5. **CMS**: Admin interface for content updates (catalog query seam is in place; add `(admin)/` route group + writable store)
+5. **CMS**: Admin interface for content updates (`(admin)/` route group + Drizzle writes + `revalidateTag("books")`)
 6. **Testing**: Unit and E2E tests
 7. **i18n**: Multiple language support
 

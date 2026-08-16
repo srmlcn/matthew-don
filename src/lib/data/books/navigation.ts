@@ -5,18 +5,8 @@
  */
 
 import type { NavItem, NavSection } from "@/lib/config/navigation"
-import { moonQueen, celestialSamurai, book3 } from "./adventures-series"
-import { lucaAndKaiComics } from "./comics"
-import { celebrationOfHistory } from "./standalone"
+import { getAllBooks } from "./queries"
 import type { Book } from "./types"
-
-const catalogBooks: Book[] = [
-  celestialSamurai,
-  moonQueen,
-  lucaAndKaiComics,
-  celebrationOfHistory,
-  book3,
-]
 
 const LUCA_KAI_SERIES = "The Adventures of Luca and Kai"
 
@@ -56,8 +46,11 @@ function bookToNavItem(book: Book): NavItem {
   }
 }
 
-export function getBooksNav(): NavSection[] {
-  const lucaKaiBooks = catalogBooks.filter(isLucaKaiBook).sort((a, b) => a.order - b.order)
+export async function getBooksNav(): Promise<NavSection[]> {
+  const catalogBooks = await getAllBooks()
+  const lucaKaiBooks = catalogBooks
+    .filter(isLucaKaiBook)
+    .sort((a, b) => a.order - b.order)
 
   const matureBooks = catalogBooks
     .filter((book) => book.category === "comedy" && book.status !== "upcoming")
@@ -82,7 +75,7 @@ export function getBooksNav(): NavSection[] {
   return sections
 }
 
-export function getBookByPath(pathname: string): Book | undefined {
+export async function getBookByPath(pathname: string): Promise<Book | undefined> {
   const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`
   const segments = normalized.split("/").filter(Boolean)
 
@@ -95,6 +88,7 @@ export function getBookByPath(pathname: string): Book | undefined {
     return undefined
   }
 
+  const catalogBooks = await getAllBooks()
   const book = catalogBooks.find((entry) => entry.slug === slug)
   if (!book || getBookPath(book) !== normalized) {
     return undefined
