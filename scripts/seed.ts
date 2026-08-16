@@ -4,7 +4,7 @@
  * Usage: pnpm db:seed
  */
 
-import "dotenv/config"
+import { config as loadEnv } from "dotenv"
 import { readFileSync } from "node:fs"
 import { join } from "node:path"
 import { eq } from "drizzle-orm"
@@ -17,6 +17,9 @@ import {
   bookReviews,
   books,
 } from "../src/lib/db/schema"
+
+loadEnv({ path: ".env.local" })
+loadEnv()
 
 interface SeedBookImage {
   src: string
