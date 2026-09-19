@@ -11,6 +11,9 @@ interface PageProps {
   params: Promise<{ slug: string }>
 }
 
+export const revalidate = 3600
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   const allBooks = await getAllBooks()
   return allBooks
