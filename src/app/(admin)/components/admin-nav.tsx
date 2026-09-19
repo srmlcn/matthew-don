@@ -14,7 +14,7 @@ interface AdminNavItem {
 
 const adminNavItems: AdminNavItem[] = [
   { href: "/admin", label: "Dashboard", phase: "Phase 0", enabled: true },
-  { href: "/admin/books", label: "Books", phase: "Phase 1", enabled: false },
+  { href: "/admin/books", label: "Books", phase: "Phase 1", enabled: true },
   { href: "/admin/media", label: "Media", phase: "Phase 2", enabled: false },
   {
     href: "/admin/settings",
@@ -39,7 +39,10 @@ export function AdminNav() {
     <nav aria-label="Admin sections">
       <ul className="flex gap-1 overflow-x-auto md:flex-col md:overflow-visible">
         {adminNavItems.map((item) => {
-          const isActive = item.enabled && pathname === item.href
+          const isActive =
+            item.enabled &&
+            (pathname === item.href ||
+              (item.href !== "/admin" && pathname.startsWith(`${item.href}/`)))
           return (
             <li key={item.href} className="shrink-0 md:shrink">
               {item.enabled ? (
