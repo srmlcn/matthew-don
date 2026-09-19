@@ -24,6 +24,7 @@ const adminSections: AdminSection[] = [
     title: "Media",
     description: "Uploads and library for covers, previews, and photos.",
     phase: "Phase 2",
+    href: "/admin/media",
   },
   {
     title: "Settings",
