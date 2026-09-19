@@ -11,6 +11,10 @@ import type { Book, BookCategory, BookStatus } from "./types"
 
 export const BOOKS_CACHE_TAG = "books"
 
+export function getBookCacheTag(slug: string): string {
+  return `book:${slug}`
+}
+
 async function fetchAllBooksFromDb(): Promise<Book[]> {
   const rows = await db.query.books.findMany({
     with: {
@@ -36,6 +40,18 @@ export async function getAllBooks(): Promise<Book[]> {
 }
 
 export async function getBookBySlug(slug: string): Promise<Book | undefined> {
+  const getCachedBook = unstable_cache(
+    () => fetchBookBySlugFromDb(slug),
+    ["catalog-book", slug],
+    { tags: [BOOKS_CACHE_TAG, getBookCacheTag(slug)] },
+  )
+  const book = await getCachedBook()
+  return book ? hydrateBook(book) : undefined
+}
+
+async function fetchBookBySlugFromDb(
+  slug: string,
+): Promise<Book | undefined> {
   const row = await db.query.books.findFirst({
     where: eq(books.slug, slug),
     with: {

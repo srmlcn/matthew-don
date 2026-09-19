@@ -22,6 +22,7 @@ export {
   BOOKS_CACHE_TAG,
   getAllBooks,
   getBookBySlug,
+  getBookCacheTag,
   getBooksByCategory,
   getBooksByStatus,
   getFeaturedBook,
