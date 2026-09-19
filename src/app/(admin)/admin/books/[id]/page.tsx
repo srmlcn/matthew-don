@@ -37,6 +37,7 @@ export default async function EditBookPage({ params }: EditBookPageProps) {
     seriesName: book.seriesName ?? "",
     seriesBook: book.seriesBook !== null ? String(book.seriesBook) : "",
     seriesTotal: book.seriesTotal !== null ? String(book.seriesTotal) : "",
+    navSection: book.navSection ?? "",
     coverSrc: book.cover?.src ?? "",
     coverAlt: book.cover?.alt ?? "",
     coverWidth: book.cover ? String(book.cover.width) : "1200",

@@ -29,6 +29,7 @@ export interface AdminBookEditData extends AdminBookListItem {
   seriesName: string | null
   seriesBook: number | null
   seriesTotal: number | null
+  navSection: string | null
   cover: {
     src: string
     alt: string
@@ -106,6 +107,7 @@ export async function getAdminBook(
     seriesName: row.seriesName,
     seriesBook: row.seriesBook,
     seriesTotal: row.seriesTotal,
+    navSection: row.navSection,
     cover: coverRow
       ? {
           src: coverRow.src,

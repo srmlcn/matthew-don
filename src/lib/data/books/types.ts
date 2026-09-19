@@ -73,4 +73,5 @@ export interface Book {
   availability: string
   isbn?: string
   pageCount?: number
+  navSection?: string
 }

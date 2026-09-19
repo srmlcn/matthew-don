@@ -27,6 +27,7 @@ export interface BookFormValues {
   seriesName: string
   seriesBook: string
   seriesTotal: string
+  navSection: string
   coverSrc: string
   coverAlt: string
   coverWidth: string
@@ -51,6 +52,7 @@ const defaultValues: BookFormValues = {
   seriesName: "",
   seriesBook: "",
   seriesTotal: "",
+  navSection: "",
   coverSrc: "",
   coverAlt: "",
   coverWidth: "1200",
@@ -142,6 +144,7 @@ export function BookForm({ mode, bookId, initial }: BookFormProps) {
       seriesName: values.seriesName,
       seriesBook: values.seriesBook,
       seriesTotal: values.seriesTotal,
+      navSection: values.navSection,
       coverSrc: values.coverSrc,
       coverAlt: values.coverAlt,
       coverWidth: values.coverWidth,
@@ -431,6 +434,21 @@ export function BookForm({ mode, bookId, initial }: BookFormProps) {
               className={inputClass}
             />
           </div>
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="navSection" className={labelClass}>
+            Nav section override
+          </label>
+          <input
+            id="navSection"
+            placeholder="e.g. The Adventures of Luca and Kai, Mature Readers"
+            value={values.navSection}
+            onChange={(event) => setField("navSection", event.target.value)}
+            className={inputClass}
+          />
+          {fieldError("navSection") ? (
+            <p className={errorClass}>{fieldError("navSection")}</p>
+          ) : null}
         </div>
       </div>
 

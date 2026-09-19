@@ -26,16 +26,29 @@ export function getBookNavLabel(book: Book): string {
   return book.title
 }
 
-function isLucaKaiBook(book: Book): boolean {
+export function resolveBookNavSection(book: Book): string | null {
   if (book.status === "upcoming") {
-    return false
+    return null
   }
 
-  return (
-    book.seriesInfo?.name === LUCA_KAI_SERIES ||
-    book.category === "comics" ||
-    (book.category === "adventures" && book.title.includes("Luca and Kai"))
-  )
+  if (book.navSection !== undefined && book.navSection !== null) {
+    const trimmed = book.navSection.trim()
+    return trimmed.length > 0 && trimmed.toLowerCase() !== "none" ? trimmed : null
+  }
+
+  if (book.seriesInfo?.name) {
+    return book.seriesInfo.name
+  }
+
+  if (book.category === "comedy") {
+    return "Mature Readers"
+  }
+
+  if (book.category === "adventures" || book.category === "comics") {
+    return LUCA_KAI_SERIES
+  }
+
+  return null
 }
 
 function bookToNavItem(book: Book): NavItem {
@@ -48,28 +61,22 @@ function bookToNavItem(book: Book): NavItem {
 
 export async function getBooksNav(): Promise<NavSection[]> {
   const catalogBooks = await getAllBooks()
-  const lucaKaiBooks = catalogBooks
-    .filter(isLucaKaiBook)
-    .sort((a, b) => a.order - b.order)
+  const sortedBooks = [...catalogBooks].sort((a, b) => a.order - b.order)
 
-  const matureBooks = catalogBooks
-    .filter((book) => book.category === "comedy" && book.status !== "upcoming")
-    .sort((a, b) => a.order - b.order)
+  const sectionMap = new Map<string, NavItem[]>()
 
-  const sections: NavSection[] = []
+  for (const book of sortedBooks) {
+    const sectionTitle = resolveBookNavSection(book)
+    if (!sectionTitle) continue
 
-  if (lucaKaiBooks.length > 0) {
-    sections.push({
-      title: LUCA_KAI_SERIES,
-      items: lucaKaiBooks.map(bookToNavItem),
-    })
+    const items = sectionMap.get(sectionTitle) ?? []
+    items.push(bookToNavItem(book))
+    sectionMap.set(sectionTitle, items)
   }
 
-  if (matureBooks.length > 0) {
-    sections.push({
-      title: "Mature Readers",
-      items: matureBooks.map(bookToNavItem),
-    })
+  const sections: NavSection[] = []
+  for (const [title, items] of sectionMap.entries()) {
+    sections.push({ title, items })
   }
 
   return sections
