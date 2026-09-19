@@ -7,6 +7,7 @@
 export const siteConfig = {
   name: "Matthew Don",
   description: "Official website of author Matthew Don",
+  canonicalUrl: "https://matthewdon.com",
   author: {
     name: "Matthew Don",
     nicknames: ["Matt", "Mo", "Pete", "MoPete"],
@@ -52,3 +53,38 @@ export const siteConfig = {
 } as const
 
 export type SiteConfig = typeof siteConfig
+
+export async function getSiteConfig() {
+  const { getSiteSettings } = await import("@/lib/data/settings")
+  const settings = await getSiteSettings()
+  const currentYear = new Date().getFullYear()
+
+  return {
+    ...siteConfig,
+    name: settings.name,
+    description: settings.tagline,
+    canonicalUrl: settings.canonicalUrl,
+    social: {
+      ...siteConfig.social,
+      ...settings.socials,
+    },
+    contact: {
+      ...siteConfig.contact,
+      ...settings.contact,
+    },
+    copyright: {
+      year: currentYear,
+      holder: settings.name,
+      message: settings.footer
+        ? settings.footer
+            .replace(/\{year\}/g, String(currentYear))
+            .replace(/\b2025\b/g, String(currentYear))
+        : `© ${currentYear} ${settings.name}. All rights reserved.`,
+    },
+    images: {
+      ...siteConfig.images,
+      ogDefault: settings.ogImage,
+    },
+  }
+}
+
