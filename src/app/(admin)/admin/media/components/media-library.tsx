@@ -49,6 +49,7 @@ export function MediaLibrary({
   const [error, setError] = useState<string | null>(null)
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<number | null>(null)
+  const [isUploading, setIsUploading] = useState(false)
   const [isPending, startTransition] = useTransition()
 
   function handleSearch(event: React.FormEvent): void {
@@ -98,6 +99,7 @@ export function MediaLibrary({
       setUploadError("Choose an image file first")
       return
     }
+    setIsUploading(true)
     try {
       const response = await fetch("/api/admin/media", {
         method: "POST",
@@ -117,6 +119,8 @@ export function MediaLibrary({
       setUploadError(
         requestError instanceof Error ? requestError.message : "Upload failed",
       )
+    } finally {
+      setIsUploading(false)
     }
   }
 
@@ -198,8 +202,8 @@ export function MediaLibrary({
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm dark:border-gray-700 dark:bg-gray-900"
           />
         </div>
-        <Button type="submit" disabled={!blobConfigured}>
-          Upload
+        <Button type="submit" disabled={!blobConfigured || isUploading}>
+          {isUploading ? "Uploading..." : "Upload"}
         </Button>
         {uploadError ? (
           <span
