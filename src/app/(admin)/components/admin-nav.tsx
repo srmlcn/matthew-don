@@ -15,7 +15,7 @@ interface AdminNavItem {
 const adminNavItems: AdminNavItem[] = [
   { href: "/admin", label: "Dashboard", phase: "Phase 0", enabled: true },
   { href: "/admin/books", label: "Books", phase: "Phase 1", enabled: true },
-  { href: "/admin/media", label: "Media", phase: "Phase 2", enabled: false },
+  { href: "/admin/media", label: "Media", phase: "Phase 2", enabled: true },
   {
     href: "/admin/settings",
     label: "Settings",
