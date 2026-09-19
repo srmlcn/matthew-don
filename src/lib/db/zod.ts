@@ -9,6 +9,8 @@ import {
   bookReviews,
   books,
   mediaAssets,
+  navItems,
+  siteSettings,
 } from "./schema"
 
 export const insertBookSchema = createInsertSchema(books)
@@ -18,3 +20,8 @@ export const insertBookLinkSchema = createInsertSchema(bookLinks)
 export const insertBookReviewSchema = createInsertSchema(bookReviews)
 export const insertMediaAssetSchema = createInsertSchema(mediaAssets)
 export const selectMediaAssetSchema = createSelectSchema(mediaAssets)
+export const insertSiteSettingSchema = createInsertSchema(siteSettings)
+export const selectSiteSettingSchema = createSelectSchema(siteSettings)
+export const insertNavItemSchema = createInsertSchema(navItems)
+export const selectNavItemSchema = createSelectSchema(navItems)
+
