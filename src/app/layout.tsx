@@ -2,18 +2,25 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { Outfit } from "next/font/google"
 import type { Metadata } from "next"
+import { getSiteSettings } from "@/lib/data/settings"
 
 const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
 })
 
-export const metadata: Metadata = {
-  title: {
-    default: "Matthew Don - Author",
-    template: "%s | Matthew Don",
-  },
-  description: "Official website of author Matthew Don",
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings()
+  const canonicalUrl = settings.canonicalUrl || "https://matthewdon.com"
+
+  return {
+    metadataBase: new URL(canonicalUrl),
+    title: {
+      default: `${settings.name} - Author`,
+      template: `%s | ${settings.name}`,
+    },
+    description: settings.tagline || "Official website of author Matthew Don",
+  }
 }
 
 export default function RootLayout({
