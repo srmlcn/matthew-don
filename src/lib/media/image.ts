@@ -23,7 +23,7 @@ export function sanitizeFilename(filename: string): string {
 export function altFromFilename(filename: string): string {
   const dotIndex = filename.lastIndexOf(".")
   const base =
-    dotIndex > 0 ? filename.slice(0, dotIndex) : filename
+    dotIndex >= 0 ? filename.slice(0, dotIndex) : filename
   const words = base
     .replace(/[-_]+/g, " ")
     .replace(/\s+/g, " ")
