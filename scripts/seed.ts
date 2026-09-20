@@ -16,7 +16,13 @@ import {
   bookLinks,
   bookReviews,
   books,
+  pageSections,
+  pages,
 } from "../src/lib/db/schema"
+import {
+  DEFAULT_PAGES,
+  DEFAULT_PAGE_SECTIONS,
+} from "../src/lib/data/pages"
 
 loadEnv({ path: ".env.local" })
 loadEnv()
@@ -220,6 +226,51 @@ async function seed(): Promise<void> {
   }
 
   console.log(`Seeded ${seedBooks.length} books`)
+
+  for (const page of DEFAULT_PAGES) {
+    await db
+      .insert(pages)
+      .values({
+        id: page.id,
+        title: page.title,
+        slug: page.slug,
+        description: page.description,
+        updatedAt: new Date(),
+      })
+      .onConflictDoUpdate({
+        target: pages.id,
+        set: {
+          title: page.title,
+          slug: page.slug,
+          description: page.description,
+          updatedAt: new Date(),
+        },
+      })
+
+    const sections = DEFAULT_PAGE_SECTIONS[page.id] ?? []
+    for (const section of sections) {
+      await db
+        .insert(pageSections)
+        .values({
+          page: section.page,
+          sectionKey: section.sectionKey,
+          content: section.content,
+          sortOrder: section.sortOrder,
+          isVisible: section.isVisible,
+          updatedAt: new Date(),
+        })
+        .onConflictDoUpdate({
+          target: [pageSections.page, pageSections.sectionKey],
+          set: {
+            content: section.content,
+            sortOrder: section.sortOrder,
+            isVisible: section.isVisible,
+            updatedAt: new Date(),
+          },
+        })
+    }
+    console.log(`Seeded page and sections for: ${page.id}`)
+  }
 }
 
 seed().catch((error) => {

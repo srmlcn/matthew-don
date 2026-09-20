@@ -11,6 +11,7 @@ import {
   pgTable,
   text,
   timestamp,
+  unique,
 } from "drizzle-orm/pg-core"
 
 export const bookStatusEnum = pgEnum("book_status", [
@@ -151,6 +152,75 @@ export const navItems = pgTable("nav_items", {
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 })
+
+export interface SectionCta {
+  label: string
+  href: string
+  variant?: "default" | "outline" | "ghost"
+}
+
+export interface SectionImage {
+  src: string
+  alt: string
+  width?: number
+  height?: number
+}
+
+export interface PageSectionContent {
+  title?: string
+  subtitle?: string
+  paragraphs: string[]
+  primaryCta?: SectionCta
+  secondaryCta?: SectionCta
+  image?: SectionImage
+  connectHeading?: string
+  footnote?: string
+  placeholder?: string
+  successMessage?: string
+  [key: string]: unknown
+}
+
+export const pages = pgTable("pages", {
+  id: text("id").primaryKey(),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  description: text("description"),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+})
+
+export const pageSections = pgTable(
+  "page_sections",
+  {
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+    page: text("page")
+      .notNull()
+      .references(() => pages.id, { onDelete: "cascade" }),
+    sectionKey: text("section_key").notNull(),
+    content: jsonb("content").$type<PageSectionContent>().notNull(),
+    sortOrder: integer("sort_order").notNull().default(0),
+    isVisible: boolean("is_visible").notNull().default(true),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+  },
+  (table) => [
+    unique("page_sections_page_section_key_unique").on(
+      table.page,
+      table.sectionKey,
+    ),
+  ],
+)
+
+export const pagesRelations = relations(pages, ({ many }) => ({
+  sections: many(pageSections),
+}))
+
+export const pageSectionsRelations = relations(pageSections, ({ one }) => ({
+  pageRecord: one(pages, {
+    fields: [pageSections.page],
+    references: [pages.id],
+  }),
+}))
 
 export const booksRelations = relations(books, ({ many }) => ({
   images: many(bookImages),
