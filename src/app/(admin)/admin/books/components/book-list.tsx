@@ -253,6 +253,13 @@ export function BookList({ books }: BookListProps) {
                 <td className="px-3 py-2">
                   <span className="flex items-center justify-end gap-2">
                     <LinkButton
+                      href={`/admin/books/${book.id}/reviews`}
+                      variant="ghost"
+                      size="sm"
+                    >
+                      Reviews
+                    </LinkButton>
+                    <LinkButton
                       href={`/admin/books/${book.id}`}
                       variant="outline"
                       size="sm"

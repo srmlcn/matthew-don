@@ -54,12 +54,16 @@ export function mapBook(row: BookWithRelations): Book {
   }
 
   const reviews = row.reviews
+    .filter((review) => review.isVisible ?? true)
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((review) => ({
+      id: review.id,
       name: review.name,
       description: review.description,
       review: review.review,
       stars: review.stars,
+      sortOrder: review.sortOrder,
+      isVisible: review.isVisible,
     }))
 
   const book: Book = {

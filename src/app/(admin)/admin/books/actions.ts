@@ -9,7 +9,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
 import { and, desc, eq, inArray, ne } from "drizzle-orm"
 import { z } from "zod"
 import { db } from "@/lib/db/client"
-import { bookImages, books } from "@/lib/db/schema"
+import { bookImages, bookReviews, books } from "@/lib/db/schema"
 import { insertBookImageSchema, insertBookSchema } from "@/lib/db/zod"
 import { BOOKS_CACHE_TAG, getBookCacheTag } from "@/lib/data/books"
 
@@ -524,5 +524,182 @@ export async function reorderBooks(
   updateTag(BOOKS_CACHE_TAG)
   revalidateTag(BOOKS_CACHE_TAG, "max")
   revalidateSlugs(rows.map((row) => row.slug))
+  return { ok: true, updated: parsed.data.length }
+}
+
+const reviewInputSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(200),
+  description: z.string().trim().min(1, "Description is required").max(200),
+  review: z.string().trim().min(1, "Review text is required").max(5000),
+  stars: z.coerce.number().int().min(1).max(5),
+  isVisible: z.boolean().default(true),
+  sortOrder: z.coerce.number().int().default(0),
+})
+
+const reorderReviewsInputSchema = z
+  .array(
+    z.object({
+      id: z.number().int(),
+      sortOrder: z.number().int(),
+    }),
+  )
+  .min(1)
+
+export async function createBookReview(
+  bookId: string,
+  input: unknown,
+): Promise<{ ok: true; id: number } | { ok: false; error: string }> {
+  if (!(await isAdmin())) {
+    return { ok: false, error: "Unauthorized" }
+  }
+
+  try {
+    const parsed = reviewInputSchema.safeParse(input)
+    if (!parsed.success) {
+      return { ok: false, error: parsed.error.issues[0]?.message ?? "Invalid review" }
+    }
+
+    const book = await db.query.books.findFirst({
+      where: eq(books.id, bookId),
+      columns: { slug: true },
+    })
+    if (!book) {
+      return { ok: false, error: "Book not found" }
+    }
+
+    const [inserted] = await db
+      .insert(bookReviews)
+      .values({
+        bookId,
+        name: parsed.data.name,
+        description: parsed.data.description,
+        review: parsed.data.review,
+        stars: parsed.data.stars,
+        isVisible: parsed.data.isVisible,
+        sortOrder: parsed.data.sortOrder,
+      })
+      .returning({ id: bookReviews.id })
+
+    if (!inserted) {
+      return { ok: false, error: "Failed to create review" }
+    }
+
+    revalidateBook(book.slug)
+    return { ok: true, id: inserted.id }
+  } catch (err) {
+    return { ok: false, error: "Failed to create review" }
+  }
+}
+
+export async function updateBookReview(
+  reviewId: number,
+  input: unknown,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!(await isAdmin())) {
+    return { ok: false, error: "Unauthorized" }
+  }
+
+  try {
+    const parsed = reviewInputSchema.partial().safeParse(input)
+    if (!parsed.success) {
+      return { ok: false, error: parsed.error.issues[0]?.message ?? "Invalid review" }
+    }
+
+    const existing = await db.query.bookReviews.findFirst({
+      where: eq(bookReviews.id, reviewId),
+      columns: { bookId: true },
+    })
+    if (!existing) {
+      return { ok: false, error: "Review not found" }
+    }
+
+    const book = await db.query.books.findFirst({
+      where: eq(books.id, existing.bookId),
+      columns: { slug: true },
+    })
+
+    await db
+      .update(bookReviews)
+      .set(parsed.data)
+      .where(eq(bookReviews.id, reviewId))
+
+    if (book) {
+      revalidateBook(book.slug)
+    }
+    return { ok: true }
+  } catch (err) {
+    return { ok: false, error: "Failed to update review" }
+  }
+}
+
+export async function deleteBookReview(
+  reviewId: number,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  if (!(await isAdmin())) {
+    return { ok: false, error: "Unauthorized" }
+  }
+
+  try {
+    const existing = await db.query.bookReviews.findFirst({
+      where: eq(bookReviews.id, reviewId),
+      columns: { bookId: true },
+    })
+    if (!existing) {
+      return { ok: false, error: "Review not found" }
+    }
+
+    const book = await db.query.books.findFirst({
+      where: eq(books.id, existing.bookId),
+      columns: { slug: true },
+    })
+
+    await db.delete(bookReviews).where(eq(bookReviews.id, reviewId))
+
+    if (book) {
+      revalidateBook(book.slug)
+    }
+    return { ok: true }
+  } catch (err) {
+    return { ok: false, error: "Failed to delete review" }
+  }
+}
+
+export async function toggleReviewVisibility(
+  reviewId: number,
+  isVisible: boolean,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  return updateBookReview(reviewId, { isVisible })
+}
+
+export async function reorderBookReviews(
+  bookId: string,
+  input: unknown,
+): Promise<ReorderActionResult> {
+  if (!(await isAdmin())) {
+    return { ok: false, error: "Unauthorized" }
+  }
+
+  const parsed = reorderReviewsInputSchema.safeParse(input)
+  if (!parsed.success) {
+    return { ok: false, error: "Invalid order payload" }
+  }
+
+  const book = await db.query.books.findFirst({
+    where: eq(books.id, bookId),
+    columns: { slug: true },
+  })
+
+  await Promise.all(
+    parsed.data.map((item) =>
+      db
+        .update(bookReviews)
+        .set({ sortOrder: item.sortOrder })
+        .where(eq(bookReviews.id, item.id)),
+    ),
+  )
+
+  if (book) {
+    revalidateBook(book.slug)
+  }
   return { ok: true, updated: parsed.data.length }
 }

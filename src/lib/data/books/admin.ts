@@ -4,7 +4,7 @@
 
 import { asc, eq } from "drizzle-orm"
 import { db } from "@/lib/db/client"
-import { books } from "@/lib/db/schema"
+import { books, bookReviews } from "@/lib/db/schema"
 import type { BookCategory, BookStatus } from "./types"
 
 export interface AdminBookListItem {
@@ -72,6 +72,40 @@ export async function getAdminBooks(): Promise<AdminBookListItem[]> {
     featured: row.featured,
     order: row.order,
   }))
+}
+
+export interface AdminBookReviewItem {
+  id: number
+  bookId: string
+  name: string
+  description: string
+  review: string
+  stars: number
+  sortOrder: number
+  isVisible: boolean
+}
+
+export async function getAdminBookReviews(
+  bookId: string,
+): Promise<AdminBookReviewItem[]> {
+  try {
+    const rows = await db.query.bookReviews.findMany({
+      where: eq(bookReviews.bookId, bookId),
+      orderBy: [asc(bookReviews.sortOrder)],
+    })
+    return rows.map((r) => ({
+      id: r.id,
+      bookId: r.bookId,
+      name: r.name,
+      description: r.description,
+      review: r.review,
+      stars: r.stars,
+      sortOrder: r.sortOrder,
+      isVisible: r.isVisible ?? true,
+    }))
+  } catch {
+    return []
+  }
 }
 
 export async function getAdminBook(
