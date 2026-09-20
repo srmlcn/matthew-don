@@ -6,6 +6,7 @@ import { Invitation } from "@/app/components/invitation"
 import type { Metadata } from "next"
 import { getBooksByStatus } from "@/lib/data/books"
 import { getSiteSettings } from "@/lib/data/settings"
+import { getPageSectionMap } from "@/lib/data/pages"
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
@@ -69,24 +70,35 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const publishedBooks = await getBooksByStatus("published")
-  const upcomingBooks = await getBooksByStatus("upcoming")
+  const [publishedBooks, upcomingBooks, sections] = await Promise.all([
+    getBooksByStatus("published"),
+    getBooksByStatus("upcoming"),
+    getPageSectionMap("home"),
+  ])
 
   return (
     <div className="flex flex-col gap-16 max-w-6xl mx-auto w-full">
-      <Hero />
+      {sections["hero"]?.isVisible !== false && (
+        <Hero content={sections["hero"]?.content} />
+      )}
 
       <Divider />
 
       <AllBooks books={publishedBooks} upcomingBooks={upcomingBooks} />
 
-      <Divider />
+      {sections["newsletter"]?.isVisible !== false && (
+        <>
+          <Divider />
+          <NewsletterSignup content={sections["newsletter"]?.content} />
+        </>
+      )}
 
-      <NewsletterSignup />
-
-      <Divider />
-
-      <Invitation />
+      {sections["invitation"]?.isVisible !== false && (
+        <>
+          <Divider />
+          <Invitation content={sections["invitation"]?.content} />
+        </>
+      )}
     </div>
   )
 }
