@@ -30,6 +30,7 @@ const adminSections: AdminSection[] = [
     title: "Settings",
     description: "Site name, socials, contact, footer, and navigation.",
     phase: "Phase 3",
+    href: "/admin/settings",
   },
   {
     title: "Pages",

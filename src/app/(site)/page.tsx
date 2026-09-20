@@ -5,56 +5,67 @@ import { NewsletterSignup } from "@/app/components/newsletter-signup"
 import { Invitation } from "@/app/components/invitation"
 import type { Metadata } from "next"
 import { getBooksByStatus } from "@/lib/data/books"
+import { getSiteSettings } from "@/lib/data/settings"
 
-export const metadata: Metadata = {
-  title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
-  description:
-    "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences. Explore adventure fantasy, comics, and more.",
-  keywords: [
-    "Matthew Don",
-    "author",
-    "adventure fantasy",
-    "children's books",
-    "The Adventures of Luca and Kai",
-    "The Moon Queen",
-    "The Celestial Samurai",
-    "young adult fiction",
-    "comedy books",
-    "satirical fiction",
-    "A Celebration of the History of Celebrating History",
-    "book series",
-    "family-friendly books",
-    "Tucson author",
-  ],
-  openGraph: {
-    title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings()
+  const canonicalUrl = settings.canonicalUrl || "https://matthewdon.com"
+  const ogImageUrl = settings.ogImage || "/matthew-don.jpg"
+
+  return {
+    metadataBase: new URL(canonicalUrl),
+    alternates: {
+      canonical: "/",
+    },
+    title: `${settings.name} - Author of Adventure Fantasy & Humorous Fiction`,
     description:
-      "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
-    images: [
-      {
-        url: "/matthew-don.jpg",
-        alt: "Matthew Don - Author",
-        width: 724,
-        height: 763,
-      },
+      "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences. Explore adventure fantasy, comics, and more.",
+    keywords: [
+      settings.name,
+      "author",
+      "adventure fantasy",
+      "children's books",
+      "The Adventures of Luca and Kai",
+      "The Moon Queen",
+      "The Celestial Samurai",
+      "young adult fiction",
+      "comedy books",
+      "satirical fiction",
+      "A Celebration of the History of Celebrating History",
+      "book series",
+      "family-friendly books",
+      "Tucson author",
     ],
-    type: "website",
-    url: "https://matthewdon.com",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@MatthewDon",
-    title: "Matthew Don - Author of Adventure Fantasy & Humorous Fiction",
-    description:
-      "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
-    creator: "@MatthewDon",
-    images: [
-      {
-        url: "/matthew-don.jpg",
-        alt: "Matthew Don - Author",
-      },
-    ],
-  },
+    openGraph: {
+      title: `${settings.name} - Author of Adventure Fantasy & Humorous Fiction`,
+      description:
+        "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
+      images: [
+        {
+          url: ogImageUrl,
+          alt: `${settings.name} - Author`,
+          width: 724,
+          height: 763,
+        },
+      ],
+      type: "website",
+      url: canonicalUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@MatthewDon",
+      title: `${settings.name} - Author of Adventure Fantasy & Humorous Fiction`,
+      description:
+        "Discover the imaginative worlds of Matthew Don. From the thrilling 'Adventures of Luca and Kai' series perfect for young readers, to satirical comedy for mature audiences.",
+      creator: "@MatthewDon",
+      images: [
+        {
+          url: ogImageUrl,
+          alt: `${settings.name} - Author`,
+        },
+      ],
+    },
+  }
 }
 
 export default async function Home() {

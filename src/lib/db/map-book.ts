@@ -107,6 +107,10 @@ export function mapBook(row: BookWithRelations): Book {
     }
   }
 
+  if (row.navSection) {
+    book.navSection = row.navSection
+  }
+
   return book
 }
 

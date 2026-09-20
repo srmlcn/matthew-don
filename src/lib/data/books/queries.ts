@@ -16,16 +16,32 @@ export function getBookCacheTag(slug: string): string {
 }
 
 async function fetchAllBooksFromDb(): Promise<Book[]> {
-  const rows = await db.query.books.findMany({
-    with: {
-      images: true,
-      links: true,
-      reviews: true,
-    },
-    orderBy: [asc(books.order)],
-  })
+  try {
+    const rows = await db.query.books.findMany({
+      with: {
+        images: true,
+        links: true,
+        reviews: true,
+      },
+      orderBy: [asc(books.order)],
+    })
 
-  return rows.map(mapBook)
+    return rows.map(mapBook)
+  } catch {
+    try {
+      const { readFileSync } = await import("node:fs")
+      const { join } = await import("node:path")
+      const seedPath = join(process.cwd(), "src/lib/db/seed-data/books.json")
+      const raw = readFileSync(seedPath, "utf-8")
+      const seedBooks = JSON.parse(raw) as Array<Record<string, unknown>>
+      return seedBooks.map((b) => ({
+        ...b,
+        releaseDate: b["releaseDate"] ? new Date(b["releaseDate"] as string) : undefined,
+      })) as unknown as Book[]
+    } catch {
+      return []
+    }
+  }
 }
 
 const getCachedAllBooks = unstable_cache(
@@ -52,20 +68,29 @@ export async function getBookBySlug(slug: string): Promise<Book | undefined> {
 async function fetchBookBySlugFromDb(
   slug: string,
 ): Promise<Book | undefined> {
-  const row = await db.query.books.findFirst({
-    where: eq(books.slug, slug),
-    with: {
-      images: true,
-      links: true,
-      reviews: true,
-    },
-  })
+  try {
+    const row = await db.query.books.findFirst({
+      where: eq(books.slug, slug),
+      with: {
+        images: true,
+        links: true,
+        reviews: true,
+      },
+    })
 
-  if (!row) {
-    return undefined
+    if (!row) {
+      return undefined
+    }
+
+    return mapBook(row)
+  } catch {
+    try {
+      const all = await fetchAllBooksFromDb()
+      return all.find((b) => b.slug === slug)
+    } catch {
+      return undefined
+    }
   }
-
-  return mapBook(row)
 }
 
 export async function getBooksByCategory(

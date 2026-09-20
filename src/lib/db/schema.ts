@@ -52,6 +52,7 @@ export const books = pgTable("books", {
   seriesName: text("series_name"),
   seriesBook: integer("series_book"),
   seriesTotal: integer("series_total"),
+  navSection: text("nav_section"),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 })
@@ -101,6 +102,52 @@ export const mediaAssets = pgTable("media_assets", {
   height: integer("height").notNull(),
   sizeBytes: integer("size_bytes").notNull(),
   contentType: text("content_type").notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+})
+
+export interface SiteSocialItem {
+  url: string
+  handle?: string
+  label?: string
+}
+
+export interface SiteSocials {
+  instagram?: SiteSocialItem
+  tiktok?: SiteSocialItem
+  amazon?: SiteSocialItem
+  goodreads?: SiteSocialItem
+  [key: string]: SiteSocialItem | undefined
+}
+
+export interface SiteContact {
+  email?: string
+  message?: string
+  preferredMethods?: string[]
+}
+
+export const siteSettings = pgTable("site_settings", {
+  id: text("id").primaryKey().default("default"),
+  name: text("name").notNull(),
+  tagline: text("tagline").notNull(),
+  canonicalUrl: text("canonical_url").notNull(),
+  ogImage: text("og_image").notNull(),
+  footer: text("footer").notNull(),
+  socials: jsonb("socials").$type<SiteSocials>().notNull(),
+  contact: jsonb("contact").$type<SiteContact>().notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+})
+
+export const navItems = pgTable("nav_items", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  label: text("label").notNull(),
+  href: text("href").notNull(),
+  section: text("section").notNull().default("main"),
+  order: integer("order").notNull().default(0),
+  external: boolean("external").notNull().default(false),
+  description: text("description"),
+  visible: boolean("visible").notNull().default(true),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 })

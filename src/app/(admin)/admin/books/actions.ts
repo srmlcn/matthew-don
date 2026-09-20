@@ -71,6 +71,7 @@ const bookFormSchema = z.object({
   seriesName: optionalText(300),
   seriesBook: optionalInt(1, 100),
   seriesTotal: optionalInt(1, 100),
+  navSection: optionalText(300),
   coverSrc: z.string().trim().min(1).max(500),
   coverAlt: z.string().trim().min(1).max(300),
   coverWidth: optionalInt(1, 10000),
@@ -226,6 +227,7 @@ export async function createBook(input: unknown): Promise<BookActionResult> {
     seriesName: data.seriesName ?? null,
     seriesBook: data.seriesBook ?? null,
     seriesTotal: data.seriesTotal ?? null,
+    navSection: data.navSection ?? null,
   }
 
   const bookCheck = insertBookSchema.safeParse({ ...bookRow, id: data.slug })
@@ -388,6 +390,7 @@ export async function updateBook(
     seriesName: data.seriesName ?? null,
     seriesBook: data.seriesBook ?? null,
     seriesTotal: data.seriesTotal ?? null,
+    navSection: data.navSection ?? null,
     updatedAt: new Date(),
   }
 

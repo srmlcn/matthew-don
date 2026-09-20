@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test"
 test("site footer is present", async ({ page }) => {
   await page.goto("/")
   await expect(page.getByRole("contentinfo")).toContainText(
-    "© 2025 Matthew Don"
+    new RegExp(`© ${new Date().getFullYear()} Matthew Don`),
   )
 })
 

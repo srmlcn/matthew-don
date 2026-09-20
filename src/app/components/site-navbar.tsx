@@ -2,17 +2,29 @@
 
 import { BooksDropdownButton } from "@/app/components/books-dropdown-button"
 import { siteConfig } from "@/lib/config/site"
+import { mainNav as defaultMainNav, type NavItem, type NavSection } from "@/lib/config/navigation"
 import { Divider } from "@/components/ui/divider"
-import type { NavSection } from "@/lib/config/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Disclosure } from "@headlessui/react"
 
 interface SiteNavbarProps {
   booksNav: NavSection[]
+  mainNav?: NavItem[]
+  siteName?: string
+  profilePicture?: string
 }
 
-export function SiteNavbar({ booksNav }: SiteNavbarProps) {
+export function SiteNavbar({
+  booksNav,
+  mainNav = defaultMainNav,
+  siteName,
+  profilePicture,
+}: SiteNavbarProps) {
+  const brandName = siteName || siteConfig.name
+  const brandImage = profilePicture || siteConfig.images.profilePicture
+  const navItems = mainNav && mainNav.length > 0 ? mainNav : defaultMainNav
+
   return (
     <Disclosure as="nav" aria-label="Main navigation">
       {({ open }) => (
@@ -43,14 +55,14 @@ export function SiteNavbar({ booksNav }: SiteNavbarProps) {
                 {/* Desktop brand */}
                 <div className="h-full py-2 hidden sm:flex gap-2 items-center">
                   <Image
-                    src={siteConfig.images.profilePicture}
-                    alt={`${siteConfig.author.name} profile picture`}
+                    src={brandImage}
+                    alt={`${brandName} profile picture`}
                     width={50}
                     height={50}
                     className="h-12 w-auto overflow-hidden rounded-full"
                     priority
                   />
-                  <span className="font-bold text-lg">{siteConfig.name}</span>
+                  <span className="font-bold text-lg">{brandName}</span>
                 </div>
               </div>
 
@@ -58,37 +70,31 @@ export function SiteNavbar({ booksNav }: SiteNavbarProps) {
               <div className="h-full py-2 sm:hidden flex gap-2 items-center">
                 <div className="w-fit h-fit overflow-hidden rounded-full">
                   <Image
-                    src={siteConfig.images.profilePicture}
-                    alt={`${siteConfig.author.name} profile picture`}
+                    src={brandImage}
+                    alt={`${brandName} profile picture`}
                     width={50}
                     height={50}
                     className="h-12 m-auto object-scale-down"
                     priority
                   />
                 </div>
-                <span className="font-bold text-lg">{siteConfig.name}</span>
+                <span className="font-bold text-lg">{brandName}</span>
               </div>
 
               {/* Desktop navigation */}
               <div className="hidden sm:flex items-center gap-8">
-                <Link
-                  href="/"
-                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
-                >
-                  Contact
-                </Link>
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-colors"
+                    {...(item.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
                 <BooksDropdownButton booksNav={booksNav} />
               </div>
             </div>
@@ -97,27 +103,19 @@ export function SiteNavbar({ booksNav }: SiteNavbarProps) {
           {/* Mobile menu */}
           <Disclosure.Panel className="sm:hidden border-b bg-white/95 backdrop-blur dark:bg-gray-950/95">
             <div className="space-y-1 px-4 pb-3 pt-2">
-              <Disclosure.Button
-                as={Link}
-                href="/"
-                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                Home
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/about"
-                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                About
-              </Disclosure.Button>
-              <Disclosure.Button
-                as={Link}
-                href="/contact"
-                className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                Contact
-              </Disclosure.Button>
+              {navItems.map((item) => (
+                <Disclosure.Button
+                  key={item.href}
+                  as={Link}
+                  href={item.href}
+                  className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                  {...(item.external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                >
+                  {item.label}
+                </Disclosure.Button>
+              ))}
 
               <Divider className="my-2" />
 

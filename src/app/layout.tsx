@@ -9,6 +9,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://matthewdon.com"),
   title: {
     default: "Matthew Don - Author",
     template: "%s | Matthew Don",
