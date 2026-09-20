@@ -10,6 +10,7 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 import { AnimatedSection } from "./animated-section"
+import { subscribeNewsletter } from "@/app/(admin)/admin/newsletter/actions"
 import type {
   NewsletterSectionContent,
   PageSectionContent,
@@ -42,12 +43,22 @@ export function NewsletterSignup({ content }: NewsletterSignupProps = {}) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus("loading")
+    setMessage("")
 
-    setTimeout(() => {
+    try {
+      const result = await subscribeNewsletter({ email, source: "homepage" })
+      if (!result.ok) {
+        setStatus("error")
+        setMessage(result.error)
+        return
+      }
       setStatus("success")
       setMessage(defaultSuccessMessage)
       setEmail("")
-    }, 1000)
+    } catch {
+      setStatus("error")
+      setMessage("Something went wrong. Please try again.")
+    }
   }
 
   return (

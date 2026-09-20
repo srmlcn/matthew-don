@@ -21,10 +21,13 @@ export interface BookLink {
 }
 
 export interface BookReview {
+  id?: number
   name: string
   description: string
   review: string
   stars: number
+  sortOrder?: number
+  isVisible?: boolean
 }
 
 export interface SeriesInfo {

@@ -91,7 +91,39 @@ export const bookReviews = pgTable("book_reviews", {
   review: text("review").notNull(),
   stars: integer("stars").notNull(),
   sortOrder: integer("sort_order").notNull().default(0),
+  isVisible: boolean("is_visible").notNull().default(true),
 })
+
+export const newsletterSubscribers = pgTable("newsletter_subscribers", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  email: text("email").notNull().unique(),
+  status: text("status").notNull().default("active"),
+  source: text("source").notNull().default("website"),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+})
+
+export const seoOverrides = pgTable(
+  "seo_overrides",
+  {
+    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+    entityType: text("entity_type").notNull(), // "book" | "page"
+    entityId: text("entity_id").notNull(), // book id/slug or page id/slug
+    title: text("title"),
+    description: text("description"),
+    ogImage: text("og_image"),
+    canonical: text("canonical"),
+    noindex: boolean("noindex").notNull().default(false),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+  },
+  (table) => [
+    unique("seo_overrides_entity_type_entity_id_unique").on(
+      table.entityType,
+      table.entityId,
+    ),
+  ],
+)
 
 export const mediaAssets = pgTable("media_assets", {
   id: integer("id").primaryKey().generatedByDefaultAsIdentity(),

@@ -31,7 +31,7 @@ export async function generateMetadata({
     return {}
   }
 
-  return generateBookMetadata(book)
+  return await generateBookMetadata(book)
 }
 
 export default async function BookPage({ params }: PageProps) {

@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getAdminBook } from "@/lib/data/books/admin"
+import { getAdminBook, getAdminBookReviews } from "@/lib/data/books/admin"
 import { BookForm, type BookFormValues } from "../components/book-form"
+import { BookReviewsManager } from "../components/book-reviews-manager"
+import { Divider } from "@/components/ui/divider"
 
 export const metadata: Metadata = {
   title: "Edit book",
@@ -18,6 +20,8 @@ export default async function EditBookPage({ params }: EditBookPageProps) {
   if (!book) {
     notFound()
   }
+
+  const reviews = await getAdminBookReviews(id)
 
   const initial: BookFormValues = {
     slug: book.slug,
@@ -53,6 +57,11 @@ export default async function EditBookPage({ params }: EditBookPageProps) {
         </p>
       </div>
       <BookForm mode="edit" bookId={book.id} initial={initial} />
+      <Divider />
+      <div id="reviews">
+        <h2 className="text-xl font-bold mb-1">Reviews & Testimonials</h2>
+        <BookReviewsManager bookId={book.id} initialReviews={reviews} />
+      </div>
     </div>
   )
 }

@@ -42,16 +42,19 @@ const adminSections: AdminSection[] = [
     title: "Reviews",
     description: "Reader-review curation and visibility.",
     phase: "Phase 5",
+    href: "/admin/reviews",
   },
   {
     title: "Newsletter",
     description: "Subscribers, status, and export.",
     phase: "Phase 5",
+    href: "/admin/newsletter",
   },
   {
     title: "SEO",
     description: "Metadata overrides for books and pages.",
     phase: "Phase 5",
+    href: "/admin/seo",
   },
 ]
 
