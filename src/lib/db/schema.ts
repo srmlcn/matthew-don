@@ -112,7 +112,13 @@ export interface SiteSocialItem {
   label?: string
 }
 
-export type SiteSocials = Record<string, SiteSocialItem>
+export interface SiteSocials {
+  instagram?: SiteSocialItem
+  tiktok?: SiteSocialItem
+  amazon?: SiteSocialItem
+  goodreads?: SiteSocialItem
+  [key: string]: SiteSocialItem | undefined
+}
 
 export interface SiteContact {
   email?: string
