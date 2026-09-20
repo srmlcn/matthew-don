@@ -10,6 +10,8 @@ import {
   books,
   mediaAssets,
   navItems,
+  pageSections,
+  pages,
   siteSettings,
 } from "./schema"
 
@@ -24,4 +26,8 @@ export const insertSiteSettingSchema = createInsertSchema(siteSettings)
 export const selectSiteSettingSchema = createSelectSchema(siteSettings)
 export const insertNavItemSchema = createInsertSchema(navItems)
 export const selectNavItemSchema = createSelectSchema(navItems)
+export const insertPageSchema = createInsertSchema(pages)
+export const selectPageSchema = createSelectSchema(pages)
+export const insertPageSectionSchema = createInsertSchema(pageSections)
+export const selectPageSectionSchema = createSelectSchema(pageSections)
 
