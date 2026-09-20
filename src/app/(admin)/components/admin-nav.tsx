@@ -24,12 +24,18 @@ const adminNavItems: AdminNavItem[] = [
   },
   { href: "/admin/pages", label: "Pages", phase: "Phase 4", enabled: true },
   {
+    href: "/admin/reviews",
+    label: "Reviews",
+    phase: "Phase 5",
+    enabled: true,
+  },
+  {
     href: "/admin/newsletter",
     label: "Newsletter",
     phase: "Phase 5",
-    enabled: false,
+    enabled: true,
   },
-  { href: "/admin/seo", label: "SEO", phase: "Phase 5", enabled: false },
+  { href: "/admin/seo", label: "SEO", phase: "Phase 5", enabled: true },
 ]
 
 export function AdminNav() {
