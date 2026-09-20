@@ -16,6 +16,23 @@ function getDatabaseUrl(): string {
   return url
 }
 
-const sql = neon(getDatabaseUrl())
+let _db: ReturnType<typeof drizzle<typeof schema>> | null = null
 
-export const db = drizzle(sql, { schema })
+function getDb() {
+  if (!_db) {
+    const sql = neon(getDatabaseUrl())
+    _db = drizzle(sql, { schema })
+  }
+  return _db
+}
+
+export const db = new Proxy({} as ReturnType<typeof drizzle<typeof schema>>, {
+  get(_target, prop, receiver) {
+    const realDb = getDb()
+    const value = Reflect.get(realDb, prop, receiver)
+    if (typeof value === "function") {
+      return value.bind(realDb)
+    }
+    return value
+  },
+})

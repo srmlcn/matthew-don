@@ -98,13 +98,28 @@ async function fetchNavItemsFromDb(section = "main"): Promise<NavItem[]> {
   }
 }
 
-const getCachedSiteSettings = unstable_cache(
+function safeCache<T extends (...args: any[]) => Promise<any>>(
+  fn: T,
+  keyParts: string[],
+  options: { tags: string[] },
+): T {
+  const cached = unstable_cache(fn, keyParts, options)
+  return (async (...args: any[]) => {
+    try {
+      return await cached(...args)
+    } catch {
+      return await fn(...args)
+    }
+  }) as T
+}
+
+const getCachedSiteSettings = safeCache(
   fetchSiteSettingsFromDb,
   ["site-settings-record"],
   { tags: [SITE_SETTINGS_CACHE_TAG] },
 )
 
-const getCachedNavItems = unstable_cache(
+const getCachedNavItems = safeCache(
   fetchNavItemsFromDb,
   ["site-nav-items-record"],
   { tags: [SITE_SETTINGS_CACHE_TAG] },
