@@ -36,6 +36,7 @@ const adminSections: AdminSection[] = [
     title: "Pages",
     description: "Home, about, and contact copy blocks.",
     phase: "Phase 4",
+    href: "/admin/pages",
   },
   {
     title: "Reviews",

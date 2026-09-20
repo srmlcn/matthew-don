@@ -22,7 +22,7 @@ const adminNavItems: AdminNavItem[] = [
     phase: "Phase 3",
     enabled: true,
   },
-  { href: "/admin/pages", label: "Pages", phase: "Phase 4", enabled: false },
+  { href: "/admin/pages", label: "Pages", phase: "Phase 4", enabled: true },
   {
     href: "/admin/newsletter",
     label: "Newsletter",
