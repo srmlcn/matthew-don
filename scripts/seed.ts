@@ -219,6 +219,7 @@ async function seed(): Promise<void> {
         review: review.review,
         stars: review.stars,
         sortOrder: index,
+        isVisible: true,
       })
     }
 
