@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { LinkButton } from "@/components/ui/link-button"
 import { generateSlug } from "@/lib/utils/slug"
+import type { MediaAsset } from "@/lib/media/assets"
+import { MediaPicker } from "../../media/components/media-picker"
 import { createBook, updateBook } from "../actions"
 
 export interface BookFormValues {
@@ -73,6 +75,9 @@ export function BookForm({ mode, bookId, initial }: BookFormProps) {
   const [slugTouched, setSlugTouched] = useState(mode === "edit")
   const [formError, setFormError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
+  const [pickerOpen, setPickerOpen] = useState(false)
+  const [pickerAssets, setPickerAssets] = useState<MediaAsset[]>([])
+  const [pickerTotal, setPickerTotal] = useState(0)
 
   function setField<K extends keyof BookFormValues>(
     field: K,
@@ -84,6 +89,34 @@ export function BookForm({ mode, bookId, initial }: BookFormProps) {
   function fieldError(field: string): string | null {
     const messages = fieldErrors[field]
     return messages ? messages.join(" ") : null
+  }
+
+  async function handleOpenPicker(): Promise<void> {
+    try {
+      const response = await fetch("/api/admin/media?limit=60")
+      const body = (await response.json().catch(() => null)) as {
+        assets?: MediaAsset[]
+        total?: number
+      } | null
+      if (response.ok && body) {
+        setPickerAssets(body.assets ?? [])
+        setPickerTotal(body.total ?? 0)
+      }
+    } catch {
+      setPickerAssets([])
+      setPickerTotal(0)
+    }
+    setPickerOpen(true)
+  }
+
+  function handlePickerSelect(asset: MediaAsset): void {
+    setValues((prev) => ({
+      ...prev,
+      coverSrc: asset.url,
+      coverAlt: asset.alt,
+      coverWidth: String(asset.width),
+      coverHeight: String(asset.height),
+    }))
   }
 
   function handleSubmit(event: React.FormEvent): void {
@@ -405,8 +438,28 @@ export function BookForm({ mode, bookId, initial }: BookFormProps) {
         <div className="sm:col-span-2">
           <h2 className="font-semibold">Cover</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Phase 1 uses a direct path or URL. Media library ships in Phase 2.
+            Browse the media library or paste a path or URL.
           </p>
+          <div className="mt-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                void handleOpenPicker()
+              }}
+            >
+              Browse library
+            </Button>
+          </div>
+          <MediaPicker
+            open={pickerOpen}
+            initialAssets={pickerAssets}
+            initialTotal={pickerTotal}
+            blobConfigured
+            onSelect={handlePickerSelect}
+            onClose={() => setPickerOpen(false)}
+          />
         </div>
         <div>
           <label htmlFor="coverSrc" className={labelClass}>

@@ -91,6 +91,20 @@ export const bookReviews = pgTable("book_reviews", {
   sortOrder: integer("sort_order").notNull().default(0),
 })
 
+export const mediaAssets = pgTable("media_assets", {
+  id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
+  pathname: text("pathname").notNull().unique(),
+  url: text("url").notNull().unique(),
+  filename: text("filename").notNull(),
+  alt: text("alt").notNull(),
+  width: integer("width").notNull(),
+  height: integer("height").notNull(),
+  sizeBytes: integer("size_bytes").notNull(),
+  contentType: text("content_type").notNull(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
+})
+
 export const booksRelations = relations(books, ({ many }) => ({
   images: many(bookImages),
   links: many(bookLinks),
