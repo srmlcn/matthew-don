@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { Divider } from "@/components/ui/divider"
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ interface AdminSection {
   title: string
   description: string
   phase: string
+  href?: string
 }
 
 const adminSections: AdminSection[] = [
@@ -16,6 +18,7 @@ const adminSections: AdminSection[] = [
     title: "Books",
     description: "Catalog entries, covers, links, reviews, and ordering.",
     phase: "Phase 1",
+    href: "/admin/books",
   },
   {
     title: "Media",
@@ -75,9 +78,18 @@ export default function AdminDashboardPage() {
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               {section.description}
             </p>
-            <p className="mt-2 text-xs font-medium tracking-wide text-gray-400 uppercase dark:text-gray-500">
-              Coming soon
-            </p>
+            {section.href ? (
+              <Link
+                href={section.href}
+                className="mt-2 inline-block text-sm font-medium underline underline-offset-4"
+              >
+                Open →
+              </Link>
+            ) : (
+              <p className="mt-2 text-xs font-medium tracking-wide text-gray-400 uppercase dark:text-gray-500">
+                Coming soon
+              </p>
+            )}
           </li>
         ))}
       </ul>
