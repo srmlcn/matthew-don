@@ -79,6 +79,11 @@ src/
 │   │   ├── contact/
 │   │   ├── layout.tsx            # Site chrome
 │   │   └── page.tsx              # Home
+│   ├── (admin)/                # Kinde-gated admin (own shell, no site chrome)
+│   │   ├── admin/page.tsx        # Dashboard (section placeholders)
+│   │   ├── components/           # Admin nav
+│   │   └── layout.tsx            # Admin shell (top bar, nav, session check)
+│   ├── api/auth/[kindeAuth]/    # Kinde login/logout/callback handler
 │   ├── components/               # App-level components
 │   ├── layout.tsx                # Root layout (html, providers only)
 │   └── globals.css
@@ -94,6 +99,12 @@ src/
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `DATABASE_URL` | Yes | Neon Postgres connection string (dev branch locally, prod in Vercel) |
+| `KINDE_CLIENT_ID` | Admin only | Kinde application client ID |
+| `KINDE_CLIENT_SECRET` | Admin only | Kinde application client secret |
+| `KINDE_ISSUER_URL` | Admin only | Kinde issuer URL (`https://<subdomain>.kinde.com`) |
+| `KINDE_SITE_URL` | Admin only | App base URL (`http://localhost:3000` locally) |
+| `KINDE_POST_LOGOUT_REDIRECT_URL` | Admin only | Post-logout redirect (usually = `KINDE_SITE_URL`) |
+| `KINDE_POST_LOGIN_REDIRECT_URL` | Admin only | Post-login redirect (`<site>/admin`) |
 
 Copy `.env.example` to `.env.local` for local development. Production and CI builds need `DATABASE_URL` set because catalog pages pre-render at build time.
 
@@ -136,6 +147,18 @@ Workflow for a new title:
 3. Add related rows in `book_images`, `book_links`, and `book_reviews` as needed
 
 No per-book page files or navigation edits are required. The site derives URLs (`getBookPath`), nav (`getBooksNav`), breadcrumbs, and detail pages from the database automatically.
+
+## Admin Panel
+
+`/admin` hosts the Kinde-gated content backend. Phase 0 ships the auth boundary + shell only (dashboard placeholders, no CRUD yet).
+
+**Setup:**
+
+1. Create a Kinde application (web app) at [kinde.com](https://kinde.com) with callback `<site>/api/auth/kinde_callback` and logout redirect `<site>`.
+2. Copy `.env.example` to `.env.local` and fill the six `KINDE_*` vars.
+3. Run `pnpm dev`, open `http://localhost:3000/admin`, sign in via Kinde.
+
+**How auth works:** `src/middleware.ts` (matcher `/admin/:path*`) redirects signed-out visitors to Kinde login; `src/app/(admin)/layout.tsx` re-checks the server session and renders the shell (top bar, section nav, user email, sign out). Auth callbacks live at `src/app/api/auth/[kindeAuth]/route.ts`. Admin routes are `force-dynamic` and `noindex`. The storefront stays fully public with zero auth overhead.
 
 ## Testing
 
