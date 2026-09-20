@@ -31,6 +31,24 @@ export default async function AdminLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  if (!process.env["KINDE_ISSUER_URL"]) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center p-4">
+        <div className="max-w-md rounded-lg border border-gray-200 p-6 text-center dark:border-gray-800">
+          <h1 className="text-xl font-bold">Admin auth not configured</h1>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            Set KINDE_ISSUER_URL and related Kinde environment variables to access the admin panel.
+          </p>
+          <div className="mt-4">
+            <LinkButton href="/" variant="outline" size="sm">
+              Back to site
+            </LinkButton>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const { isAuthenticated, getUser } = getKindeServerSession()
   if (!(await isAuthenticated())) {
     redirect("/api/auth/login?post_login_redirect_url=/admin")
